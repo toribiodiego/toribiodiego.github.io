@@ -1,0 +1,26 @@
+{{/* layouts/partials/tags-chips.html */}}
+
+{{- /* Keep a handle to the page/root context */ -}}
+{{- $page := . -}}
+
+{{- /* Resolve which taxonomy to use */ -}}
+{{- $taxonomy := .Scratch.Get "taxonomy" -}}
+{{- if not $taxonomy -}}
+{{- if $page.Params.project_tags -}}
+{{- $taxonomy = "project_tags" -}}
+{{- else if $page.Params.writing_tags -}}
+{{- $taxonomy = "writing_tags" -}}
+{{- else if $page.Params.tags -}}
+{{- $taxonomy = "tags" -}}
+{{- end -}}
+{{- end -}}
+
+{{- if $taxonomy -}}
+{{- with $page.GetTerms $taxonomy -}}
+<div class="tags">
+    {{- range . -}}
+    <a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+    {{- end -}}
+</div>
+{{- end -}}
+{{- end -}}

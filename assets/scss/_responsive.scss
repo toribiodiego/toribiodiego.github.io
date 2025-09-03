@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Responsive Tweaks
+   ========================================================================== */
+
+.tags,
+.tags a.tag {
+    white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+
+    .tags,
+    .tags a.tag {
+        white-space: normal;
+    }
+
+    .post .post-title {
+        margin-bottom: 0.35rem;
+    }
+
+    .post .post-summary {
+        margin-bottom: 0.6rem;
+    }
+}

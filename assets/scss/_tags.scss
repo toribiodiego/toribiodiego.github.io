@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Tag chips + site-wide tag link overrides
+   ========================================================================== */
+
+/* Base container */
+.tags {
+    display: inline-block;
+    margin-top: 0.2rem;
+}
+
+/* Force all tags everywhere to be the same size and color scheme */
+.tags a,
+.tags a.tag,
+.post-tags .tags a,
+.projects-list .tags a,
+.taxonomy .tags a,
+.terms .tags a,
+.list .tags a,
+a[href*="/tags/"] {
+    font-size: 0.75rem !important;
+    /* lock exact size */
+    line-height: 1.2 !important;
+    /* normalize vertical alignment */
+    padding: 3px 8px !important;
+    /* consistent chip sizing */
+    display: inline-block;
+    margin-right: .25rem;
+    margin-bottom: .25rem;
+    border: 1px solid var(--chip-border);
+    border-radius: var(--chip-radius);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace !important;
+    text-decoration: none !important;
+    color: var(--muted-text) !important;
+    /* match nav default color */
+    background: transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect (like nav links) */
+.tags a:hover,
+a[href*="/tags/"]:hover {
+    border-color: var(--chip-border-hover);
+    color: #000 !important;
+    /* darken on hover */
+}
+
+/* Visited links behave like normal (no purple) */
+.tags a:visited,
+a[href*="/tags/"]:visited {
+    color: var(--muted-text) !important;
+}
+
+/* Context-specific layout adjustments */
+.projects-list .tags,
+article .tags {
+    margin-left: 1.5em;
+}
+
+.taxonomy .tags,
+.terms .tags,
+.list .tags {
+    margin-left: 0 !important;
+}
+
+/* Ensure tags footer in writing posts is left-aligned */
+.writing .post-tags {
+    margin-top: 1.5rem;
+    /* breathing room above */
+    text-align: left;
+    /* align footer container left */
+}
+
+.writing .post-tags .tags {
+    margin-left: 0;
+    /* remove indent */
+    display: block;
+    /* ensure it flows full width */
+    text-align: left;
+    /* align inline chips left */
+}
+
+
+/* Ensure tags footer in project posts is left-aligned */
+.projects .post-tags {
+    margin-top: 1.5rem;
+    /* consistent breathing room above */
+    text-align: left;
+    /* align footer container left */
+}
+
+.projects .post-tags .tags {
+    margin-left: 0;
+    /* remove indent */
+    display: block;
+    /* full-width block */
+    text-align: left;
+    /* align inline chips left */
+}

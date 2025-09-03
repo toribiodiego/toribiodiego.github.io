@@ -1,0 +1,36 @@
+{{ define "main" }}
+<main class="writing">
+    <article class="post">
+        <h1 class="post-title">{{ .Title }}</h1>
+
+        {{/* Optional summary: prefer front-matter `summary`, else fall back to .Summary */}}
+        {{ if .Params.summary }}
+        <p class="post-summary">{{ .Params.summary }}</p>
+        {{ else if .Summary }}
+        <p class="post-summary">{{ .Summary }}</p>
+        {{ end }}
+
+        {{/* Meta line: Date only (no author) */}}
+        <p class="post-meta">
+            <time class="post-date" datetime="{{ .Date.Format " 2006-01-02" }}">
+                {{ with .Params.date_display }}
+                {{ . }}
+                {{ else }}
+                {{ .Date.Format "Jan 02, 2006" }}
+                {{ end }}
+            </time>
+        </p>
+
+        <div class="post-body">
+            {{ .Content }}
+        </div>
+
+        {{ if .Params.writing_tags }}
+        <footer class="post-tags">
+            {{ .Scratch.Set "taxonomy" "writing_tags" }}
+            {{ partial "tags-chips.html" . }}
+        </footer>
+        {{ end }}
+    </article>
+</main>
+{{ end }}

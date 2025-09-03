@@ -1,0 +1,21 @@
+{{/* --- Load SCSS via Hugo Pipes (new API) --- */}}
+{{- $sass := resources.Get "scss/main.scss" -}}
+{{- $css := $sass
+| css.Sass (dict "targetPath" "css/site.css" "enableSourceMap" true)
+| resources.Minify -}}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+{{/* --- Load any additional plain CSS via customCSS param (for legacy styles during migration) --- */}}
+{{- with .Site.Params.customCSS -}}
+{{- range . -}}
+<link rel="stylesheet" href="{{ . | absURL }}">
+{{- end -}}
+{{- end -}}
+
+{{/* --- Load any custom JS as before --- */}}
+{{- with .Site.Params.customJS -}}
+{{- range . -}}
+<script defer src="{{ . | absURL }}"></script>
+{{- end -}}
+{{- end -}}

@@ -1,0 +1,33 @@
+{{ define "main" }}
+<main class="projects">
+    <article class="post">
+        <h1 class="post-title">{{ .Title }}</h1>
+
+        {{/* Prefer explicit summary; else fall back to Hugo's .Summary if present */}}
+        {{ if .Params.summary }}
+        <p class="post-summary">{{ .Params.summary }}</p>
+        {{ else if .Summary }}
+        <p class="post-summary">{{ .Summary }}</p>
+        {{ end }}
+
+        {{/* Meta: Date only (no italics) */}}
+        <p class="post-meta">
+            <time class="post-date" datetime="{{ .Date.Format " 2006-01-02" }}">
+                {{ with .Params.date_display }}{{ . }}{{ else }}{{ .Date.Format "January 2, 2006" }}{{ end }}
+            </time>
+        </p>
+
+        <div class="post-body">
+            {{ .Content }}
+        </div>
+
+        {{/* Project tags at the end */}}
+        {{ if .Params.project_tags }}
+        <footer class="post-tags">
+            {{ .Scratch.Set "taxonomy" "project_tags" }}
+            {{ partial "tags-chips.html" . }}
+        </footer>
+        {{ end }}
+    </article>
+</main>
+{{ end }}

@@ -1,0 +1,19 @@
+/* Define cascade layer order once */
+@layer base, components, utilities, overrides;
+
+/* Base */
+@import "variables";
+@import "helpers";
+@import "tags";
+/* moved here so tags are not confined to components */
+
+/* Components */
+@layer components {
+    @import "lists";
+    @import "posts";
+    @import "writing";
+    @import "projects";
+    @import "utilities";
+    @import "responsive";
+    @import "references";
+}

@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Utilities & Common Components
+   ========================================================================== */
+
+.muted {
+    color: var(--muted-text);
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/* Site Title */
+.site-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin: 0 0 0.2rem 0;
+}
+
+.site-title a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.site-title a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--muted-text);
+    text-decoration: none !important;
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    text-decoration: none !important;
+    color: #000;
+}
+
+/* Main Navigation */
+.site-header nav a {
+    text-decoration: none !important;
+    color: var(--muted-text) !important;
+    font-weight: 400;
+    transition: color 0.2s ease;
+    margin-right: 1rem;
+}
+
+.site-header nav a:hover {
+    text-decoration: none !important;
+    color: #000 !important;
+}

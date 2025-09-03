@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Single Post (Projects & Writing)
+   ========================================================================== */
+/* Applies to single.html for both sections; consistent look:
+   Title → Summary → Date → Content → Tags */
+
+.projects .post {
+    margin-top: 2rem;
+    /* breathing room for project posts */
+}
+
+/* Title: strong, dark black */
+.post .post-title {
+    margin: 0 0 var(--post-title-bottom) 0;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Summary: lighter grey, distinct from body */
+.post .post-summary {
+    margin: 0 0 var(--post-summary-bottom) 0;
+    font-style: italic;
+    color: #666;
+}
+
+/* Meta line: date only */
+.post .post-meta {
+    margin: 0 0 var(--post-meta-bottom) 0;
+    font-size: 0.95rem;
+}
+
+/* Default date style (Writing posts, etc.) */
+.post .post-meta .post-date {
+    color: #666 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+}
+
+/* Darker date style for Projects only */
+.projects .post .post-meta .post-date {
+    color: #444 !important;
+}
+
+/* Body text: comfortable line height */
+.post .post-body {
+    line-height: var(--post-body-line-height);
+}
+
+/* Footer container alignment */
+.post .post-tags {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+/* Ensure tags block inside stays flush-left */
+.post .post-tags .tags {
+    margin-left: 0;
+    display: block;
+    text-align: left;
+}

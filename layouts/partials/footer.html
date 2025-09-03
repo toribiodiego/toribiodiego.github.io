@@ -1,0 +1,26 @@
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".footnotes li").forEach((li) => {
+            const backref = li.querySelector(".footnote-backref");
+            if (backref) {
+                const href = backref.getAttribute("href");
+                backref.remove();
+
+                // Extract number from li id="fn:1" → "1"
+                const liId = li.getAttribute("id");   // e.g. "fn:1"
+                const num = liId ? liId.replace("fn:", "") : "";
+
+                const p = li.querySelector("p");
+                if (p && num) {
+                    const numLink = document.createElement("a");
+                    numLink.href = href;
+                    numLink.textContent = num;
+                    numLink.classList.add("footnote-num");
+
+                    li.insertBefore(numLink, p);
+                    li.insertBefore(document.createTextNode(" "), p);
+                }
+            }
+        });
+    });
+</script>

@@ -1,0 +1,12 @@
+# Ignore drafts/outlines in writing & projects
+/content/projects/*
+/content/writing/*
+# about section needs to be worked on too
+/content/about.md
+
+# Hugo build output
+/public/
+/resources/
+
+# OS/editor cruft
+.DS_Store

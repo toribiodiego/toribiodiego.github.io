@@ -1,0 +1,95 @@
+/* ==========================================================================
+   References (Pandoc + CSL) and Footnotes
+   ========================================================================== */
+
+/* Reference list */
+#refs.csl-bib-body,
+.references.csl-bib-body {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+#refs .csl-entry,
+.references .csl-entry {
+    margin: 0 0 .45rem 0;
+    line-height: 1.5;
+    padding-left: 2em;
+    text-indent: -2em;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+#refs .csl-left-margin,
+.references .csl-left-margin,
+#refs .csl-right-inline,
+.references .csl-right-inline {
+    display: inline;
+    vertical-align: baseline;
+}
+
+#refs .csl-left-margin::after,
+.references .csl-left-margin::after {
+    content: " ";
+}
+
+/* Footnotes */
+.footnotes {
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: inherit;
+}
+
+.footnotes hr {
+    display: none;
+}
+
+.footnotes ol {
+    list-style: none !important;
+    margin: 0;
+    padding: 0;
+    counter-reset: none !important;
+}
+
+.footnotes li {
+    margin: 0 0 .45rem 0;
+    line-height: 1.5;
+    padding-left: 2em;
+    text-indent: -2em;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    list-style-type: none !important;
+}
+
+.footnotes li::marker,
+.footnotes li::before {
+    content: none !important;
+}
+
+.footnotes li p {
+    display: inline;
+    margin: 0;
+}
+
+.footnotes .footnote-num {
+    font-weight: 400;
+    color: inherit;
+    text-decoration: none;
+    margin-right: 0.25em;
+}
+
+.footnotes .footnote-num:hover {
+    text-decoration: underline;
+}
+
+/* Force date colors */
+main.writing article.post time.post-date {
+    color: #555 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+}
+
+main.projects article.post time.post-date {
+    color: #444 !important;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+}

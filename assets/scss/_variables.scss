@@ -1,0 +1,24 @@
+/* ==========================================================================
+   CSS Variables
+   --------------------------------------------------------------------------
+   Keep subtle control over spacing & typography without hard-coding everywhere.
+   ========================================================================== */
+@layer base {
+    :root {
+        --post-title-bottom: 0.25rem;
+        /* spacing below title */
+        --post-summary-bottom: 0.5rem;
+        /* spacing below summary */
+        --post-meta-bottom: 1rem;
+        /* spacing below meta line */
+        --post-body-line-height: 1.7;
+        /* comfortable reading */
+        --chip-radius: 8px;
+        --chip-border: #ddd;
+        --chip-border-hover: #bbb;
+        --chip-font-size: 0.65rem;
+        --muted-text: #555;
+        /* summary text color */
+        --meta-opacity: 0.85;
+    }
+}

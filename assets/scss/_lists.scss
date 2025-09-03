@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Lists (Projects list & Writing list pages)
+   ========================================================================== */
+
+/* ---- Projects list aesthetics ---- */
+.projects-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.projects-list li {
+    margin-bottom: 1.2rem;
+}
+
+/* Project title: medium weight, always block */
+.project-title {
+    text-decoration: none !important;
+    color: inherit !important;
+    font-weight: 600 !important;
+    /* less bold than before */
+    display: block;
+    /* ensure title sits on its own line */
+    margin-bottom: 0.25rem;
+    /* spacing before tags */
+}
+
+/* Tags directly under title, flush left */
+.tags-block {
+    @extend .tags;
+    /* reuse base tag container styles */
+    display: block;
+    /* force its own line */
+    margin-left: 0 !important;
+    /* remove indent */
+    padding-left: 0 !important;
+    margin-bottom: 0.5rem;
+    /* space before summary */
+}
+
+/* Project summary follows title, flush left */
+.project-summary {
+    margin-top: 0.25rem !important;
+    /* closer to title */
+    margin-bottom: 0.25rem !important;
+    /* small gap before tags */
+    text-indent: 0 !important;
+    /* remove tab/paragraph indent */
+    margin-left: 0 !important;
+    /* flush left */
+    padding-left: 0 !important;
+}
+
+
+
+
+
+/* ---- Writing list aesthetics (for writing/list.html) ---- */
+.posts-list {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.post-item {
+    margin-bottom: .5rem;
+}
+
+.post-date {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    opacity: 0.8;
+}
+
+/* Writing list: post titles styled like nav menu links */
+.posts-list .post-title {
+    text-decoration: none !important;
+    color: var(--muted-text) !important;
+    /* muted gray by default */
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.posts-list .post-title:hover {
+    text-decoration: none !important;
+    color: #000 !important;
+    /* darker on hover */
+}

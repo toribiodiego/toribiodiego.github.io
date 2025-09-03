@@ -1,0 +1,29 @@
+{{/* layouts/projects/list.html */}}
+{{ define "main" }}
+<main>
+    {{ .Content }}
+
+    <ul class="projects-list">
+        {{ range .Pages.ByWeight }}
+        <li class="project-item">
+            <!-- Title -->
+            <a href="{{ .RelPermalink }}" class="project-title">{{ .Title }}</a>
+
+            <!-- Summary directly under title -->
+            {{ with .Summary }}
+            <p class="project-summary">{{ . }}</p>
+            {{ end }}
+
+            <!-- Tags after summary -->
+            {{ with .GetTerms "project_tags" }}
+            <div class="tags-block">
+                {{ range . }}
+                <a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
+</main>
+{{ end }}
