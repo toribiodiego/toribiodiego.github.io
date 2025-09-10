@@ -1,0 +1,54 @@
+/* Sticky footer: works even if there is no <main> wrapper */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    /* modern viewport fallback chain */
+    min-height: 100vh;
+    min-height: 100svh;
+    /* better on mobile */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer is last child of <body>, push it down on short pages */
+body>footer {
+    margin-top: auto;
+}
+
+/* (Keep your existing footer styles) */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.85rem;
+    color: #888;
+
+    .social-icons {
+        margin-bottom: 0.5rem;
+
+        a {
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        svg {
+            width: 20px;
+            /* reasonable size */
+            height: 20px;
+            vertical-align: middle;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+
+        svg:hover {
+            opacity: 1;
+        }
+    }
+}
+
+footer .social-icons svg {
+    fill: #000;
+}
