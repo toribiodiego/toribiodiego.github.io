@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Overrides: tighten gap before first list item
+   ========================================================================== */
+
+p:has(+ ul),
+p:has(+ ol),
+h1:has(+ ul),
+h1:has(+ ol),
+h2:has(+ ul),
+h2:has(+ ol),
+h3:has(+ ul),
+h3:has(+ ol),
+h4:has(+ ul),
+h4:has(+ ol),
+h5:has(+ ul),
+h5:has(+ ol),
+h6:has(+ ul),
+h6:has(+ ol) {
+    margin-bottom: 0.25rem;
+}
+
+p+ul,
+p+ol,
+h1+ul,
+h1+ol,
+h2+ul,
+h2+ol,
+h3+ul,
+h3+ol,
+h4+ul,
+h4+ol,
+h5+ul,
+h5+ol,
+h6+ul,
+h6+ol {
+    margin-top: 0.25rem;
+}
