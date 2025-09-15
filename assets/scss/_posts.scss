@@ -1,12 +1,12 @@
 /* ==========================================================================
-   Single Post (Projects & Writing)
+   Single Post (Portfolio & Writing)
    ========================================================================== */
 /* Applies to single.html for both sections; consistent look:
    Title → Summary → Date → Content → Tags */
 
-.projects .post {
+.portfolio .post {
     margin-top: 2rem;
-    /* breathing room for project posts */
+    /* breathing room for portfolio posts */
 }
 
 /* Title: strong, dark black */
@@ -36,8 +36,8 @@
         "Liberation Mono", "Courier New", monospace;
 }
 
-/* Darker date style for Projects only */
-.projects .post .post-meta .post-date {
+/* Darker date style for Portfolio only */
+.portfolio .post .post-meta .post-date {
     color: #444 !important;
 }
 

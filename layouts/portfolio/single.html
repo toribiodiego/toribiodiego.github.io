@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="projects">
+<main class="portfolio">
     <article class="post">
         <h1 class="post-title">{{ .Title }}</h1>
 
@@ -21,10 +21,10 @@
             {{ .Content }}
         </div>
 
-        {{/* Project tags at the end */}}
-        {{ if .Params.project_tags }}
+        {{/* Portfolio tags at the end */}}
+        {{ if .Params.portfolio_tags }}
         <footer class="post-tags">
-            {{ .Scratch.Set "taxonomy" "project_tags" }}
+            {{ .Scratch.Set "taxonomy" "portfolio_tags" }}
             {{ partial "tags-chips.html" . }}
         </footer>
         {{ end }}

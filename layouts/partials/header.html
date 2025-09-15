@@ -10,13 +10,13 @@
             {{ if and (eq .Section "writing") .IsPage }}
             <!-- On a single Writing post -->
             <a class="back-link" href="/writing">← Writing</a>
-            {{ else if and (eq .Section "projects") .IsPage }}
-            <!-- On a single Project post -->
-            <a class="back-link" href="/projects">← Projects</a>
+            {{ else if and (eq .Section "portfolio") .IsPage }}
+            <!-- On a single Portfolio post -->
+            <a class="back-link" href="/portfolio">← Portfolio</a>
             {{ else }}
             <!-- Normal menu -->
             <a href="/writing">Writing</a>
-            <a href="/projects">Projects</a>
+            <a href="/portfolio">Portfolio</a>
             <a href="/about">About</a>
             {{ end }}
         </nav>

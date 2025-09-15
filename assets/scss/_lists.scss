@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Lists (Projects list & Writing list pages)
+   Lists (Portfolio list & Writing list pages)
    ========================================================================== */
 
-/* ---- Projects list aesthetics ---- */
-.projects-list {
+/* ---- Portfolio list aesthetics ---- */
+.portfolio-list {
     list-style: none;
     padding-left: 0;
 }
 
-.projects-list li {
+.portfolio-list li {
     margin-bottom: 1.2rem;
 }
 
-/* Project title: medium weight, always block */
-.project-title {
+/* Portfolio title: medium weight, always block */
+.portfolio-title {
     text-decoration: none !important;
     color: inherit !important;
     font-weight: 600 !important;
@@ -37,8 +37,8 @@
     /* space before summary */
 }
 
-/* Project summary follows title, flush left */
-.project-summary {
+/* Portfolio summary follows title, flush left */
+.portfolio-summary {
     margin-top: 0.25rem !important;
     /* closer to title */
     margin-bottom: 0.25rem !important;
@@ -49,10 +49,6 @@
     /* flush left */
     padding-left: 0 !important;
 }
-
-
-
-
 
 /* ---- Writing list aesthetics (for writing/list.html) ---- */
 .posts-list {

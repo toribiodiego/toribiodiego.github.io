@@ -1,21 +1,21 @@
-{{/* layouts/projects/list.html */}}
+{{/* layouts/portfolio/list.html */}}
 {{ define "main" }}
 <main>
     {{ .Content }}
 
-    <ul class="projects-list">
+    <ul class="portfolio-list">
         {{ range .Pages.ByWeight }}
-        <li class="project-item">
+        <li class="portfolio-item">
             <!-- Title -->
-            <a href="{{ .RelPermalink }}" class="project-title">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}" class="portfolio-title">{{ .Title }}</a>
 
             <!-- Summary directly under title -->
             {{ with .Summary }}
-            <p class="project-summary">{{ . }}</p>
+            <p class="portfolio-summary">{{ . }}</p>
             {{ end }}
 
             <!-- Tags after summary -->
-            {{ with .GetTerms "project_tags" }}
+            {{ with .GetTerms "portfolio_tags" }}
             <div class="tags-block">
                 {{ range . }}
                 <a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>

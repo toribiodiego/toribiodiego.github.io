@@ -12,7 +12,7 @@
 .tags a,
 .tags a.tag,
 .post-tags .tags a,
-.projects-list .tags a,
+.portfolio-list .tags a,
 .taxonomy .tags a,
 .terms .tags a,
 .list .tags a,
@@ -52,7 +52,7 @@ a[href*="/tags/"]:visited {
 }
 
 /* Context-specific layout adjustments */
-.projects-list .tags,
+.portfolio-list .tags,
 article .tags {
     margin-left: 1.5em;
 }
@@ -80,16 +80,15 @@ article .tags {
     /* align inline chips left */
 }
 
-
-/* Ensure tags footer in project posts is left-aligned */
-.projects .post-tags {
+/* Ensure tags footer in portfolio posts is left-aligned */
+.portfolio .post-tags {
     margin-top: 1.5rem;
     /* consistent breathing room above */
     text-align: left;
     /* align footer container left */
 }
 
-.projects .post-tags .tags {
+.portfolio .post-tags .tags {
     margin-left: 0;
     /* remove indent */
     display: block;
