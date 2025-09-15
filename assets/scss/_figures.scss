@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Figures (Images + Captions with auto-numbering)
+   ========================================================================== */
+
+/* Reset figure counter at the start of each post */
+.post-body {
+    counter-reset: figure;
+}
+
+.post-figure {
+    text-align: center;
+    /* keep the image centered */
+    max-width: 600px;
+    margin: 1.5rem auto;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    figcaption {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        text-align: left;
+        /* captions align left */
+        font-style: normal;
+        /* no italics */
+        color: inherit;
+        /* same as body text color */
+
+        /* Increment the counter for each caption */
+        counter-increment: figure;
+
+        &::before {
+            content: "Figure " counter(figure) ". ";
+            font-weight: 600;
+            /* number label still stands out */
+        }
+    }
+}
