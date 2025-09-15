@@ -2,7 +2,8 @@
    References (Pandoc + CSL) and Footnotes
    ========================================================================== */
 
-/* Reference list */
+/* === References list (Pandoc/CSL output) ================================ */
+
 #refs.csl-bib-body,
 .references.csl-bib-body {
     margin-top: 0;
@@ -16,9 +17,9 @@
     margin: 0 0 0.3rem 0;
     line-height: 1.35;
     padding-left: 1.75em;
-    /* increased for extra space before [1] */
+    /* room for [1] label */
     text-indent: -1.25em;
-    /* keep hanging indent consistent */
+    /* hanging indent */
     overflow-wrap: anywhere;
     white-space: normal;
 }
@@ -36,7 +37,7 @@
     content: " ";
 }
 
-/* Tighten spacing between References header and citations */
+/* Tighten spacing around "References" heading (if you use h4) */
 h4+#refs,
 h4+.references {
     margin-top: 0;
@@ -47,98 +48,93 @@ h4#references,
 h4:has(+ #refs),
 h4:has(+ .references) {
     margin-bottom: 0.25rem;
-    /* shrink the space below the heading */
+    /* shrink space below heading */
 }
 
-/* Footnotes */
+/* === Footnotes (Goldmark) ============================================== */
+
 .footnotes {
     margin-top: 1rem;
     font-size: 0.85rem;
     color: inherit;
+    /* match body text color */
     line-height: 1.35;
 }
 
-/* Add a heading above footnotes — styled like h4 */
+/* Optional small heading for footnotes */
 .footnotes::before {
     content: "Footnotes";
     display: block;
     font-size: 1rem;
-    /* match h4 size */
+    /* similar to h4 */
     font-weight: 600;
-    /* match h4 weight */
     line-height: 1.3;
-    color: rgb(34, 34, 34);
-    /* match h4 color */
+    color: inherit;
     margin-top: 1rem;
     margin-bottom: 1.33rem;
-    /* match h4 spacing */
 }
 
 .footnotes hr {
     display: none;
+    /* hide the default rule */
 }
 
 .footnotes ol {
-    list-style: none !important;
     margin: 0;
-    /* remove browser default list margin */
-    padding: 0;
-    counter-reset: none !important;
-    margin-top: 0;
-    /* remove extra gap */
+    padding-left: 1.25rem;
+    /* room for decimal numbers */
+    list-style-type: decimal;
+    /* ensure numbers show */
 }
 
 .footnotes li {
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.5rem 0;
     line-height: 1.35;
     overflow-wrap: anywhere;
     white-space: normal;
-    list-style-type: none !important;
-}
-
-.footnotes li::marker,
-.footnotes li::before {
-    content: none !important;
 }
 
 .footnotes li p {
     display: inline;
+    /* avoid extra paragraph breaks */
     margin: 0;
 }
 
-.footnotes .footnote-num {
-    display: inline-block;
-    min-width: 2em;
-    /* keeps numbers aligned */
-    margin-right: 1px;
-    /* minimal visible space */
-    font-weight: 400;
-    color: inherit;
+/* Back-reference link (usually ↩) */
+.footnotes a.footnote-backref {
+    margin-left: 0.25rem;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.footnotes a.footnote-backref:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* === Inline footnote references (superscripts) ========================== */
+/* Goldmark typically emits: <sup id="fnref:1"><a class="footnote-ref" ...>1</a></sup> */
+
+sup[id^="fnref"] {
+    line-height: 0;
+    /* keep superscripts tight */
+}
+
+a.footnote-ref {
     text-decoration: none;
 }
 
-.footnotes .footnote-num:hover {
+a.footnote-ref:hover {
     text-decoration: underline;
 }
 
-/* --- Order enforcement inside post-body --- */
-.post-body {
-    display: flex;
-    flex-direction: column;
-}
+/* === Misc. ============================================================= */
 
-.post-body .footnotes {
-    order: 2;
-    /* Footnotes first */
-}
+/* Avoid layout surprises: keep normal document flow.
+   If you previously used flex on .post-body to reorder blocks,
+   it can disrupt paragraphs, figures, etc., so we omit it here. */
 
-.post-body #references,
-.post-body #refs {
-    order: 3;
-    /* References after footnotes */
-}
-
-/* Force date colors */
+/* Date color overrides (kept from your original) */
 main.writing article.post time.post-date {
     color: #555 !important;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
