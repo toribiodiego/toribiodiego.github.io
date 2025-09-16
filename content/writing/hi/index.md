@@ -7,7 +7,7 @@ draft: false
 is_page: false
 link-citations: true
 reference-section-title: References
-summary: an introduction to writing posts
+summary: an introduction to the site and writing posts
 title: hi
 writing_tags:
 - miscellaneous
