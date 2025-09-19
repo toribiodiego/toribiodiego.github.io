@@ -1,21 +1,22 @@
 ---
 title: "About"
 author: "Diego Toribio"
-description: "Diego Toribio — BEng + MEng Electrical Engineering @ The Cooper Union. Graduate student researching Deep Reinforcement Learning applications."
+description: "Diego Toribio — BEng + MEng Electrical Engineering at The Cooper Union."
 meta_image: "/pfp.jpg"
 ---
 
 <br>
 <img src="/pfp.jpg" alt="Profile picture" width="250" style="border-radius: 12px;">
 <br>
+<br>
 
-I'm pursuing my master's in Electrical Engineering at The Cooper Union, where I also earned my Bachelor of Engineering. My thesis explores how to make reinforcement learning more data-efficient and reliable, in collaboration with my advisor, Sam Keene.
+I'm pursuing a Master's in Electrical Engineering at The Cooper Union, where I also earned a BEng (Computer Engineering track). My thesis explores how to make reinforcement learning more data-efficient and reliable, with [Sam Keene](https://cooper.edu/academics/people/sam-keene) as my advisor.
 
 This site is where I share notes and showcase projects I've worked on, centered around understanding machine learning and its applications.
 <br>
 <br>
 
-At the moment, I'm spending *most* of my time on:  
-- completing literature review for MEng thesis  
-- studying ML theory and algorithms  
-- exploring deployment and system design @ [*Konsilix*](https://www.konsilix.com)  
+At the moment, I'm working on:  
+- MEng thesis literature review
+- reviewing ML theory and algorithms  
+- deploying ML applications @ [*Konsilix*](https://www.konsilix.com)  
