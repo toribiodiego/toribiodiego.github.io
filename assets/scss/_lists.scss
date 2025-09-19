@@ -9,7 +9,12 @@
 }
 
 .portfolio-list li {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.portfolio-list li:first-child {
+    margin-top: 3.0rem;
+    /* only affects the first entry */
 }
 
 /* Portfolio title: medium weight, always block */
