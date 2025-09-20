@@ -1,15 +1,15 @@
 ---
-author: Diego Toribio
-bibliography: content/writing/hi/hi.bib
-csl: assets/csl/ieee.csl
+title: hi
 date: 2025-08-19
+writing_tags: ["other"]
+summary: an introduction to the site and writing posts
+
 draft: false
 is_page: false
+
+bibliography: content/writing/hi/hi.bib
+csl: assets/csl/ieee.csl
 link-citations: true
-summary: an introduction to the site and writing posts
-title: hi
-writing_tags:
-- other
 ---
 
 Recently, I've felt dissatisifed with my explanations of my work. Conversations about my work felt incomplete without anything to *show*. This site lets me share both the process and results in one place.
