@@ -5,7 +5,6 @@
 @import "variables";
 @import "helpers";
 @import "tags";
-/* moved here so tags are not confined to components */
 
 /* Components */
 @layer components {
@@ -25,4 +24,5 @@
 /* Overrides */
 @layer overrides {
     @import "overrides";
+    @import "breadcrumbs";
 }

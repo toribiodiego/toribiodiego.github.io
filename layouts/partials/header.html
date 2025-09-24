@@ -7,14 +7,21 @@
 
         <!-- Navigation -->
         <nav>
-            {{ if and (eq .Section "writing") .IsPage }}
-            <!-- On a single Writing post -->
-            <a class="back-link" href="/writing">← Writing</a>
-            {{ else if and (eq .Section "portfolio") .IsPage }}
-            <!-- On a single Portfolio post -->
-            <a class="back-link" href="/portfolio">← Portfolio</a>
+            {{ if .IsPage }}
+            {{ if .Section }}
+            <!-- Breadcrumb for single posts -->
+            <span class="breadcrumb">
+                <a href="/{{ .Section }}">{{ .Section | title }}</a><span>{{ .Title }}</span>
+            </span>
+
             {{ else }}
-            <!-- Normal menu -->
+            <!-- Fallback in case section is missing -->
+            <a href="/writing">Writing</a>
+            <a href="/portfolio">Portfolio</a>
+            <a href="/about">About</a>
+            {{ end }}
+            {{ else }}
+            <!-- Normal menu on list pages -->
             <a href="/writing">Writing</a>
             <a href="/portfolio">Portfolio</a>
             <a href="/about">About</a>

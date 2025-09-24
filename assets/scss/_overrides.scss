@@ -1,7 +1,11 @@
 /* ==========================================================================
-   Overrides: tighten gap before first list item
+   Overrides (site-wide small fixes/tweaks)
+   --------------------------------------------------------------------------
+   1) Tighten vertical spacing between a paragraph/heading and the very next
+      list (ul/ol) that immediately follows it.
    ========================================================================== */
 
+/* Reduce bottom margin on the element *before* a list */
 p:has(+ ul),
 p:has(+ ol),
 h1:has(+ ul),
@@ -19,6 +23,7 @@ h6:has(+ ol) {
     margin-bottom: 0.25rem;
 }
 
+/* Reduce top margin on the list that immediately follows */
 p+ul,
 p+ol,
 h1+ul,

@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Breadcrumbs
+   ========================================================================== */
+
+/* Base: no spaces, tight chevron */
+.breadcrumb {
+    display: inline-flex;
+    /* ignores inline HTML whitespace */
+    align-items: center;
+    gap: 0;
+    letter-spacing: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.breadcrumb a,
+.breadcrumb a:link,
+.breadcrumb a:visited {
+    display: inline !important;
+    /* neutralize inline-block nav link styles */
+    margin: 0 !important;
+    padding: 0 !important;
+    text-decoration: none;
+    color: #333;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Title (post name) – no extra spacing */
+.breadcrumb span,
+.breadcrumb .crumb-title {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Tight '>' before the title (zero space) */
+.breadcrumb a+span::before,
+.breadcrumb a+.crumb-title::before {
+    content: ">";
+    padding: 0 0.25ch;
+    /* symmetric spacing around > */
+    color: #999;
+}
+
+
+
+/* --------------------------------------------------------------------------
+   Header integration
+   Some themes add nav-specific spacing/separators. Scope extra fixes here.
+   -------------------------------------------------------------------------- */
+.site-header nav .breadcrumb a::after {
+    content: none !important;
+}
