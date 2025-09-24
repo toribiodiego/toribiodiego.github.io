@@ -17,3 +17,4 @@ mainSections = ["Writing"]   # tells the theme which section is your blog
 [taxonomies]
   portfolio_tag = "portfolio_tags"
   writing_tag = "writing_tags"
+
