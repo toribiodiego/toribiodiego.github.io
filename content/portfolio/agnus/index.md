@@ -4,7 +4,7 @@ date: 2025-04-26
 portfolio_tags: ["Generative AI", "Audio", "Video"]
 summary: "An interactive audio-video agent designed to mock and provoke attendees."
 
-draft: false
+draft: true
 ---
 
 <figure class="post-figure">
