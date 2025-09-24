@@ -5,7 +5,6 @@ writing_tags: ["other"]
 summary: an introduction to the site and writing posts
 
 draft: false
-is_page: false
 
 bibliography: content/writing/hi/hi.bib
 csl: assets/csl/ieee.csl

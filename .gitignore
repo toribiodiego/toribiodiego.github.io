@@ -1,7 +1,3 @@
-# Ignore drafts/outlines in writing & portfolio
-/content/portfolio/*
-/content/writing/Extraction
-
 # Hugo build output
 /public/
 /resources/
