@@ -1,4 +1,5 @@
-baseURL = "https://toribiodiego.github.io/"
+baseURL = "https://diegotoribio.com/"
+enableRobotsTXT = true
 title = "Diego Toribio"
 theme = "hugo-bearblog"
 languageCode = "en-us"
