@@ -3,7 +3,6 @@
 {{- $css := $sass
 | css.Sass (dict "targetPath" "css/site.css" "enableSourceMap" true)
 | resources.Minify -}}
-
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 
 {{/* --- Load any additional plain CSS via customCSS param (for legacy styles during migration) --- */}}
@@ -17,5 +16,12 @@
 {{- with .Site.Params.customJS -}}
 {{- range . -}}
 <script defer src="{{ . | absURL }}"></script>
+{{- end -}}
+{{- end -}}
+
+{{/* --- Google Analytics 4 (via Hugo’s built-in partial), prod-only --- */}}
+{{- if hugo.IsProduction -}}
+{{- with site.Config.Services.GoogleAnalytics.ID -}}
+{{- partial "google_analytics.html" $ -}}
 {{- end -}}
 {{- end -}}
