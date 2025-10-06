@@ -2,17 +2,80 @@
    Portfolio-specific spacing
    ========================================================================== */
 
-.portfolio .post-title {
-    margin-bottom: 0.25rem;
+/* ------------------------------
+   0. Single Post Page
+   ------------------------------ */
+/* Add a small gap between meta info and main body content */
+.portfolio .post-body {
+    margin-top: 2.5rem;
+    /* adjust to 0.75rem for subtler spacing */
 }
 
-.portfolio .post-summary {
-    margin: 0 0 0.4rem 0;
-    font-style: italic;
+/* ------------------------------
+   1. Title
+   ------------------------------ */
+.portfolio-list .portfolio-title {
+    display: inline-block;
+    margin: 0 0 0.10rem 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+/* ------------------------------
+   2. Summary
+   ------------------------------ */
+.portfolio-list .portfolio-summary {
+    margin: 0.05rem 0 0.65rem 0;
+    /* increased space before bullets */
     color: #666;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
-.portfolio .post-meta {
-    margin: 0 0 2rem 0;
+/* ------------------------------
+   3. Highlights (bullet list)
+   ------------------------------ */
+.portfolio-list .portfolio-highlights {
+    padding-left: 2rem;
+    margin-top: 0;
+    list-style-position: outside;
+}
+
+/* Reset default list spacing and apply explicit control */
+.portfolio-list .portfolio-highlights li {
+    margin: 0.35rem 0 !important;
+    /* visibly larger space between bullets */
     font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+/* ------------------------------
+   2. Summary
+   ------------------------------ */
+.portfolio-list .portfolio-summary {
+    margin: 0.05rem 0 0.7rem 0;
+    /* increased space before bullet points (was 0.40rem) */
+    color: #666;
+    font-size: 1rem;
+    /* same as title */
+    line-height: 1.4;
+}
+
+/* ------------------------------
+   3. Highlights (bullet list)
+   ------------------------------ */
+.portfolio-list .portfolio-highlights {
+    padding-left: 2rem;
+    /* indentation for bullets */
+    margin-top: 0;
+}
+
+.portfolio-list .portfolio-highlights li {
+    margin: 0.2rem 0;
+    /* increased spacing between bullets (was 0.12rem) */
+    font-size: 0.95rem;
+    /* slightly smaller than summary/title */
+    line-height: 1.5;
+    /* slightly looser for better readability */
 }
