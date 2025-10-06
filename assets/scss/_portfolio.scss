@@ -68,7 +68,7 @@
 .portfolio-list .portfolio-highlights {
     padding-left: 2rem;
     /* indentation for bullets */
-    margin-top: 0;
+    margin-top: 1rem;
 }
 
 .portfolio-list .portfolio-highlights li {
@@ -78,4 +78,10 @@
     /* slightly smaller than summary/title */
     line-height: 1.5;
     /* slightly looser for better readability */
+}
+
+/* Force space above highlights (list view) */
+.portfolio-list .portfolio-highlights {
+    padding-top: 0.1rem !important;
+    /* avoids margin-collapsing and overrides earlier rules */
 }
