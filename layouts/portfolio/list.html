@@ -3,30 +3,45 @@
 <main>
     {{ .Content }}
 
+    {{ $pages := sort .RegularPages "Weight" "asc" "Date" "desc" "Title" "asc" }}
+
     <ul class="portfolio-list">
-        {{ range .Pages.ByWeight }}
+        {{ range $pages }}
+        {{/* Read build flags safely */}}
+        {{ $render := "" }}
+        {{ $list := "" }}
+        {{ with .Params.build }}
+        {{ $render = (index . "render" | default "") }}
+        {{ $list = (index . "list" | default "") }}
+        {{ end }}
+
+        {{/* Skip entirely if list == "never" */}}
+        {{ if ne $list "never" }}
+        {{/* Only link when a page will be written: render "" or "always" */}}
+        {{ $linkable := or (eq $render "") (eq $render "always") }}
+
         <li class="portfolio-item">
             <!-- Title -->
+            {{ if $linkable }}
             <a href="{{ .RelPermalink }}" class="portfolio-title">{{ .Title }}</a>
-
-            {{/* Summary + Highlights logic */}}
-            {{ $hasSummary := or .Params.summary .Summary }}
-            {{ $hasHighlights := and .Params.highlights (gt (len .Params.highlights) 0) }}
-
-            {{ if $hasSummary }}
-            {{ if .Params.summary }}
-            <p class="portfolio-summary">{{ .Params.summary }}</p>
-            {{ else if .Summary }}
-            <p class="portfolio-summary">{{ .Summary }}</p>
-            {{ end }}
+            {{ else }}
+            <span class="portfolio-title" aria-disabled="true" title="Write-up coming soon">{{ .Title }}</span>
             {{ end }}
 
-            {{ if $hasHighlights }}
+            {{/* Summary */}}
+            {{ if or .Params.summary .Summary }}
+            <p class="portfolio-summary">
+                {{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
+            </p>
+            {{ end }}
+
+            {{/* Highlights */}}
+            {{ with .Params.highlights }}
+            {{ if gt (len .) 0 }}
             <ul class="portfolio-highlights">
-                {{ range first 3 .Params.highlights }}
-                <li>{{ . | markdownify }}</li>
-                {{ end }}
+                {{ range first 3 . }}<li>{{ . | markdownify }}</li>{{ end }}
             </ul>
+            {{ end }}
             {{ end }}
 
             <!-- Tags -->
@@ -38,6 +53,7 @@
             </div>
             {{ end }}
         </li>
+        {{ end }}
         {{ end }}
     </ul>
 </main>
