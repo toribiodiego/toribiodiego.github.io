@@ -4,8 +4,8 @@ I'm pursuing a Master's in Electrical Engineering at The Cooper Union, where I a
 
 This site is where I share notes and showcase projects I've worked on, centered around understanding machine learning and its applications.
 
-## Currently Working On
+### Currently Working On
 
-- MEng thesis literature review
+- writing a thesis on data- and sample-efficient deep reinforcement learning
+- developing ML systems that turn unstructured documents into structured, usable data @ [*Konsilix*](https://www.konsilix.com)
 - reviewing ML theory and algorithms
-- deploying ML applications @ [*Konsilix*](https://www.konsilix.com)
