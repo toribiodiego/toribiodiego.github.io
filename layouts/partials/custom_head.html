@@ -1,3 +1,6 @@
+{{/* --- Theme toggle script (must load before body for instant theme application) --- */}}
+<script src="/js/theme-toggle.js"></script>
+
 {{/* --- Load SCSS via Hugo Pipes (new API) --- */}}
 {{- $sass := resources.Get "scss/main.scss" -}}
 {{- $enableSourceMap := not hugo.IsProduction -}}
