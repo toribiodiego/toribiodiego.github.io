@@ -41,6 +41,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-hugo-
 
+      - name: Validate
+        run: hugo --printI18nWarnings --printUnusedTemplates --printPathWarnings --buildDrafts=false --buildFuture=false --buildExpired=false
+
       - name: Build
         run: hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify --buildDrafts=false --buildFuture=false --buildExpired=false
 

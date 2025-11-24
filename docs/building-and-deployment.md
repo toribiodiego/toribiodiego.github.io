@@ -210,6 +210,31 @@ impossible, even if environment variables or configuration are misconfigured.
 
 Environment variables set: `HUGO_ENV=production`, `HUGO_ENVIRONMENT=production`
 
+### Pre-Deploy Validation
+
+Before the production build runs, a validation step checks for potential issues:
+
+```bash
+hugo --printI18nWarnings --printUnusedTemplates --printPathWarnings \
+     --buildDrafts=false --buildFuture=false --buildExpired=false
+```
+
+**Validation flags:**
+- `--printI18nWarnings`: Report internationalization issues
+- `--printUnusedTemplates`: Identify unused template files
+- `--printPathWarnings`: Catch problematic file paths
+
+**Purpose:**
+This validation step provides early warning of potential issues without
+failing the build. The subsequent build step with `--panicOnWarning` will
+fail on critical issues, while validation warnings help identify cleanup
+opportunities (like unused theme templates).
+
+**Workflow:**
+1. **Validate**: Check for warnings and issues (non-blocking)
+2. **Build**: Create production site (fails on warnings)
+3. **Deploy**: Publish to GitHub Pages
+
 ### Build Caching
 
 The workflow caches Hugo resources to speed up builds:
