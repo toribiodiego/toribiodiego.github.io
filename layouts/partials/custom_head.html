@@ -1,7 +1,8 @@
 {{/* --- Load SCSS via Hugo Pipes (new API) --- */}}
 {{- $sass := resources.Get "scss/main.scss" -}}
+{{- $enableSourceMap := not hugo.IsProduction -}}
 {{- $css := $sass
-| css.Sass (dict "targetPath" "css/site.css" "enableSourceMap" true)
+| css.Sass (dict "targetPath" "css/site.css" "enableSourceMap" $enableSourceMap)
 | resources.Minify -}}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 
