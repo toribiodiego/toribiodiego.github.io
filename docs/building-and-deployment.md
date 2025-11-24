@@ -200,6 +200,30 @@ hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify
 
 Environment variables set: `HUGO_ENV=production`, `HUGO_ENVIRONMENT=production`
 
+### Build Caching
+
+The workflow caches Hugo resources to speed up builds:
+
+**Cached directories:**
+- `~/.cache/hugo` - Hugo's internal cache
+- `resources/_gen` - Generated resources (processed SCSS, images)
+
+**Cache invalidation:**
+The cache is rebuilt when:
+- Configuration files change (`config/**`)
+- Asset files change (`assets/**` - SCSS, icons, etc.)
+- Hugo modules change (`go.sum`)
+
+**Benefits:**
+- Faster CI builds (especially for SCSS compilation)
+- Reduced build times on subsequent deployments
+- Lower resource usage on GitHub Actions runners
+
+**Cache behavior:**
+- First build: Creates cache (normal build time)
+- Subsequent builds: Restores cache (faster build time)
+- Configuration/asset changes: Partial cache restore with rebuild
+
 ## Troubleshooting
 
 ### Draft Items Still Appearing
