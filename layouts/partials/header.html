@@ -7,24 +7,8 @@
 
         <!-- Navigation -->
         <nav>
-            {{ if .IsPage }}
-            {{ if .Section }}
-            <!-- Breadcrumb for single posts -->
-            <span class="breadcrumb">
-                <a href="/{{ .Section }}">{{ .Section | title }}</a><span>{{ .Title }}</span>
-            </span>
-
-            {{ else }}
-            <!-- Fallback in case section is missing -->
-            <a href="/writing">Writing</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/about">About</a>
-            {{ end }}
-            {{ else }}
-            <!-- Normal menu on list pages -->
-            <a href="/writing">Writing</a>
-            <a href="/portfolio">Portfolio</a>
-            <a href="/about">About</a>
+            {{ range .Site.Menus.main }}
+            <a href="{{ if .PageRef }}{{ relref $ .PageRef }}{{ else if .URL }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
             {{ end }}
         </nav>
     </div>
