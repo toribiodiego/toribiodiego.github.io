@@ -319,6 +319,7 @@ chmod +x scripts/build-production.sh scripts/build-dev.sh
 
 ## Additional Resources
 
+- [GitHub Pages Deployment Workflow](./github-pages-deployment.md)
 - [Hugo Build Options](https://gohugo.io/commands/hugo/)
 - [Hugo Draft/Future/Expired Content](https://gohugo.io/getting-started/usage/#draft-future-and-expired-content)
 - [Local Preview Workflow](./local-preview.md)

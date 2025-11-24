@@ -144,5 +144,7 @@ If live reload isn't working:
 
 ## Additional Resources
 
+- [GitHub Pages Deployment Workflow](./github-pages-deployment.md)
+- [Building and Deployment Guide](./building-and-deployment.md)
 - [Hugo Server Command Documentation](https://gohugo.io/commands/hugo_server/)
 - [Hugo Environments Documentation](https://gohugo.io/getting-started/configuration/#configure-with-environment-variables)
