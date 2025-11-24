@@ -42,7 +42,7 @@ jobs:
             ${{ runner.os }}-hugo-
 
       - name: Build
-        run: hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify
+        run: hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify --buildDrafts=false --buildFuture=false --buildExpired=false
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

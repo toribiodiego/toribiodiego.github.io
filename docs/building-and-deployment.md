@@ -189,14 +189,24 @@ If the CNAME file is missing from the build output, the custom domain will be re
 The GitHub Actions workflow uses hardened build flags for reliability:
 
 ```bash
-hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify
+hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify \
+     --buildDrafts=false --buildFuture=false --buildExpired=false
 ```
 
+**Performance and reliability flags:**
 - `--gc`: Run garbage collection after build
 - `--enableGitInfo`: Enable Git info for last modified dates
 - `--panicOnWarning`: Fail build on warnings to catch issues early
 - `--cleanDestinationDir`: Clean destination directory before build
 - `--minify`: Minify output (HTML, CSS, JS)
+
+**Content safety flags (defense-in-depth):**
+- `--buildDrafts=false`: Never build content marked with `draft: true`
+- `--buildFuture=false`: Never build content with future dates
+- `--buildExpired=false`: Never build content with expired dates
+
+These explicit flags ensure accidental publication of unfinished content is
+impossible, even if environment variables or configuration are misconfigured.
 
 Environment variables set: `HUGO_ENV=production`, `HUGO_ENVIRONMENT=production`
 
