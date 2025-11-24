@@ -1,0 +1,238 @@
+# Building and Deployment Guide
+
+This guide covers building the site for production, handling drafts, and performing clean builds.
+
+## Build Modes
+
+### Development Mode (with Drafts)
+
+For local development and testing, include draft and future-dated content:
+
+```bash
+hugo server --buildDrafts --buildFuture
+```
+
+Or use the shorthand:
+
+```bash
+hugo server -DF
+```
+
+This will:
+- Include all portfolio items marked with `draft: true`
+- Include posts with future dates
+- Show ~43 total pages
+
+### Production Mode (Without Drafts)
+
+For production deployment, build without drafts:
+
+```bash
+hugo
+```
+
+This will:
+- Exclude all content marked with `draft: true`
+- Exclude future-dated posts
+- Build only published content (~28 pages)
+- Generate output in the `public/` directory
+
+## Draft Content Management
+
+### Hiding Portfolio Items
+
+To hide a portfolio item (prevent it from appearing on the portfolio page and make it inaccessible via URL):
+
+1. Open the portfolio item's `index.md` file (e.g., `content/portfolio/project-name/index.md`)
+2. Add or verify `draft: true` in the front matter:
+
+```yaml
+---
+title: "Project Name"
+date: 2024-12-20
+portfolio_tags: ["Tag1", "Tag2"]
+summary: "Project summary"
+draft: true
+---
+```
+
+### Publishing Draft Items
+
+To publish a previously hidden item:
+
+1. Open the item's `index.md` file
+2. Change `draft: true` to `draft: false` or remove the line entirely
+3. Rebuild the site with `hugo`
+
+### Currently Hidden Portfolio Items
+
+The following items are currently set as drafts:
+- Board Game Agents (`content/portfolio/checkers/`)
+- Extraction (`content/portfolio/extraction/`)
+- Multi-Label Emotion Classification (`content/portfolio/emotion_classification/`)
+
+## Clean Builds
+
+### Why Clean Builds Are Needed
+
+Hugo builds are incremental by default. This means:
+- Old files may persist in `public/` even after being marked as drafts
+- Switching from development to production builds may leave draft content accessible
+- Renamed or deleted content may still exist in the output
+
+### Performing a Clean Build
+
+To ensure a fresh, production-ready build:
+
+```bash
+# Remove the entire public directory
+rm -rf public
+
+# Rebuild for production
+hugo
+```
+
+Or as a one-liner:
+
+```bash
+rm -rf public && hugo
+```
+
+### When to Use Clean Builds
+
+Perform a clean build when:
+- Switching from development (`hugo server -DF`) to production deployment
+- After marking items as drafts or publishing previously hidden content
+- Before deploying to production to ensure no leftover files
+- Debugging unexpected content appearing on the site
+- After significant structural changes to content organization
+
+### Clean Build for Development
+
+For a clean development build with drafts:
+
+```bash
+rm -rf public && hugo --buildDrafts --buildFuture
+```
+
+## Verifying Your Build
+
+### Check Page Count
+
+Production builds should have fewer pages than development:
+
+```bash
+hugo | grep "Pages"
+```
+
+Expected output: `Pages | 28` (without drafts)
+
+Compare with:
+
+```bash
+hugo --buildDrafts --buildFuture | grep "Pages"
+```
+
+Expected output: `Pages | 43` (with drafts)
+
+### Verify Draft Items Are Hidden
+
+After a production build, check that draft directories don't exist:
+
+```bash
+ls public/portfolio/
+```
+
+Should **NOT** include:
+- `checkers/`
+- `extraction/`
+- `emotion_classification/`
+
+Should **ONLY** include published items:
+- `agnus/`
+- `alzheimers_detection/`
+
+### Check Portfolio Page Content
+
+Verify the portfolio index doesn't list draft items:
+
+```bash
+grep -E "Board Game|Extraction|Emotion" public/portfolio/index.html
+```
+
+This should return no results (or only matches in highlights/descriptions of other projects).
+
+## Deployment Checklist
+
+Before deploying to production:
+
+1. **Clean build**: `rm -rf public && hugo`
+2. **Verify page count**: Should match expected production count
+3. **Spot check**: Open `public/portfolio/index.html` and verify only published items appear
+4. **Check draft directories**: Ensure `public/portfolio/` doesn't contain draft item folders
+5. **Test locally**: Serve the production build to verify: `hugo server -s public` (note: this won't work directly, use `python3 -m http.server -d public` instead)
+6. **Deploy**: Upload contents of `public/` directory to your hosting provider
+
+## Troubleshooting
+
+### Draft Items Still Appearing
+
+**Problem**: Draft portfolio items are showing up on the portfolio page or accessible via URL.
+
+**Solution**:
+1. Verify `draft: true` is set in the item's front matter
+2. Perform a clean build: `rm -rf public && hugo`
+3. Check that you're not using `--buildDrafts` flag
+
+### Inconsistent Build Output
+
+**Problem**: Different builds produce different results.
+
+**Solution**:
+1. Always use a clean build for production
+2. Check for cached files in `public/` or `resources/`
+3. Verify Hugo version: `hugo version`
+
+### Old Content Still Visible After Deletion
+
+**Problem**: Deleted or renamed content still appears in the built site.
+
+**Solution**:
+1. Perform a clean build: `rm -rf public && hugo`
+2. Consider also cleaning resources: `rm -rf resources/_gen/`
+
+## Build Scripts
+
+You can create helper scripts for common build tasks:
+
+### `scripts/build-production.sh`
+
+```bash
+#!/bin/bash
+echo "Performing clean production build..."
+rm -rf public
+hugo
+echo "Build complete. Output in public/"
+```
+
+### `scripts/build-dev.sh`
+
+```bash
+#!/bin bash
+echo "Performing clean development build..."
+rm -rf public
+hugo --buildDrafts --buildFuture
+echo "Build complete with drafts. Output in public/"
+```
+
+Make them executable:
+
+```bash
+chmod +x scripts/build-production.sh scripts/build-dev.sh
+```
+
+## Additional Resources
+
+- [Hugo Build Options](https://gohugo.io/commands/hugo/)
+- [Hugo Draft/Future/Expired Content](https://gohugo.io/getting-started/usage/#draft-future-and-expired-content)
+- [Local Preview Workflow](./local-preview.md)
