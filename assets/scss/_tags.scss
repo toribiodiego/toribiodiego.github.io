@@ -57,6 +57,11 @@ article .tags {
     margin-left: 1.5em;
 }
 
+/* Portfolio list uses tighter top margin */
+.portfolio-list .tags {
+    margin-top: 0;
+}
+
 .taxonomy .tags,
 .terms .tags,
 .list .tags {

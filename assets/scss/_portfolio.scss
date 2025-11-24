@@ -12,6 +12,29 @@
 }
 
 /* ------------------------------
+   Portfolio List Container (from _index.md inline styles)
+   ------------------------------ */
+.projects-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.projects-list li {
+    margin-bottom: 1.2rem;
+}
+
+.projects-list .project-title {
+    text-decoration: none !important;
+    color: inherit !important;
+    font-weight: bold;
+}
+
+.project-summary {
+    margin: 0.2rem 0 0.3rem 0;
+    text-indent: 1.5em;
+}
+
+/* ------------------------------
    1. Title
    ------------------------------ */
 .portfolio-list .portfolio-title {
