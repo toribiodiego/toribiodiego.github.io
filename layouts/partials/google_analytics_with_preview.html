@@ -1,0 +1,23 @@
+{{/* Custom Google Analytics 4 implementation with preview mode support */}}
+{{- with site.Config.Services.GoogleAnalytics.ID -}}
+<script>
+  // Only load Google Analytics if NOT in preview mode
+  if (!window.isPreviewMode || !window.isPreviewMode()) {
+    // Google Analytics 4 (gtag.js)
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ . }}');
+
+    // Load gtag.js script
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id={{ . }}';
+    document.head.appendChild(script);
+
+    console.log('[Analytics] Google Analytics loaded');
+  } else {
+    console.log('[Analytics] Skipped - Preview mode active');
+  }
+</script>
+{{- end -}}

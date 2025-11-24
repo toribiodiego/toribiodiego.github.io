@@ -14,14 +14,44 @@ hugo server
 
 When running locally with `hugo server`, Google Analytics scripts are not loaded, so no data is sent. See [local-preview.md](./local-preview.md) for details.
 
-### Preview Flag (Planned)
+### Preview Mode (Production)
 
-A future enhancement will add a query parameter flag (e.g., `?preview=true`) that:
-1. Sets a cookie or localStorage value to suppress analytics
-2. Allows testing the production site without counting self-visits
-3. Persists across sessions until explicitly cleared
+The site supports a preview mode flag that suppresses analytics tracking on the production site:
 
-This will enable previewing the live site at `https://diegotoribio.com/?preview=true` without polluting analytics data.
+**Enable preview mode:**
+```
+https://diegotoribio.com/?preview=true
+```
+
+**Disable preview mode:**
+```
+https://diegotoribio.com/?preview=false
+```
+
+#### How It Works
+
+1. **URL Detection**: The `?preview=true` query parameter is detected by JavaScript on page load
+2. **Persistent Storage**: Preview mode state is saved in `localStorage`, persisting across sessions
+3. **Analytics Bypass**: When preview mode is active, Google Analytics scripts are not loaded
+4. **Visual Indicator**: A small "Preview Mode" badge appears in the bottom-right corner
+
+#### Using Preview Mode
+
+1. Visit any page with `?preview=true` appended to the URL
+2. The preview mode badge will appear in the bottom-right
+3. Browse the site normally - analytics will not track your visits
+4. Preview mode persists until you:
+   - Visit a page with `?preview=false`, or
+   - Clear your browser's localStorage
+
+#### Console Messages
+
+When preview mode is active, check the browser console (F12) to see:
+- `[Preview Mode] Enabled - Analytics disabled`
+- `[Analytics] Skipped - Preview mode active`
+
+When analytics loads normally:
+- `[Analytics] Google Analytics loaded`
 
 ## Referral Tracking with UTM Parameters
 
@@ -159,9 +189,12 @@ https://diegotoribio.com/?utm_source=email&utm_medium=signature
 
 **Goal**: Browse the live site without counting your own visits.
 
-**Current approach**: Use browser DevTools to disable JavaScript, or use an ad blocker to block Google Analytics.
+**Approach**: Enable preview mode by visiting:
+```
+https://diegotoribio.com/?preview=true
+```
 
-**Future approach**: Visit `https://diegotoribio.com/?preview=true` (once preview flag is implemented).
+You'll see a "Preview Mode" badge in the bottom-right corner, and analytics will not track your visits. This setting persists across pages until you explicitly disable it with `?preview=false`.
 
 ## Troubleshooting
 
@@ -174,10 +207,11 @@ https://diegotoribio.com/?utm_source=email&utm_medium=signature
 
 ### Self-Traffic Still Appearing in Analytics
 
-1. **Use development mode**: Run `hugo server` for local testing (see [local-preview.md](./local-preview.md))
-2. **Block analytics in browser**: Use browser extensions like uBlock Origin
-3. **Filter IP in GA4**: Set up IP exclusion filters in Google Analytics admin
-4. **Wait for preview flag**: The `?preview=true` feature is planned but not yet implemented
+1. **Enable preview mode**: Visit `https://diegotoribio.com/?preview=true` on the production site
+2. **Use development mode**: Run `hugo server` for local testing (see [local-preview.md](./local-preview.md))
+3. **Check preview mode status**: Look for the "Preview Mode" badge in the bottom-right corner
+4. **Clear localStorage if needed**: If preview mode isn't working, try clearing browser data and re-enabling with `?preview=true`
+5. **Filter IP in GA4**: As a fallback, set up IP exclusion filters in Google Analytics admin
 
 ### Accidentally Tagged Internal Links
 
@@ -190,6 +224,12 @@ If you added UTM parameters to internal links (e.g., navigation menu):
 ### Development Testing (No Analytics)
 ```bash
 hugo server
+```
+
+### Production Preview Mode
+```
+Enable:  https://diegotoribio.com/?preview=true
+Disable: https://diegotoribio.com/?preview=false
 ```
 
 ### Standard Referral URLs

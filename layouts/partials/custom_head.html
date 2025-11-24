@@ -20,9 +20,14 @@
 {{- end -}}
 {{- end -}}
 
-{{/* --- Google Analytics 4 (via Hugo’s built-in partial), prod-only --- */}}
+{{/* --- Preview flag detection (prod-only, must load before analytics) --- */}}
+{{- if hugo.IsProduction -}}
+<script src="/js/preview-flag.js"></script>
+{{- end -}}
+
+{{/* --- Google Analytics 4 with preview mode support, prod-only --- */}}
 {{- if hugo.IsProduction -}}
 {{- with site.Config.Services.GoogleAnalytics.ID -}}
-{{- partial "google_analytics.html" $ -}}
+{{- partial "google_analytics_with_preview.html" $ -}}
 {{- end -}}
 {{- end -}}
