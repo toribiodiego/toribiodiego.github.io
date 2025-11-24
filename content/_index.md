@@ -7,5 +7,5 @@ This site is where I share notes and showcase projects I've worked on, centered 
 ### Currently Working On
 
 - writing a thesis on data- and sample-efficient deep reinforcement learning
-- developing ML systems that turn unstructured documents into structured, usable data @ [*Konsilix*](https://www.konsilix.com)
+- building ML that turns unstructured docs into structured data @ [Konsilix](https://www.konsilix.com)
 - reviewing ML theory and algorithms
