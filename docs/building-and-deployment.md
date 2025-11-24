@@ -184,6 +184,22 @@ The `static/CNAME` file ensures GitHub Pages maintains the custom domain configu
 
 If the CNAME file is missing from the build output, the custom domain will be removed on each deployment, requiring manual reconfiguration in GitHub Pages settings.
 
+### Production Build Flags
+
+The GitHub Actions workflow uses hardened build flags for reliability:
+
+```bash
+hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify
+```
+
+- `--gc`: Run garbage collection after build
+- `--enableGitInfo`: Enable Git info for last modified dates
+- `--panicOnWarning`: Fail build on warnings to catch issues early
+- `--cleanDestinationDir`: Clean destination directory before build
+- `--minify`: Minify output (HTML, CSS, JS)
+
+Environment variables set: `HUGO_ENV=production`, `HUGO_ENVIRONMENT=production`
+
 ## Troubleshooting
 
 ### Draft Items Still Appearing

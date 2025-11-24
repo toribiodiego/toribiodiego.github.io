@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_ENV: production
+      HUGO_ENVIRONMENT: production
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,7 +32,7 @@ jobs:
           extended: true
 
       - name: Build
-        run: hugo --minify --cleanDestinationDir
+        run: hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
