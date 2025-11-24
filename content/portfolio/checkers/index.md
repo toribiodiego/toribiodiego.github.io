@@ -3,6 +3,10 @@ title: "Board Game Agents"
 date: 2024-12-20
 portfolio_tags: ["Reinforcement Learning", "Deep Learning"]
 summary: "Learned tic-tac-toe and checkers entirely through self-play."
+highlights:
+  - "1"
+  - "2"
+  - "3"
 
 draft: true
 ---
