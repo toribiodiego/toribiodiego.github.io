@@ -3,7 +3,19 @@
    --------------------------------------------------------------------------
    1) Tighten vertical spacing between a paragraph/heading and the very next
       list (ul/ol) that immediately follows it.
+   2) Add spacing between header and main content
+   3) Reduce h2 heading size for better visual hierarchy
    ========================================================================== */
+
+/* Add breathing room between header and main content */
+main {
+    margin-top: 2rem;
+}
+
+/* Make h2 headings slightly smaller and less prominent */
+h2 {
+    font-size: 1.3rem;
+}
 
 /* Reduce bottom margin on the element *before* a list */
 p:has(+ ul),
