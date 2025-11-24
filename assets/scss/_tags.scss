@@ -62,6 +62,11 @@ article .tags {
     margin-top: 0;
 }
 
+/* Add spacing between highlights and tags-block in portfolio list */
+.portfolio-list .tags-block {
+    margin-top: 0.6rem;
+}
+
 .taxonomy .tags,
 .terms .tags,
 .list .tags {
