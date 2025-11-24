@@ -11,5 +11,13 @@
             <a href="{{ if .PageRef }}{{ relref $ .PageRef }}{{ else if .URL }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
             {{ end }}
         </nav>
+
+        <!-- Breadcrumb on single pages -->
+        {{ if and .IsPage .Section }}
+        <div class="breadcrumb">
+            <a href="{{ printf "/%s" .Section | relURL }}">{{ .Section | title }}</a>
+            <span class="crumb-title">{{ .Title }}</span>
+        </div>
+        {{ end }}
     </div>
 </header>
