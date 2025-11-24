@@ -8,5 +8,5 @@
   weight = 20
 [[main]]
   name = "About"
-  pageRef = "/About"
+  url  = "/"
   weight = 30
