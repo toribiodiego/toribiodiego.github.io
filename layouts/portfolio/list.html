@@ -15,8 +15,8 @@
         {{ $list = (index . "list" | default "") }}
         {{ end }}
 
-        {{/* Skip entirely if list == "never" */}}
-        {{ if ne $list "never" }}
+        {{/* Skip entirely if list == "never" or if draft */}}
+        {{ if and (ne $list "never") (not .Draft) }}
         {{/* Only link when a page will be written: render "" or "always" */}}
         {{ $linkable := or (eq $render "") (eq $render "always") }}
 
