@@ -170,8 +170,19 @@ Before deploying to production:
 2. **Verify page count**: Should match expected production count
 3. **Spot check**: Open `public/portfolio/index.html` and verify only published items appear
 4. **Check draft directories**: Ensure `public/portfolio/` doesn't contain draft item folders
-5. **Test locally**: Serve the production build to verify: `hugo server -s public` (note: this won't work directly, use `python3 -m http.server -d public` instead)
-6. **Deploy**: Upload contents of `public/` directory to your hosting provider
+5. **Verify CNAME**: Confirm `public/CNAME` exists with correct domain (`diegotoribio.com`)
+6. **Test locally**: Serve the production build to verify: `hugo server -s public` (note: this won't work directly, use `python3 -m http.server -d public` instead)
+7. **Deploy**: Upload contents of `public/` directory to your hosting provider
+
+### CNAME Configuration
+
+The `static/CNAME` file ensures GitHub Pages maintains the custom domain configuration across deployments:
+
+- **Location**: `static/CNAME` (automatically copied to `public/CNAME` during build)
+- **Content**: `diegotoribio.com`
+- **Purpose**: Tells GitHub Pages to serve the site at the custom domain
+
+If the CNAME file is missing from the build output, the custom domain will be removed on each deployment, requiring manual reconfiguration in GitHub Pages settings.
 
 ## Troubleshooting
 
