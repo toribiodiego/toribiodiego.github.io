@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Dark Mode Overrides
+   --------------------------------------------------------------------------
+   Refines the dark mode palette to use true black/near-black backgrounds
+   with proper contrast for text, links, headers, footer, and social icons.
+
+   These rules override the theme's default dark mode palette defined in
+   themes/hugo-bearblog/layouts/partials/style.html
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* True black background for OLED-friendly dark mode */
+        --background-color: #000;
+
+        /* High contrast text colors */
+        --heading-color: #fff;
+        --text-color: #e0e0e0;
+
+        /* Accessible link colors with good contrast on black */
+        --link-color: #58a6ff;
+        --visited-color: #bc8cff;
+
+        /* Code blocks with near-black background */
+        --code-background-color: #0d1117;
+        --code-color: #e6edf3;
+
+        /* Blockquote color */
+        --blockquote-color: #c9d1d9;
+
+        /* Footer and icon colors for dark mode */
+        --footer-text-color: #8b949e;
+        --icon-color: #c9d1d9;
+    }
+
+    /* Improve hover state for social icons in dark mode */
+    footer .social-icons svg:hover {
+        fill: #fff;
+    }
+}

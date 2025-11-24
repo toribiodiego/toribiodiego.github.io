@@ -27,7 +27,7 @@ footer {
     text-align: center;
     padding: 1rem 0;
     font-size: 0.85rem;
-    color: #888;
+    color: var(--footer-text-color, #888);
 
     .social-icons {
         margin-bottom: 0.5rem;
@@ -53,5 +53,5 @@ footer {
 }
 
 footer .social-icons svg {
-    fill: #000;
+    fill: var(--icon-color, #000);
 }
