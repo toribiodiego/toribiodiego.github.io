@@ -13,14 +13,14 @@
 .post .post-title {
     margin: 0 0 var(--post-title-bottom) 0;
     font-weight: 700;
-    color: #000;
+    /* Color handled in inline styles (style.html) */
 }
 
 /* Summary: lighter grey, distinct from body */
 .post .post-summary {
     margin: 0 0 var(--post-summary-bottom) 0;
     font-style: italic;
-    color: #666;
+    /* Color handled in inline styles (style.html) */
 }
 
 /* Meta line: date only */
@@ -31,14 +31,9 @@
 
 /* Default date style (Writing posts, etc.) */
 .post .post-meta .post-date {
-    color: #666 !important;
+    /* Color handled in inline styles (style.html) */
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
-}
-
-/* Darker date style for Portfolio only */
-.portfolio .post .post-meta .post-date {
-    color: #444 !important;
 }
 
 /* Body text: comfortable line height */

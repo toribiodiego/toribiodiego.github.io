@@ -35,6 +35,8 @@ footer {
         a {
             display: inline-block;
             margin: 0 0.5rem;
+            color: var(--icon-color, #000);
+            text-decoration: none;
         }
 
         svg {

@@ -46,7 +46,7 @@
 /* Main Navigation */
 .site-header nav a {
     text-decoration: none !important;
-    color: var(--muted-text) !important;
+    color: var(--secondary-text-color) !important;
     font-weight: 400;
     transition: color 0.2s ease;
     margin-right: 1rem;
@@ -54,5 +54,5 @@
 
 .site-header nav a:hover {
     text-decoration: none !important;
-    color: #000 !important;
+    color: var(--heading-color) !important;
 }

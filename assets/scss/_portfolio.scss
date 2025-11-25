@@ -50,7 +50,7 @@
    ------------------------------ */
 .portfolio-list .portfolio-summary {
     margin: 0.05rem 0 0.7rem 0;
-    color: #666;
+    color: var(--secondary-text-color, #666);
     font-size: 1rem;
     line-height: 1.4;
 }
@@ -69,4 +69,5 @@
     margin: 0.2rem 0;
     font-size: 0.95rem;
     line-height: 1.5;
+    /* Color handled in inline styles (style.html) */
 }

@@ -14,6 +14,11 @@
     --blockquote-color: #222;
     --footer-text-color: #888;
     --icon-color: #000;
+    --secondary-text-color: #666;
+    --muted-text: #222;
+    --chip-border: #222;
+    --chip-border-hover: #3273dc;
+    --chip-radius: 4px;
   }
 
   /* Dark mode via system preference (when no manual override) */
@@ -29,6 +34,10 @@
       --blockquote-color: #c9d1d9;
       --footer-text-color: #8b949e;
       --icon-color: #c9d1d9;
+      --secondary-text-color: #c9d1d9;
+      --muted-text: #fff;
+      --chip-border: #fff;
+      --chip-border-hover: #58a6ff;
     }
   }
 
@@ -44,6 +53,10 @@
     --blockquote-color: #c9d1d9;
     --footer-text-color: #8b949e;
     --icon-color: #c9d1d9;
+    --secondary-text-color: #c9d1d9;
+    --muted-text: #fff;
+    --chip-border: #fff;
+    --chip-border-hover: #58a6ff;
   }
 
   /* Light mode via manual toggle (always light, overrides dark system preference) */
@@ -58,6 +71,10 @@
     --blockquote-color: #222;
     --footer-text-color: #888;
     --icon-color: #000;
+    --secondary-text-color: #666;
+    --muted-text: #222;
+    --chip-border: #222;
+    --chip-border-hover: #3273dc;
   }
 
   body {
@@ -92,6 +109,70 @@
 
   a:hover {
     text-decoration: underline;
+  }
+
+  /* Override link color for footer icons */
+  footer .social-icons a {
+    color: var(--icon-color);
+  }
+
+  footer .social-icons a:hover {
+    text-decoration: none;
+  }
+
+  /* Portfolio highlights styling - white/black like titles */
+  .portfolio-list .portfolio-highlights {
+    color: var(--heading-color);
+  }
+
+  .portfolio-list .portfolio-highlights li {
+    color: var(--heading-color);
+  }
+
+  /* Tag hover in dark mode */
+  @media (prefers-color-scheme: dark) {
+    html:not(.light-theme) .tags a:hover,
+    html:not(.light-theme) a[href*="/tags/"]:hover {
+      color: #fff !important;
+    }
+  }
+
+  html.dark-theme .tags a:hover,
+  html.dark-theme a[href*="/tags/"]:hover {
+    color: #fff !important;
+  }
+
+  /* Breadcrumb colors - white/black like titles */
+  .breadcrumb {
+    color: var(--heading-color);
+    margin-top: 0.5rem;
+  }
+
+  .breadcrumb a,
+  .breadcrumb a:link,
+  .breadcrumb a:visited {
+    color: var(--heading-color);
+  }
+
+  .breadcrumb a+span::before,
+  .breadcrumb a+.crumb-title::before {
+    color: var(--heading-color);
+    opacity: 0.5;
+  }
+
+  /* Post colors for portfolio and writing */
+  .post .post-title {
+    color: var(--heading-color);
+  }
+
+  .post .post-summary {
+    color: var(--secondary-text-color);
+  }
+
+  .post .post-meta .post-date,
+  .post .post-meta time,
+  time.post-date {
+    color: var(--secondary-text-color) !important;
   }
 
   nav a {

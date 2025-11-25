@@ -1,5 +1,11 @@
 {{/* --- Theme toggle script (must load before body for instant theme application) --- */}}
 <script src="/js/theme-toggle.js"></script>
+<script>
+// Debug: Verify theme toggle loaded and force initial theme check
+console.log('[Debug] Theme toggle script loaded:', typeof window.themeToggle !== 'undefined');
+console.log('[Debug] HTML classes:', document.documentElement.className);
+console.log('[Debug] Effective theme:', window.themeToggle ? window.themeToggle.getEffective() : 'not available');
+</script>
 
 {{/* --- Load SCSS via Hugo Pipes (new API) --- */}}
 {{- $sass := resources.Get "scss/main.scss" -}}

@@ -134,15 +134,9 @@ a.footnote-ref:hover {
    If you previously used flex on .post-body to reorder blocks,
    it can disrupt paragraphs, figures, etc., so we omit it here. */
 
-/* Date color overrides (kept from your original) */
-main.writing article.post time.post-date {
-    color: #555 !important;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-}
-
+/* Date styling (color handled in inline styles via CSS variables) */
+main.writing article.post time.post-date,
 main.portfolio article.post time.post-date {
-    color: #444 !important;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
 }

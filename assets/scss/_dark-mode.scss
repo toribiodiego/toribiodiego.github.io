@@ -9,9 +9,17 @@
 
 /* Improve hover state for social icons in dark mode */
 @media (prefers-color-scheme: dark) {
+    html:not(.light-theme) footer .social-icons a:hover {
+        color: #fff;
+    }
+
     html:not(.light-theme) footer .social-icons svg:hover {
         fill: #fff;
     }
+}
+
+html.dark-theme footer .social-icons a:hover {
+    color: #fff;
 }
 
 html.dark-theme footer .social-icons svg:hover {
