@@ -1,365 +1,118 @@
-# Portfolio Formatting Guide
+# Portfolio Documentation
 
-**Use this when:** You're creating a new portfolio project, updating an existing entry, choosing appropriate tags, or troubleshooting why a portfolio item isn't appearing as expected.
+**Use this when:** You need guidance on creating or formatting portfolio entries.
 
-This guide explains how to format portfolio entries for consistent presentation on the portfolio list page. It covers front matter structure, content length, highlights formatting, and tagging conventions based on existing portfolio examples.
+This page directs you to the focused portfolio guides based on what you're trying to accomplish.
 
-## Overview
+## Quick Navigation
 
-Portfolio entries appear on the `/portfolio/` list page with:
-- **Title** (linked or unlinked based on publish status)
-- **Summary** (1-2 sentence description)
-- **Highlights** (up to 3 bullet points showing key achievements)
-- **Tags** (portfolio_tags for categorization)
+### Just Getting Started?
 
-The list template (`layouts/portfolio/list.html`) controls how these elements render.
+**[portfolio-quickstart.md](portfolio-quickstart.md)** - Start here for fast results
 
-## Front Matter Structure
+- Copy-paste front matter template
+- Authoring checklist
+- Common tags list
+- Three complete examples
+- Quick tips for each field
 
-### Required Fields
+**Best for:** Creating your first portfolio entry or quickly adding a new project.
+
+---
+
+### Writing the Full Project Post?
+
+**[portfolio-style-and-examples.md](portfolio-style-and-examples.md)** - Deep dive on content writing
+
+- Recommended post structure
+- Content length guidelines (300-800 words)
+- Writing style tips (technical but accessible)
+- Detailed annotated example (Multimodal Alzheimer's Detection)
+- Figure/image usage and organization
+
+**Best for:** Writing the detailed project write-up with proper structure and style.
+
+---
+
+### Controlling Visibility?
+
+**[portfolio-visibility.md](portfolio-visibility.md)** - Master draft and build flags
+
+- Visibility matrix (4 common configurations)
+- Decision tree for choosing settings
+- `draft`, `build.list`, `build.render` explained
+- Common scenarios with workflows
+- Troubleshooting guide
+
+**Best for:** Deciding when/how a portfolio entry appears on the list or controlling publish status.
+
+---
+
+## Still Here? Here's What You Need
+
+If you're looking for specific information that's not in the guides above, here are the most common needs:
+
+### Front Matter Template
 
 ```yaml
 ---
-title: "Project Title"
-date: YYYY-MM-DD
-summary: "Brief one-sentence description of the project."
-portfolio_tags: ["Tag1", "Tag2", "Tag3"]
+title: "Your Project Name"
+date: 2025-01-15
+summary: "One-sentence description of what the project does."
+highlights:
+  - "First key achievement with technical detail"
+  - "Second accomplishment or implementation work"
+  - "Third result or learning outcome"
+portfolio_tags: ["Machine Learning", "Audio", "Text"]
 draft: false
 ---
 ```
 
-### Optional Fields
+### Common Tags
+
+- `Machine Learning` - General ML projects
+- `Deep Learning` - Neural network-based work
+- `Reinforcement Learning` - RL-specific projects
+- `Generative AI` - LLMs, diffusion models, GANs
+- `Audio` - Audio processing or analysis
+- `Text` - NLP, text processing
+- `Video` - Video processing or computer vision
+
+### Quick Rules
+
+**Title**: 3-6 words, title case, specific and descriptive
+
+**Summary**: 10-20 words, starts with action verb, one sentence
+
+**Highlights**: Exactly 3 bullets, 15-25 words each, mix technical details + results
+
+**Tags**: 2-3 tags from existing vocabulary, most to least relevant
+
+**Date**: YYYY-MM-DD format
+
+### Most Common Visibility Settings
 
 ```yaml
-highlights:
-  - "First key achievement or technical detail"
-  - "Second accomplishment or implementation highlight"
-  - "Third result or learning outcome"
+# Standard published project (default)
+draft: false
 
+# Coming soon mode (show on list, no detail page)
+draft: false
 build:
-  list: "local"     # Controls list visibility (default: always shown)
-  render: "link"    # Controls page rendering (default: renders full page)
-```
+  list: "local"
+  render: "link"
 
-## Field Guidelines
-
-### Title
-
-**Format**: Clear, descriptive project name
-
-**Length**: 3-6 words ideal
-
-**Examples**:
-- ✓ "Multimodal Alzheimer's Detection"
-- ✓ "Board Game Agents"
-- ✓ "Agnus The Troll"
-- ✗ "Project" (too vague)
-- ✗ "A Machine Learning System for Detecting Alzheimer's Disease Using Audio and Text Features" (too long)
-
-**Rules**:
-- Use title case
-- Be specific but concise
-- Avoid generic words like "System", "Application", "Project" unless necessary
-- Technical terms are fine if they clarify the domain
-
-### Summary
-
-**Format**: Single sentence describing what the project does or achieves
-
-**Length**: 10-20 words (aim for ~15)
-
-**Character limit**: 100-150 characters recommended
-
-**Examples**:
-
-✓ **Good summaries** (concise, action-focused):
-```yaml
-summary: "Used spontaneous speech from clinician-patient conversations as a diagnostic signal for automated Alzheimer's detection."
-
-summary: "An interactive audio-video agent designed to mock and provoke attendees."
-
-summary: "Learned tic-tac-toe and checkers entirely through self-play."
-```
-
-✗ **Poor summaries** (too long, vague, or generic):
-```yaml
-summary: "This is a project I worked on during my time at Cooper Union where I explored various machine learning techniques."
-
-summary: "ML project"
-
-summary: "Implemented a system that uses cutting-edge deep learning architectures to process multimodal data streams in real-time for classification tasks."
-```
-
-**Rules**:
-- Start with an action verb (e.g., "Built", "Designed", "Developed", "Used")
-- Focus on WHAT, not WHY or HOW (save details for highlights)
-- One sentence, no periods at the end in YAML
-- Avoid filler words ("really", "very", "interesting")
-- Be specific about the domain or technology
-
-### Highlights
-
-**Format**: Array of 3 bullet points (shown on list page)
-
-**Length**: 15-25 words per bullet
-
-**Purpose**: Show key technical achievements, results, or learnings
-
-**Structure**: Each highlight should follow this pattern:
-- Start with an action verb
-- Include specific technical detail or metric
-- Focus on one idea per bullet
-
-**Examples**:
-
-From "Multimodal Alzheimer's Detection":
-```yaml
-highlights:
-  - "Designed a scalable ETL pipeline for recordings, handling audio processing, transcription, and feature extraction across multiple models to produce audio and text embeddings"
-  - "Developed a training pipeline to evaluate multiple classifiers on audio, text, and combined embeddings."
-  - "Found that text embeddings performed best (82% / 0.83 F1), while combining audio and text improved results over the audio-only baseline (70% / 0.74 F1)"
-```
-
-From "Agnus The Troll":
-```yaml
-highlights:
-  - "Built a real-time audio-video loop connecting a dynamic microphone and webcam for live speech and visual input."
-  - "Integrated the Gemini 2.5 Live API with WebSockets to stream and play spoken responses in continuous conversation."
-  - "Configured session memory and a simple Gradio interface to let users start, stop and resume interaction seamlessly."
-```
-
-**Rules**:
-- Exactly 3 highlights (template shows `first 3`, so additional ones are ignored)
-- Mix technical details with results/outcomes
-- Include metrics or numbers when relevant (accuracy, performance, scale)
-- Use Markdown formatting if needed (e.g., `*italics*`, `**bold**`, inline code)
-- Keep bullets balanced in length (avoid one very long and two very short)
-- Focus on what YOU built or learned (not background/motivation)
-
-**Template** for different highlight types:
-
-1. **Technical implementation**: "Built/Designed/Developed [system component] using [technology] to [achieve goal]"
-2. **Integration/tooling**: "Integrated [tool/API] with [technology] to [enable capability]"
-3. **Results/findings**: "Found/Achieved [metric/outcome], [comparison or context]"
-
-### Portfolio Tags
-
-**Format**: Array of 1-5 tags from controlled vocabulary
-
-**Purpose**: Categorize projects by domain, technology, or method
-
-**Display**: Tags appear as clickable links to taxonomy pages
-
-**Current tag vocabulary** (based on existing projects):
-- **Machine Learning** - General ML projects
-- **Deep Learning** - Neural network-based projects
-- **Reinforcement Learning** - RL-specific work
-- **Generative AI** - Generative models (LLMs, diffusion, GANs)
-- **Audio** - Audio processing or analysis
-- **Text** - NLP, text processing
-- **Video** - Video processing or computer vision
-
-**Examples**:
-```yaml
-# Multimodal project with audio and text
-portfolio_tags: ["Machine Learning", "Audio", "Text"]
-
-# Interactive generative agent
-portfolio_tags: ["Generative AI", "Audio", "Video"]
-
-# RL game agents
-portfolio_tags: ["Reinforcement Learning", "Deep Learning"]
-```
-
-**Rules**:
-- Use 2-3 tags per project (1 minimum, 5 maximum)
-- Choose the most specific relevant tags
-- Order from most to least relevant
-- Use existing tags when possible (maintains consistency)
-- New tags should be broad enough to apply to multiple projects
-
-**Adding new tags**:
-1. Check if existing tags fit first
-2. If creating a new tag, use title case
-3. Keep tags 1-2 words
-4. Make them broadly applicable (not project-specific)
-
-### Date
-
-**Format**: `YYYY-MM-DD`
-
-**Purpose**: Controls default sorting when no weight is specified
-
-**Examples**:
-```yaml
-date: 2025-05-03
-date: 2024-12-20
-```
-
-**Rules**:
-- Use project completion date or publication date
-- More recent dates appear higher in the list (when weight is equal)
-- Required field
-
-### Draft Status
-
-**Format**: Boolean (`true` or `false`)
-
-**Purpose**: Controls whether the entry appears on the list
-
-**Examples**:
-```yaml
-draft: false  # Shows on portfolio list
-draft: true   # Hidden from portfolio list
-```
-
-**Rules**:
-- Set `draft: true` for incomplete projects
-- Set `draft: false` when ready to publish
-- Draft items are hidden even if other fields are complete
-
-### Build Flags (Optional)
-
-**Format**: YAML map with `list` and `render` keys
-
-**Purpose**: Fine-grained control over list visibility and page rendering
-
-**Options**:
-
-```yaml
+# Hidden from list (direct link only)
+draft: false
 build:
-  list: "local"     # or "always" (default), "never"
-  render: "link"    # or "always" (default), "never"
-```
+  list: "never"
 
-**Behavior**:
-
-| list | render | Result |
-|------|--------|--------|
-| (default) | (default) | Shows in list with clickable link to full page |
-| `"local"` | `"link"` | Shows in list but page not built (title not clickable) |
-| `"never"` | - | Hidden from list entirely |
-
-**Use cases**:
-- `build.list: "local"` + `build.render: "link"`: Show on list without building full page (useful for "coming soon" projects)
-- `build.list: "never"`: Completely hide from portfolio list
-- Default (no build flags): Normal published project with full page
-
-**Example** (Agnus project):
-```yaml
-build:
-  list: "local"     # Include in list
-  render: "link"    # Don't build full page HTML
-```
-
-This shows "Agnus The Troll" on the list with title, summary, and highlights, but the title isn't clickable because there's no published page yet.
-
-## Writing Full Portfolio Posts
-
-The content below the front matter becomes the full project write-up (if `build.render` allows it).
-
-For comprehensive guidance on writing style, content structure, depth guidelines, and annotated examples, see:
-
-**[portfolio-style-and-examples.md](portfolio-style-and-examples.md)** - Complete guide to writing portfolio posts with detailed examples
-
-**Quick summary:**
-- **Structure**: Introduction → Visual overview → Technical details → Results → Resources
-- **Length**: 300-800 words + 2-4 figures
-- **Style**: Technical but accessible, active voice, focus on your contribution
-- **Figures**: Store in `resources/` folder, number files for ordering, use semantic HTML with captions
-
-## Publishing and Visibility Controls
-
-Portfolio entries have flexible visibility controls through `draft` status and `build` flags.
-
-For comprehensive details on visibility controls, decision trees, configuration examples, and troubleshooting, see:
-
-**[portfolio-visibility.md](portfolio-visibility.md)** - Complete guide to `draft`, `build.list`, and `build.render` flags
-
-**Quick summary:**
-- `draft: true` - Hide completely (work in progress)
-- `draft: false` (default) - Show on list with clickable link
-- `draft: false` + `build.list: "local"` + `build.render: "link"` - Show on list but no detail page (coming soon mode)
-- `draft: false` + `build.list: "never"` - Hide from list (direct link only)
-
-## Checklist for New Portfolio Entries
-
-Before adding a new portfolio entry, ensure:
-
-- [ ] Title is clear and 3-6 words
-- [ ] Summary is 10-20 words, starts with action verb
-- [ ] Exactly 3 highlights, each 15-25 words
-- [ ] Highlights mix technical details with results
-- [ ] 2-3 portfolio_tags from existing vocabulary
-- [ ] Date is in YYYY-MM-DD format
-- [ ] `draft: false` when ready to publish
-- [ ] Build flags set if showing without full page
-- [ ] Front matter uses proper YAML formatting (arrays with `-`, quotes for strings with special chars)
-
-## Testing Your Entry
-
-After creating a portfolio entry:
-
-1. **Preview locally**:
-   ```bash
-   hugo server -D  # Include drafts
-   ```
-   Visit `http://localhost:1313/portfolio/` to see the list
-
-2. **Check formatting**:
-   - Title renders correctly
-   - Summary fits on one line
-   - All 3 highlights display
-   - Tags appear and link to taxonomy pages
-
-3. **Verify links**:
-   - If `draft: false` and no build flags: Title should be clickable
-   - If `build.render: "link"`: Title should NOT be clickable
-   - Tag links should work
-
-4. **Production build**:
-   ```bash
-   hugo --buildDrafts=false
-   ```
-   Check `public/portfolio/` to verify your project appears correctly
-
-## Common Mistakes
-
-**Summary too long**:
-```yaml
-# BAD (too long, multiple ideas)
-summary: "This project involved building a machine learning pipeline that processes audio and text data using transformer models to detect Alzheimer's disease with high accuracy."
-
-# GOOD (concise, single idea)
-summary: "Used spontaneous speech as a diagnostic signal for automated Alzheimer's detection."
-```
-
-**Highlights too vague**:
-```yaml
-# BAD (generic, no details)
-highlights:
-  - "Built a system"
-  - "Used machine learning"
-  - "Got good results"
-
-# GOOD (specific, technical, measurable)
-highlights:
-  - "Designed a scalable ETL pipeline handling audio processing, transcription, and feature extraction"
-  - "Evaluated Random Forest, XGBoost, and MLP classifiers on multimodal embeddings"
-  - "Achieved 82% accuracy with text embeddings, outperforming audio-only baseline by 12%"
-```
-
-**Too many tags**:
-```yaml
-# BAD (too many, too specific)
-portfolio_tags: ["ML", "DL", "Audio Processing", "NLP", "Classification", "Python", "PyTorch"]
-
-# GOOD (focused, broad categories)
-portfolio_tags: ["Machine Learning", "Audio", "Text"]
+# Work in progress (completely hidden)
+draft: true
 ```
 
 ## Related Documentation
 
-- [Portfolio list template](../layouts/portfolio/list.html) - Shows how entries render
-- [Portfolio single template](../layouts/portfolio/single.html) - Full page layout
-- [Building and deployment](../ops/building-and-deployment.md) - How to preview and build
+- [authoring/index.md](index.md) - Authoring section overview
+- [../ops/local-preview.md](../ops/local-preview.md) - How to preview locally
+- [../ops/building-and-deployment.md](../ops/building-and-deployment.md) - Production builds

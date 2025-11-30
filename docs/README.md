@@ -16,8 +16,8 @@ Writing and formatting guides for portfolio projects and posts.
 
 **Start here:** [authoring/index.md](authoring/index.md)
 
+- [authoring/portfolio-formatting.md](authoring/portfolio-formatting.md) — navigation hub directing you to the right guide
 - [authoring/portfolio-quickstart.md](authoring/portfolio-quickstart.md) — fast-start template, checklist, and minimal examples
-- [authoring/portfolio-formatting.md](authoring/portfolio-formatting.md) — front matter fields, tag conventions, and formatting rules
 - [authoring/portfolio-style-and-examples.md](authoring/portfolio-style-and-examples.md) — writing style, content structure, annotated examples
 - [authoring/portfolio-visibility.md](authoring/portfolio-visibility.md) — visibility controls, decision tree, troubleshooting
 
