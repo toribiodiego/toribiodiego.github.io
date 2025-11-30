@@ -1,18 +1,16 @@
-<header>
-    <div class="site-header">
-        <!-- Site title -->
-        <h1 class="site-title">
-            <a href="/">{{ .Site.Title }}</a>
-        </h1>
+<div class="site-header">
+    <!-- Site title -->
+    <h1 class="site-title">
+        <a href="/">{{ .Site.Title }}</a>
+    </h1>
 
-        <!-- Navigation -->
-        <nav>
-            {{ range .Site.Menus.main }}
-            <a href="{{ if .PageRef }}{{ relref $ .PageRef }}{{ else if .URL }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
-            {{ end }}
-        </nav>
-    </div>
+    <!-- Navigation -->
+    <nav>
+        {{ range .Site.Menus.main }}
+        <a href="{{ if .PageRef }}{{ relref $ .PageRef }}{{ else if .URL }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
+        {{ end }}
+    </nav>
+</div>
 
-    <!-- Theme toggle -->
-    {{- partial "theme-toggle.html" . -}}
-</header>
+<!-- Theme toggle -->
+{{- partial "theme-toggle.html" . -}}

@@ -1,16 +1,14 @@
-<footer>
-    <p class="social-icons">
-        <a href="https://github.com/toribiodiego" aria-label="GitHub">
-            {{ (resources.Get "icons/github.svg").Content | safeHTML }}
-        </a>
-        <a href="https://www.linkedin.com/in/diego-toribio-096155210/" aria-label="LinkedIn">
-            {{ (resources.Get "icons/linkedin.svg").Content | safeHTML }}
-        </a>
-        <a href="#" aria-label="Copy email address"
-            onclick="navigator.clipboard.writeText('toribio.diego23@gmail.com'); this.title='Copied!'; return false;"
-            title="Copy email">
-            {{ (resources.Get "icons/email.svg").Content | safeHTML }}
-        </a>
-    </p>
-    <p>© {{ now.Format "2006" }} Diego Toribio</p>
-</footer>
+<p class="social-icons">
+    <a href="https://github.com/toribiodiego" aria-label="GitHub">
+        {{ (resources.Get "icons/github.svg").Content | safeHTML }}
+    </a>
+    <a href="https://www.linkedin.com/in/diego-toribio-096155210/" aria-label="LinkedIn">
+        {{ (resources.Get "icons/linkedin.svg").Content | safeHTML }}
+    </a>
+    <a href="#" aria-label="Copy email address"
+        onclick="navigator.clipboard.writeText('toribio.diego23@gmail.com'); this.title='Copied!'; return false;"
+        title="Copy email">
+        {{ (resources.Get "icons/email.svg").Content | safeHTML }}
+    </a>
+</p>
+<p>© {{ now.Format "2006" }} Diego Toribio</p>
