@@ -267,7 +267,39 @@ You should see:
 
 See [analytics-and-referrals.md](./analytics-and-referrals.md) for preview mode details.
 
-### 6. Clean Up Environment
+### 6. Test Social Media Previews
+
+After deployment, verify that shared links render properly on social platforms with correct images and descriptions:
+
+**Facebook/LinkedIn (Open Graph):**
+```
+https://developers.facebook.com/tools/debug/
+```
+
+Paste your site URL (e.g., `https://diegotoribio.com`) and click "Debug" to see:
+- Preview image (should show `/pfp.jpg`)
+- Title and description
+- Any Open Graph errors or warnings
+
+**Twitter (Twitter Cards):**
+```
+https://cards-dev.twitter.com/validator
+```
+
+Enter your URL to preview how tweets with your link will appear:
+- Card type (should be `summary_large_image`)
+- Image, title, and description rendering
+
+**LinkedIn (Post Inspector):**
+```
+https://www.linkedin.com/post-inspector/
+```
+
+Check how shared posts appear in LinkedIn feeds.
+
+These validators also clear cached previews, which is useful if you updated metadata and need platforms to re-scrape your site.
+
+### 7. Clean Up Environment
 
 Unset environment variables when done:
 
