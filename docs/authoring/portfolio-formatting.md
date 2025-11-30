@@ -952,4 +952,4 @@ portfolio_tags: ["Machine Learning", "Audio", "Text"]
 
 - [Portfolio list template](../layouts/portfolio/list.html) - Shows how entries render
 - [Portfolio single template](../layouts/portfolio/single.html) - Full page layout
-- [Building and deployment](./building-and-deployment.md) - How to preview and build
+- [Building and deployment](../ops/building-and-deployment.md) - How to preview and build

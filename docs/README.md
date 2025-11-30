@@ -2,23 +2,29 @@
 
 One-stop table of contents for the internal docs plus the core commands we keep reaching for.
 
-## Operations & Build Pipeline
+## [Operations & Build Pipeline](ops/)
 Guides for local development, testing production builds, and understanding the CI/CD workflow.
 
-- [local-preview.md](local-preview.md) — run Hugo locally, include drafts/future posts, avoid analytics
-- [building-and-deployment.md](building-and-deployment.md) — production vs dev builds, drafts handling, clean builds
-- [github-pages-deployment.md](github-pages-deployment.md) — CI/CD workflow, caching, validation, how to mirror CI locally
+**Start here:** [ops/index.md](ops/index.md)
 
-## Content Authoring
+- [ops/local-preview.md](ops/local-preview.md) — run Hugo locally, include drafts/future posts, avoid analytics
+- [ops/building-and-deployment.md](ops/building-and-deployment.md) — production vs dev builds, drafts handling, clean builds
+- [ops/github-pages-deployment.md](ops/github-pages-deployment.md) — CI/CD workflow, caching, validation, how to mirror CI locally
+
+## [Content Authoring](authoring/)
 Writing and formatting guides for portfolio projects and posts.
 
-- [portfolio-formatting.md](portfolio-formatting.md) — portfolio entry structure, formatting rules, tag conventions, examples, publish controls
+**Start here:** [authoring/index.md](authoring/index.md)
 
-## Analytics & Customization
+- [authoring/portfolio-formatting.md](authoring/portfolio-formatting.md) — portfolio entry structure, formatting rules, tag conventions, examples, publish controls
+
+## [Analytics & Customization](analytics/)
 Configuration, testing, and customization of analytics and site appearance.
 
-- [analytics-and-referrals.md](analytics-and-referrals.md) — preview mode toggle, self-traffic filtering, UTM patterns
-- [theming-and-dark-mode.md](theming-and-dark-mode.md) — toggle implementation, CSS variables, customization notes
+**Start here:** [analytics/index.md](analytics/index.md)
+
+- [analytics/analytics-and-referrals.md](analytics/analytics-and-referrals.md) — preview mode toggle, self-traffic filtering, UTM patterns
+- [analytics/theming-and-dark-mode.md](analytics/theming-and-dark-mode.md) — toggle implementation, CSS variables, customization notes
 
 ## Handy commands (copy/paste)
 - Local preview (no analytics):

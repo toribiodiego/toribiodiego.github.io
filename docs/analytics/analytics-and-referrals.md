@@ -12,7 +12,7 @@ The site automatically excludes analytics in development mode:
 hugo server
 ```
 
-When running locally with `hugo server`, Google Analytics scripts are not loaded, so no data is sent. See [local-preview.md](./local-preview.md) for details.
+When running locally with `hugo server`, Google Analytics scripts are not loaded, so no data is sent. See [local-preview.md](../ops/local-preview.md) for details.
 
 ### Preview Mode (Production)
 
@@ -208,7 +208,7 @@ You'll see a "Preview Mode" badge in the bottom-right corner, and analytics will
 ### Self-Traffic Still Appearing in Analytics
 
 1. **Enable preview mode**: Visit `https://diegotoribio.com/?preview=true` on the production site
-2. **Use development mode**: Run `hugo server` for local testing (see [local-preview.md](./local-preview.md))
+2. **Use development mode**: Run `hugo server` for local testing (see [local-preview.md](../ops/local-preview.md))
 3. **Check preview mode status**: Look for the "Preview Mode" badge in the bottom-right corner
 4. **Clear localStorage if needed**: If preview mode isn't working, try clearing browser data and re-enabling with `?preview=true`
 5. **Filter IP in GA4**: As a fallback, set up IP exclusion filters in Google Analytics admin
@@ -246,6 +246,6 @@ https://diegotoribio.com/[path]/?utm_source=[source]&utm_medium=[medium]&utm_cam
 
 ## Additional Resources
 
-- [GitHub Pages Deployment Workflow](./github-pages-deployment.md)
-- [Local Preview Workflow](./local-preview.md)
-- [Building and Deployment Guide](./building-and-deployment.md)
+- [GitHub Pages Deployment Workflow](../ops/github-pages-deployment.md)
+- [Local Preview Workflow](../ops/local-preview.md)
+- [Building and Deployment Guide](../ops/building-and-deployment.md)

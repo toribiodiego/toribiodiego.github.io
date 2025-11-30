@@ -265,7 +265,7 @@ You should see:
 - Orange "Preview Mode" badge in bottom-right
 - Console message: `[Analytics] Skipped - Preview mode active`
 
-See [analytics-and-referrals.md](./analytics-and-referrals.md) for preview mode details.
+See [analytics-and-referrals.md](../analytics/analytics-and-referrals.md) for preview mode details.
 
 ### 6. Test Social Media Previews
 
@@ -456,6 +456,6 @@ Consider enabling branch protection on `main` to:
 
 - [building-and-deployment.md](./building-and-deployment.md) - Build modes, drafts, clean builds, verification
 - [local-preview.md](./local-preview.md) - Local development workflow
-- [analytics-and-referrals.md](./analytics-and-referrals.md) - Preview mode and analytics bypass
+- [analytics-and-referrals.md](../analytics/analytics-and-referrals.md) - Preview mode and analytics bypass
 - [GitHub Pages Documentation](https://docs.github.com/en/pages)
 - [Hugo Build Options](https://gohugo.io/commands/hugo/)
