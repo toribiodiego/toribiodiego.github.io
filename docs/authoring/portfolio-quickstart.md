@@ -142,7 +142,7 @@ draft: true
 ## Next Steps
 
 - Save your file as `content/portfolio/project-name/index.md`
-- Preview locally: `hugo server -DF`
+- Preview locally: `hugo server -DF` (see [local preview guide](../ops/local-preview.md) for details)
 - Check the portfolio list at `http://localhost:1313/portfolio/`
 - Remove `draft: false` or set `draft: false` when ready to publish
-- See [portfolio-formatting.md](portfolio-formatting.md) for detailed rules and more examples
+- See [portfolio-formatting.md](portfolio-formatting.md) for navigation to detailed guides

@@ -29,26 +29,20 @@ Configuration, testing, and customization of analytics and site appearance.
 - [analytics/analytics-and-referrals.md](analytics/analytics-and-referrals.md) — preview mode toggle, self-traffic filtering, UTM patterns
 - [analytics/theming-and-dark-mode.md](analytics/theming-and-dark-mode.md) — toggle implementation, CSS variables, customization notes
 
-## Handy commands (copy/paste)
-- Local preview (no analytics):
-  ```bash
-  hugo server
-  ```
-- Local preview with drafts/future:
-  ```bash
-  hugo server -DF
-  ```
-- Preview mode on production (analytics off):
-  ```
-  Enable:  https://diegotoribio.com/?preview=true
-  Disable: https://diegotoribio.com/?preview=false
-  ```
-- Clean production build (CI-equivalent):
-  ```bash
-  rm -rf public && hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify --buildDrafts=false --buildFuture=false --buildExpired=false
-  ```
-- Set CI-like env before running production commands locally:
-  ```bash
-  export HUGO_ENV=production
-  export HUGO_ENVIRONMENT=production
-  ```
+## Quick Commands
+
+For detailed build instructions and all command options, see **[ops/local-preview.md](ops/local-preview.md)** (canonical reference).
+
+**Most common commands:**
+
+```bash
+# Local preview (published content only, no analytics)
+hugo server
+
+# Local preview with drafts and future-dated posts
+hugo server -DF
+```
+
+**Preview mode on production** (bypass analytics): See [analytics/analytics-and-referrals.md](analytics/analytics-and-referrals.md)
+
+**Production builds and CI commands**: See [ops/github-pages-deployment.md](ops/github-pages-deployment.md)

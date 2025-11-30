@@ -21,26 +21,9 @@ Guides for local development, testing production builds, and understanding the C
 
 ## Quick reference
 
-**Local preview (published content only):**
-```bash
-hugo server
-```
+See **[local-preview.md](local-preview.md)** for all local development commands.
 
-**Local preview with drafts:**
-```bash
-hugo server -DF
-```
-
-**Clean production build (CI-equivalent):**
-```bash
-rm -rf public && hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify --buildDrafts=false --buildFuture=false --buildExpired=false
-```
-
-**Set CI environment variables:**
-```bash
-export HUGO_ENV=production
-export HUGO_ENVIRONMENT=production
-```
+See **[github-pages-deployment.md](github-pages-deployment.md)** for production build and CI commands.
 
 ## When to read these
 
