@@ -1,6 +1,6 @@
 [[main]]
   name = "Writing"
-  pageRef = "/Writing"
+  pageRef = "/writing"
   weight = 10
 [[main]]
   name = "Portfolio"
