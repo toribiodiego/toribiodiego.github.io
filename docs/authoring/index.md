@@ -12,7 +12,8 @@ Writing and formatting guides for portfolio projects and posts.
 
 ### Portfolio Projects
 - [portfolio-quickstart.md](portfolio-quickstart.md) — fast-start template, checklist, and minimal examples (start here)
-- [portfolio-formatting.md](portfolio-formatting.md) — comprehensive formatting rules, tag conventions, and examples
+- [portfolio-formatting.md](portfolio-formatting.md) — front matter fields, tag conventions, and formatting rules
+- [portfolio-style-and-examples.md](portfolio-style-and-examples.md) — writing style, content structure, annotated examples
 - [portfolio-visibility.md](portfolio-visibility.md) — visibility controls (draft, build flags), decision tree, troubleshooting
 
 ## Quick reference
