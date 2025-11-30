@@ -11,7 +11,8 @@ Writing and formatting guides for portfolio projects and posts.
 ## What's covered
 
 ### Portfolio Projects
-- [portfolio-formatting.md](portfolio-formatting.md) — portfolio entry structure, formatting rules, tag conventions, examples, publish controls
+- [portfolio-quickstart.md](portfolio-quickstart.md) — fast-start template, checklist, and minimal examples (start here)
+- [portfolio-formatting.md](portfolio-formatting.md) — comprehensive formatting rules, tag conventions, examples, publish controls
 
 ## Quick reference
 
