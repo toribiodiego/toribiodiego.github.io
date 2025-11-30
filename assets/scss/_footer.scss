@@ -1,28 +1,4 @@
-/* Sticky footer: works even if there is no <main> wrapper */
-html,
-body {
-    height: 100%;
-}
-
-body {
-    /* modern viewport fallback chain */
-    min-height: 100vh;
-    min-height: 100svh;
-    /* better on mobile */
-    display: flex;
-    flex-direction: column;
-    /* centered layout with padding and max-width */
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Footer is last child of <body>, push it down on short pages */
-body>footer {
-    margin-top: auto;
-}
-
-/* (Keep your existing footer styles) */
+/* Footer-specific styles */
 footer {
     text-align: center;
     padding: 1rem 0;

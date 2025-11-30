@@ -1,6 +1,30 @@
 /* Define cascade layer order once */
 @layer base, components, utilities, overrides;
 
+/* Critical body layout rules (unlayered for maximum priority) */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    /* modern viewport fallback chain */
+    min-height: 100vh;
+    min-height: 100svh;
+    /* better on mobile */
+    display: flex;
+    flex-direction: column;
+    /* centered layout with padding and max-width */
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Footer is last child of <body>, push it down on short pages */
+body > footer {
+    margin-top: auto;
+}
+
 /* Base */
 @import "variables";
 @import "helpers";
