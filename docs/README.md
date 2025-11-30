@@ -8,6 +8,7 @@ One-stop table of contents for the internal docs plus the core commands we keep 
 - [github-pages-deployment.md](github-pages-deployment.md) — CI/CD workflow, caching, validation, how to mirror CI locally
 - [analytics-and-referrals.md](analytics-and-referrals.md) — preview mode toggle, self-traffic filtering, UTM patterns
 - [theming-and-dark-mode.md](theming-and-dark-mode.md) — toggle implementation, CSS variables, customization notes
+- [portfolio-formatting.md](portfolio-formatting.md) — portfolio entry structure, formatting rules, tag conventions, examples
 
 ## Handy commands (copy/paste)
 - Local preview (no analytics):

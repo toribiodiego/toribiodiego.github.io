@@ -93,3 +93,4 @@ Fast navigation to the internal guides.
 | CI/deploy (Pages) | [docs/github-pages-deployment.md](docs/github-pages-deployment.md) | GitHub Pages workflow, caching, validation flags, mirroring CI locally. |
 | Analytics & UTM | [docs/analytics-and-referrals.md](docs/analytics-and-referrals.md) | Preview-mode toggle, self-traffic filtering, and UTM conventions. |
 | Theming / dark mode | [docs/theming-and-dark-mode.md](docs/theming-and-dark-mode.md) | Theme toggle implementation, CSS variables, and customization hooks. |
+| Portfolio formatting | [docs/portfolio-formatting.md](docs/portfolio-formatting.md) | Portfolio entry structure, title/summary/highlights rules, tagging, examples. |
