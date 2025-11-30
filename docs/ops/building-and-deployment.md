@@ -1,5 +1,7 @@
 # Building and Deployment Guide
 
+**Use this when:** You need to create a production-ready build, understand how drafts are handled in different environments, or perform a clean build to troubleshoot issues.
+
 This guide covers building the site for production, handling drafts, and performing clean builds.
 
 ## Build Modes

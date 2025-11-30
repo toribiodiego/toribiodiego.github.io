@@ -1,5 +1,7 @@
 # Portfolio Formatting Guide
 
+**Use this when:** You're creating a new portfolio project, updating an existing entry, choosing appropriate tags, or troubleshooting why a portfolio item isn't appearing as expected.
+
 This guide explains how to format portfolio entries for consistent presentation on the portfolio list page. It covers front matter structure, content length, highlights formatting, and tagging conventions based on existing portfolio examples.
 
 ## Overview

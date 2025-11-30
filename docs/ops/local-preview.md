@@ -1,5 +1,7 @@
 # Local Preview Workflow
 
+**Use this when:** You want to run the site on your local machine to test changes before pushing, preview draft content, or develop without affecting analytics.
+
 This guide explains how to run the site locally for development and testing without triggering Google Analytics.
 
 ## Running the Site Locally

@@ -1,5 +1,7 @@
 # GitHub Pages Deployment Workflow
 
+**Use this when:** You're debugging failed GitHub Actions builds, want to replicate the CI environment locally before pushing, or need to understand how the deployment pipeline works.
+
 This guide describes the automated deployment pipeline for this Hugo site to GitHub Pages, including how to test the CI build locally before pushing changes.
 
 ## Overview

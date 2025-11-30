@@ -1,5 +1,7 @@
 # Analytics and Referral Tracking
 
+**Use this when:** You're testing the live site and don't want to pollute analytics, creating UTM-tagged links to share on social media, or debugging why analytics aren't loading.
+
 This guide explains how to filter self-traffic from analytics and how to create trackable referral URLs for sharing the site.
 
 ## Self-Traffic Filtering

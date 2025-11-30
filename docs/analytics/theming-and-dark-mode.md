@@ -1,5 +1,7 @@
 # Theming and Dark Mode
 
+**Use this when:** You're customizing the site's color scheme, modifying theme toggle behavior, or troubleshooting dark mode issues.
+
 This site includes a comprehensive dark mode implementation with automatic theme detection and manual toggle controls.
 
 ## Features
