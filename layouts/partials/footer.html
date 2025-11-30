@@ -5,9 +5,9 @@
     <a href="https://www.linkedin.com/in/diego-toribio-096155210/" aria-label="LinkedIn">
         {{ (resources.Get "icons/linkedin.svg").Content | safeHTML }}
     </a>
-    <a href="#" aria-label="Copy email address"
-        onclick="navigator.clipboard.writeText('toribio.diego23@gmail.com'); this.title='Copied!'; return false;"
-        title="Copy email">
+    <a href="mailto:toribio.diego23@gmail.com" aria-label="Email"
+        onclick="if (navigator.clipboard) { navigator.clipboard.writeText('toribio.diego23@gmail.com'); this.title='Copied!'; return false; }"
+        title="Copy email or click to open mail client">
         {{ (resources.Get "icons/email.svg").Content | safeHTML }}
     </a>
 </p>
