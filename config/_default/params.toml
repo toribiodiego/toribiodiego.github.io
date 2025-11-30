@@ -1,6 +1,9 @@
-title = "diego site"
+title = "Diego Toribio"
 author = "Diego Toribio"
-description = "notes and projects."
+description = "Master's student in Electrical Engineering at The Cooper Union researching data-efficient deep reinforcement learning. Writing notes and sharing projects on machine learning and its applications."
 copyright = "Copyright © 2025, Diego Toribio"
 
 dateFormat = "2006-01-02"
+
+# Social preview images for Open Graph and Twitter Cards
+images = ["/pfp.jpg"]
