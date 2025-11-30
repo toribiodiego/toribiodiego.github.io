@@ -17,7 +17,8 @@ Writing and formatting guides for portfolio projects and posts.
 **Start here:** [authoring/index.md](authoring/index.md)
 
 - [authoring/portfolio-quickstart.md](authoring/portfolio-quickstart.md) — fast-start template, checklist, and minimal examples
-- [authoring/portfolio-formatting.md](authoring/portfolio-formatting.md) — comprehensive formatting rules, tag conventions, examples, publish controls
+- [authoring/portfolio-formatting.md](authoring/portfolio-formatting.md) — comprehensive formatting rules, tag conventions, and examples
+- [authoring/portfolio-visibility.md](authoring/portfolio-visibility.md) — visibility controls, decision tree, troubleshooting
 
 ## [Analytics & Customization](analytics/)
 Configuration, testing, and customization of analytics and site appearance.

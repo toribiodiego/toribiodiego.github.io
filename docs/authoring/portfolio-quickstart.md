@@ -121,7 +121,9 @@ draft: false
 
 ## Publishing Controls
 
-Control visibility with optional build flags:
+Control visibility with optional build flags. For comprehensive details, see [portfolio-visibility.md](portfolio-visibility.md).
+
+**Quick reference:**
 
 ```yaml
 # Coming soon mode (show in list locally only, no detail page)
