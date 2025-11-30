@@ -2,13 +2,23 @@
 
 One-stop table of contents for the internal docs plus the core commands we keep reaching for.
 
-## What's here
+## Operations & Build Pipeline
+Guides for local development, testing production builds, and understanding the CI/CD workflow.
+
 - [local-preview.md](local-preview.md) — run Hugo locally, include drafts/future posts, avoid analytics
 - [building-and-deployment.md](building-and-deployment.md) — production vs dev builds, drafts handling, clean builds
 - [github-pages-deployment.md](github-pages-deployment.md) — CI/CD workflow, caching, validation, how to mirror CI locally
+
+## Content Authoring
+Writing and formatting guides for portfolio projects and posts.
+
+- [portfolio-formatting.md](portfolio-formatting.md) — portfolio entry structure, formatting rules, tag conventions, examples, publish controls
+
+## Analytics & Customization
+Configuration, testing, and customization of analytics and site appearance.
+
 - [analytics-and-referrals.md](analytics-and-referrals.md) — preview mode toggle, self-traffic filtering, UTM patterns
 - [theming-and-dark-mode.md](theming-and-dark-mode.md) — toggle implementation, CSS variables, customization notes
-- [portfolio-formatting.md](portfolio-formatting.md) — portfolio entry structure, formatting rules, tag conventions, examples
 
 ## Handy commands (copy/paste)
 - Local preview (no analytics):
