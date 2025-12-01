@@ -1,0 +1,460 @@
+# Static Directory
+
+This directory contains static assets that Hugo copies verbatim to the `public/` directory during builds. Unlike assets in `assets/`, these files are **not processed** - they're served exactly as they appear here.
+
+## How Static Files Work
+
+**Hugo's behavior:**
+- Files in `static/` are copied to `public/` root
+- Directory structure is preserved
+- No compilation, minification, or fingerprinting
+- Accessible at `/path/to/file` URLs
+
+**Example:**
+```
+static/js/preview-flag.js  →  public/js/preview-flag.js
+                           →  https://yoursite.com/js/preview-flag.js
+```
+
+**Key difference from `assets/`:**
+- `assets/` - Processed by Hugo Pipes (SCSS compilation, minification, fingerprinting)
+- `static/` - Copied verbatim, no processing
+
+## Directory Structure
+
+```
+static/
+├── README.md                    # This file
+├── CNAME                        # GitHub Pages custom domain
+├── Toribio_Diego_Resume.pdf    # Resume file (public download)
+├── pfp.jpg                      # Profile picture (4.4 MB)
+├── css/                         # (empty) Reserved for future static CSS
+└── js/                          # JavaScript files
+    ├── preview-flag.js          # Preview mode detection and management
+    └── theme-toggle.js          # Dark/light theme toggle functionality
+```
+
+## Files
+
+### `CNAME`
+
+**Purpose:** GitHub Pages custom domain configuration.
+
+**Content:**
+```
+diegotoribio.com
+```
+
+**How it works:**
+1. GitHub Pages reads this file during deployment
+2. Configures DNS to serve site at `diegotoribio.com`
+3. Without this file, site only accessible at `username.github.io/repo`
+
+**IMPORTANT:** Do not delete or modify unless changing domain.
+
+**See:** [docs/ops/building-and-deployment.md](../docs/ops/building-and-deployment.md) for deployment details.
+
+### `Toribio_Diego_Resume.pdf`
+
+**Purpose:** Public resume file linked from about page.
+
+**Access:** `https://diegotoribio.com/Toribio_Diego_Resume.pdf`
+
+**Size:** ~97 KB
+
+**Usage:**
+```html
+<a href="/Toribio_Diego_Resume.pdf" download>Download Resume</a>
+```
+
+**Updating:**
+1. Export updated resume as PDF
+2. Replace file in `static/`
+3. Keep filename consistent (or update links)
+4. Commit and deploy
+
+### `pfp.jpg`
+
+**Purpose:** Profile picture for about page or social media.
+
+**Access:** `https://diegotoribio.com/pfp.jpg`
+
+**Size:** ~4.4 MB (large - consider optimization)
+
+**Usage:**
+```html
+<img src="/pfp.jpg" alt="Profile picture">
+```
+
+**Optimization tips:**
+- Current size is quite large for web
+- Consider resizing to 800x800 or smaller
+- Use tools like ImageOptim or Squoosh to compress
+- Target size: < 500 KB for web use
+
+### `css/` (empty directory)
+
+**Purpose:** Reserved for future static CSS files.
+
+**When to use:**
+- Third-party CSS libraries (that don't need processing)
+- Vendor CSS that must be served verbatim
+- Quick CSS additions without SCSS compilation
+
+**For custom CSS:** Use `assets/scss/` instead (processed by Hugo Pipes).
+
+## JavaScript Files
+
+### `js/preview-flag.js`
+
+**Purpose:** Manages preview mode for bypassing analytics during testing.
+
+**How it works:**
+1. Detects `?preview=true` query parameter in URL
+2. Sets `localStorage.setItem('preview_mode', 'true')`
+3. Displays orange "Preview Mode" badge (bottom-right)
+4. Analytics partial checks `window.isPreviewMode()` before loading GA4
+
+**API:**
+```javascript
+// Check if in preview mode
+window.isPreviewMode()  // returns true/false
+
+// Enable preview mode
+window.setPreviewMode(true)
+
+// Disable preview mode
+window.setPreviewMode(false)
+```
+
+**Usage:**
+```
+Visit: https://yoursite.com/?preview=true
+Result: Preview mode enabled, analytics skipped
+Console: [Preview Mode] Enabled - Analytics disabled
+```
+
+**Loaded in:** `layouts/partials/custom_head.html` (before analytics)
+
+**See:** [docs/analytics/analytics-and-referrals.md](../docs/analytics/analytics-and-referrals.md) for full documentation.
+
+### `js/theme-toggle.js`
+
+**Purpose:** Manages dark/light theme switching with localStorage persistence.
+
+**How it works:**
+1. Loads in `<head>` before body renders (prevents flash)
+2. Checks `localStorage.getItem('theme-preference')`
+3. Falls back to system preference if no saved preference
+4. Applies theme immediately (adds/removes `.dark-mode` class)
+
+**API:**
+```javascript
+// Get current theme
+window.themeToggle.getCurrent()     // 'light' or 'dark'
+
+// Get effective theme (saved or system)
+window.themeToggle.getEffective()   // 'light' or 'dark'
+
+// Toggle theme
+window.themeToggle.toggle()
+
+// Reset to auto (follow system)
+window.themeToggle.reset()
+```
+
+**Behavior:**
+- **Default:** Follows system preference (no localStorage value)
+- **Single click:** Toggles between light/dark (saves preference)
+- **Double-click:** Resets to auto (clears preference, follows system)
+
+**Loaded in:** `layouts/partials/custom_head.html` (critical, early load)
+
+**See:** [docs/analytics/theming-and-dark-mode.md](../docs/analytics/theming-and-dark-mode.md) for full documentation.
+
+## When to Add Files to `static/`
+
+### Add to `static/` when:
+1. **No processing needed** - File should be served exactly as-is
+2. **Third-party assets** - Vendor JS/CSS that must remain unchanged
+3. **Binary files** - PDFs, images, fonts, videos
+4. **Root-level files** - `robots.txt`, `CNAME`, `favicon.ico`
+5. **Direct URL access** - File needs predictable URL (e.g., `/resume.pdf`)
+
+### Examples:
+```
+static/robots.txt          → /robots.txt
+static/resume.pdf          → /resume.pdf
+static/fonts/custom.woff2  → /fonts/custom.woff2
+static/js/vendor.min.js    → /js/vendor.min.js
+```
+
+### DON'T add to `static/` when:
+1. **Needs compilation** - SCSS, TypeScript, ES6+ requiring transpilation → use `assets/`
+2. **Needs minification** - CSS/JS that should be minified → use `assets/` with Hugo Pipes
+3. **Needs fingerprinting** - CSS/JS that needs cache-busting → use `assets/`
+4. **Template integration** - Files referenced in layouts → use `assets/` for better Hugo integration
+
+### Examples of what goes in `assets/`:
+```
+assets/scss/main.scss       → Compiled to CSS with Hugo Pipes
+assets/icons/logo.svg       → Inlined in templates
+assets/images/hero.jpg      → Processed by Hugo image pipeline
+```
+
+## Adding New Static Files
+
+### 1. Choose the right location
+
+**For JavaScript:**
+```bash
+static/js/your-script.js
+```
+
+**For CSS (if not using SCSS):**
+```bash
+static/css/your-styles.css
+```
+
+**For documents:**
+```bash
+static/documents/whitepaper.pdf
+static/documents/report.xlsx
+```
+
+**For images:**
+```bash
+static/images/photo.jpg
+static/images/diagrams/architecture.svg
+```
+
+### 2. Add the file
+
+```bash
+cp your-file.ext static/appropriate-directory/
+```
+
+### 3. Reference in templates
+
+```html
+<!-- HTML -->
+<script src="/js/your-script.js"></script>
+<link rel="stylesheet" href="/css/your-styles.css">
+<img src="/images/photo.jpg" alt="Description">
+
+<!-- Markdown -->
+[Download PDF](/documents/whitepaper.pdf)
+![Diagram](/images/diagrams/architecture.svg)
+```
+
+### 4. Test locally
+
+```bash
+hugo server
+```
+
+Visit `http://localhost:1313/path/to/file` to verify it's accessible.
+
+### 5. Build and deploy
+
+```bash
+hugo --cleanDestinationDir
+```
+
+Check `public/path/to/file` exists.
+
+## File Organization Best Practices
+
+### Use subdirectories
+
+**Good:**
+```
+static/js/analytics.js
+static/js/theme-toggle.js
+static/css/vendor.css
+static/documents/resume.pdf
+static/images/profile.jpg
+```
+
+**Bad (cluttered root):**
+```
+static/analytics.js
+static/theme-toggle.js
+static/vendor.css
+static/resume.pdf
+static/profile.jpg
+```
+
+### Use descriptive names
+
+**Good:**
+```
+static/js/preview-flag.js
+static/Toribio_Diego_Resume.pdf
+static/images/project-screenshot-1.png
+```
+
+**Bad:**
+```
+static/js/pf.js
+static/resume.pdf
+static/img1.png
+```
+
+### Keep URLs stable
+
+Once a file is public, changing its path breaks external links:
+```
+✓ Keep: /Toribio_Diego_Resume.pdf
+✗ Change to: /documents/resume-2024.pdf  (breaks existing links)
+```
+
+If you must change, use Hugo aliases:
+```yaml
+# In content front matter
+aliases:
+  - /old-path.pdf
+```
+
+Or configure server redirects.
+
+## File Size Considerations
+
+**Current sizes:**
+- `CNAME`: 16 bytes
+- `Toribio_Diego_Resume.pdf`: ~97 KB
+- `pfp.jpg`: ~4.4 MB ⚠️ Large
+- `preview-flag.js`: ~2.2 KB
+- `theme-toggle.js`: ~6.4 KB
+
+**Optimization guidelines:**
+- **Images:** < 500 KB for hero images, < 100 KB for thumbnails
+- **PDFs:** < 1 MB for resumes/documents
+- **JavaScript:** < 50 KB for custom scripts
+- **CSS:** < 100 KB for stylesheets
+
+**Large files slow page load.** Consider:
+1. Compression (use tools like ImageOptim, TinyPNG)
+2. Responsive images (serve different sizes)
+3. Lazy loading (defer offscreen images)
+4. CDN hosting for very large assets
+
+## Deployment
+
+### Local development
+
+```bash
+hugo server
+```
+
+Static files available at `http://localhost:1313/path/to/file`
+
+### Production build
+
+```bash
+hugo --cleanDestinationDir
+```
+
+Static files copied to `public/` for deployment.
+
+### GitHub Pages
+
+Files in `static/` are committed and deployed automatically:
+1. Push to `main` branch
+2. GitHub Actions runs `hugo` build
+3. Static files copied to `public/`
+4. GitHub Pages serves from `public/`
+
+**Custom domain:** Requires `static/CNAME` file (already configured).
+
+## Troubleshooting
+
+### File not accessible after build
+
+**Cause:** File not in `static/` or Hugo not copying it.
+
+**Fix:**
+1. Verify file exists: `ls static/path/to/file`
+2. Rebuild: `hugo --cleanDestinationDir`
+3. Check `public/`: `ls public/path/to/file`
+4. If still missing, check `.gitignore` or Hugo config
+
+### Wrong file being served
+
+**Cause:** Browser cache or old `public/` directory.
+
+**Fix:**
+1. Hard refresh: `Cmd+Shift+R` (macOS) or `Ctrl+Shift+R` (Windows/Linux)
+2. Clear `public/`: `rm -rf public && hugo`
+3. Clear browser cache completely
+
+### File too large to load
+
+**Cause:** File size exceeds browser/server limits.
+
+**Fix:**
+1. Compress file (images, PDFs)
+2. Use external hosting (Dropbox, Google Drive) for very large files
+3. Link to external URL instead of hosting locally
+
+### CNAME conflicts
+
+**Cause:** Multiple `CNAME` files or wrong content.
+
+**Fix:**
+1. Ensure only one `CNAME` file exists: `find . -name CNAME`
+2. Content should be single line: `diegotoribio.com`
+3. No `http://` or `https://` prefix
+4. No trailing slash or whitespace
+
+### JavaScript not loading
+
+**Cause:** Path incorrect or file missing.
+
+**Fix:**
+1. Check path in template: `/js/file.js` not `js/file.js`
+2. Verify file exists: `ls static/js/file.js`
+3. Check browser console for 404 errors
+4. Use browser dev tools → Network tab to debug
+
+## Related Documentation
+
+- [assets/README.md](../assets/README.md) - Processed assets (SCSS, icons)
+- [layouts/README.md](../layouts/README.md) - How JavaScript is loaded in templates
+- [docs/analytics/analytics-and-referrals.md](../docs/analytics/analytics-and-referrals.md) - Preview mode usage
+- [docs/analytics/theming-and-dark-mode.md](../docs/analytics/theming-and-dark-mode.md) - Theme toggle implementation
+- [docs/ops/building-and-deployment.md](../docs/ops/building-and-deployment.md) - Build and deployment process
+
+## Common Tasks
+
+### Add a new JavaScript file
+
+1. Create file: `static/js/your-script.js`
+2. Reference in template:
+   ```go-html-template
+   <script src="/js/your-script.js"></script>
+   ```
+3. Test: `hugo server` and visit site
+
+### Update resume
+
+1. Export new PDF
+2. Replace: `static/Toribio_Diego_Resume.pdf`
+3. Keep same filename (links won't break)
+4. Commit and push
+
+### Add a downloadable document
+
+1. Place file: `static/documents/whitepaper.pdf`
+2. Link in content:
+   ```markdown
+   [Download Whitepaper](/documents/whitepaper.pdf)
+   ```
+3. Build and deploy
+
+### Optimize large image
+
+1. Use ImageOptim, Squoosh, or similar tool
+2. Target size: < 500 KB
+3. Replace original in `static/images/`
+4. Rebuild to regenerate `public/`
