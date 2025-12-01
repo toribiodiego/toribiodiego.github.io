@@ -12,7 +12,7 @@ This page directs you to the focused portfolio guides based on what you're tryin
 
 - Copy-paste front matter template
 - Authoring checklist
-- Common tags list
+- Quick tag selection guide
 - Three complete examples
 - Quick tips for each field
 
@@ -48,6 +48,20 @@ This page directs you to the focused portfolio guides based on what you're tryin
 
 ---
 
+### Choosing Tags?
+
+**[portfolio-tags.md](portfolio-tags.md)** - Canonical tag vocabulary and selection rules
+
+- Complete list of approved tags with definitions
+- Selection rules (how many, ordering, combining)
+- Decision tables for overlapping categories
+- When to add new tags (and when not to)
+- Troubleshooting tag issues
+
+**Best for:** Understanding which tags to use and maintaining consistent tagging across projects.
+
+---
+
 ## Still Here? Here's What You Need
 
 If you're looking for specific information that's not in the guides above, here are the most common needs:
@@ -70,13 +84,9 @@ draft: false
 
 ### Common Tags
 
-- `Machine Learning` - General ML projects
-- `Deep Learning` - Neural network-based work
-- `Reinforcement Learning` - RL-specific projects
-- `Generative AI` - LLMs, diffusion models, GANs
-- `Audio` - Audio processing or analysis
-- `Text` - NLP, text processing
-- `Video` - Video processing or computer vision
+Most common: `Machine Learning`, `Deep Learning`, `Reinforcement Learning`, `Generative AI`, `Audio`, `Text`, `Video`, `Images`
+
+For the complete canonical list and selection rules, see **[portfolio-tags.md](portfolio-tags.md)**.
 
 ### Quick Rules
 

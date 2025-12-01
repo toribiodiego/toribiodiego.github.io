@@ -35,15 +35,16 @@ Before publishing, verify:
 
 ## Common Tags
 
-Use 2-3 of these existing tags (most to least relevant):
+Use 2-3 tags from the canonical vocabulary (most to least relevant). For the complete tag list, selection rules, and when to add new tags, see **[portfolio-tags.md](portfolio-tags.md)**.
 
-- `Machine Learning` - General ML projects
-- `Deep Learning` - Neural network-based work
-- `Reinforcement Learning` - RL-specific projects
-- `Generative AI` - LLMs, diffusion models, GANs
-- `Audio` - Audio processing or analysis
-- `Text` - NLP, text processing
-- `Video` - Video processing or computer vision
+**Most common tags:**
+- `Machine Learning`, `Deep Learning`, `Reinforcement Learning`, `Generative AI`
+- `Audio`, `Text`, `Video`, `Images`
+
+**Quick selection guide:**
+1. Choose one ML/AI category tag (what approach you used)
+2. Choose 1-2 modality tags (what data types you worked with)
+3. Stop at 2-3 tags total
 
 ## Quick Examples
 
