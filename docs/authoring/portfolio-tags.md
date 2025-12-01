@@ -269,6 +269,332 @@ For this site, **Option 2** (enhanced taxonomy pages) is likely the best startin
 
 The main implementation task would be creating `layouts/portfolio_tags/term.html` that mirrors the portfolio list format.
 
+## Implementation Guide: Enhanced Taxonomy Pages
+
+This section provides step-by-step guidance for **Option 2** (enhanced taxonomy pages) - the recommended approach for improving tag landing pages.
+
+### Goal
+
+Replace the bare default taxonomy template with a custom one that:
+- Matches the portfolio list styling and structure
+- Shows full project highlights and summaries
+- Provides clear navigation back to the main portfolio
+- Uses existing styles and partials for consistency
+
+### Step 1: Create the taxonomy template
+
+Create a new file: `layouts/portfolio_tags/term.html`
+
+**Hugo's template lookup order:**
+1. `layouts/portfolio_tags/term.html` (most specific - this is what we're creating)
+2. `layouts/portfolio_tags/list.html` (fallback)
+3. `layouts/_default/taxonomy.html` (default)
+4. `layouts/_default/list.html` (theme default - currently used)
+
+By creating `layouts/portfolio_tags/term.html`, we override the bare theme default.
+
+### Step 2: Base template structure
+
+```go-html-template
+{{/* layouts/portfolio_tags/term.html */}}
+{{ define "main" }}
+<main>
+    {{/* Page header with tag name */}}
+    <header class="taxonomy-header">
+        <h1>{{ .Title }}</h1>
+        <p class="taxonomy-description">
+            {{ .Params.description | default (printf "Portfolio projects tagged with %s" .Title) }}
+        </p>
+
+        {{/* Breadcrumb navigation */}}
+        <nav class="breadcrumb" aria-label="breadcrumb">
+            <a href="/">Home</a> &raquo;
+            <a href="/portfolio/">Portfolio</a> &raquo;
+            <span>{{ .Title }}</span>
+        </nav>
+    </header>
+
+    {{/* Project count */}}
+    <p class="project-count muted">
+        {{ len .Pages }} {{ if eq (len .Pages) 1 }}project{{ else }}projects{{ end }}
+    </p>
+
+    {{/* Copy portfolio list structure */}}
+    {{ $pages := sort .Pages "Weight" "asc" "Date" "desc" "Title" "asc" }}
+
+    <ul class="portfolio-list">
+        {{ range $pages }}
+        {{/* Read build flags safely */}}
+        {{ $render := "" }}
+        {{ $list := "" }}
+        {{ with .Params.build }}
+        {{ $render = (index . "render" | default "") }}
+        {{ $list = (index . "list" | default "") }}
+        {{ end }}
+
+        {{/* Skip entirely if list == "never" or if draft */}}
+        {{ if and (ne $list "never") (not .Draft) }}
+        {{/* Only link when a page will be written: render "" or "always" */}}
+        {{ $linkable := or (eq $render "") (eq $render "always") }}
+
+        <li class="portfolio-item">
+            <!-- Title -->
+            {{ if $linkable }}
+            <a href="{{ .RelPermalink }}" class="portfolio-title">{{ .Title }}</a>
+            {{ else }}
+            <span class="portfolio-title" aria-disabled="true" title="Write-up coming soon">{{ .Title }}</span>
+            {{ end }}
+
+            {{/* Summary */}}
+            {{ if or .Params.summary .Summary }}
+            <p class="portfolio-summary">
+                {{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
+            </p>
+            {{ end }}
+
+            {{/* Highlights */}}
+            {{ with .Params.highlights }}
+            {{ if gt (len .) 0 }}
+            <ul class="portfolio-highlights">
+                {{ range first 3 . }}<li>{{ . | markdownify }}</li>{{ end }}
+            </ul>
+            {{ end }}
+            {{ end }}
+
+            <!-- Tags -->
+            {{ with .GetTerms "portfolio_tags" }}
+            <div class="tags-block">
+                {{ range . }}
+                <a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </li>
+        {{ end }}
+        {{ end }}
+    </ul>
+</main>
+{{ end }}
+```
+
+### Step 3: Add custom styling (optional)
+
+Add taxonomy-specific styles to your CSS (e.g., `assets/scss/_portfolio.scss`):
+
+```scss
+/* Taxonomy page header */
+.taxonomy-header {
+    margin-bottom: 2rem;
+}
+
+.taxonomy-description {
+    color: var(--muted-text);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* Breadcrumb navigation */
+.breadcrumb {
+    font-size: 0.9rem;
+    color: var(--muted-text);
+    margin-top: 1rem;
+}
+
+.breadcrumb a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Project count indicator */
+.project-count {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+```
+
+### Step 4: Add tag descriptions (optional)
+
+Create a data file to provide custom descriptions for each tag: `data/portfolio_tag_descriptions.yaml`
+
+```yaml
+Machine Learning:
+  description: "Projects using classical ML algorithms, supervised/unsupervised learning, and ML pipelines for classification, regression, and feature engineering."
+
+Deep Learning:
+  description: "Neural network-based projects including CNNs, RNNs, transformers, and attention mechanisms for complex pattern recognition."
+
+Reinforcement Learning:
+  description: "RL-specific projects using Q-learning, policy gradients, and self-play for game agents and optimization tasks."
+
+Generative AI:
+  description: "Projects involving LLMs, diffusion models, GANs, and conversational agents for text and image generation."
+
+Audio:
+  description: "Audio processing, speech recognition, and acoustic analysis projects."
+
+Text:
+  description: "Text processing, document analysis, and natural language understanding projects."
+
+Video:
+  description: "Video processing, computer vision, and action recognition projects."
+
+Images:
+  description: "Image processing, object detection, and computer vision projects."
+```
+
+Then update the template to use these descriptions:
+
+```go-html-template
+{{ $tagData := index .Site.Data.portfolio_tag_descriptions .Title }}
+<p class="taxonomy-description">
+    {{ if $tagData }}
+        {{ $tagData.description }}
+    {{ else }}
+        {{ printf "Portfolio projects tagged with %s" .Title }}
+    {{ end }}
+</p>
+```
+
+### Step 5: Test the taxonomy pages
+
+1. **Build the site:**
+   ```bash
+   hugo --cleanDestinationDir
+   ```
+
+2. **Start local server:**
+   ```bash
+   hugo server
+   ```
+
+3. **Navigate to taxonomy pages:**
+   - Visit `/portfolio/` and click any tag
+   - Or directly navigate to `/portfolio_tags/machine-learning/`
+   - Verify the new template is being used
+
+4. **Check for issues:**
+   - Verify all projects appear with full highlights/summaries
+   - Check breadcrumb links work correctly
+   - Test tag chips still link to other taxonomy pages
+   - Verify mobile responsiveness
+
+### Alternative: Using partials for reusability
+
+If you want to avoid duplicating the portfolio item structure, extract it into a partial:
+
+**1. Create `layouts/partials/portfolio-item.html`:**
+
+```go-html-template
+{{/* layouts/partials/portfolio-item.html */}}
+{{/* Expects . to be a page context */}}
+
+{{/* Read build flags safely */}}
+{{ $render := "" }}
+{{ $list := "" }}
+{{ with .Params.build }}
+{{ $render = (index . "render" | default "") }}
+{{ $list = (index . "list" | default "") }}
+{{ end }}
+
+{{/* Skip entirely if list == "never" or if draft */}}
+{{ if and (ne $list "never") (not .Draft) }}
+{{ $linkable := or (eq $render "") (eq $render "always") }}
+
+<li class="portfolio-item">
+    <!-- Title -->
+    {{ if $linkable }}
+    <a href="{{ .RelPermalink }}" class="portfolio-title">{{ .Title }}</a>
+    {{ else }}
+    <span class="portfolio-title" aria-disabled="true" title="Write-up coming soon">{{ .Title }}</span>
+    {{ end }}
+
+    {{/* Summary */}}
+    {{ if or .Params.summary .Summary }}
+    <p class="portfolio-summary">
+        {{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary }}{{ end }}
+    </p>
+    {{ end }}
+
+    {{/* Highlights */}}
+    {{ with .Params.highlights }}
+    {{ if gt (len .) 0 }}
+    <ul class="portfolio-highlights">
+        {{ range first 3 . }}<li>{{ . | markdownify }}</li>{{ end }}
+    </ul>
+    {{ end }}
+    {{ end }}
+
+    <!-- Tags -->
+    {{ with .GetTerms "portfolio_tags" }}
+    <div class="tags-block">
+        {{ range . }}
+        <a class="tag" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+</li>
+{{ end }}
+```
+
+**2. Update `layouts/portfolio/list.html` to use the partial:**
+
+```go-html-template
+<ul class="portfolio-list">
+    {{ range $pages }}
+    {{ partial "portfolio-item.html" . }}
+    {{ end }}
+</ul>
+```
+
+**3. Update `layouts/portfolio_tags/term.html` to use the same partial:**
+
+```go-html-template
+<ul class="portfolio-list">
+    {{ range $pages }}
+    {{ partial "portfolio-item.html" . }}
+    {{ end }}
+</ul>
+```
+
+**Benefits of using partials:**
+- Single source of truth for portfolio item rendering
+- Easier to maintain (change once, affects both list and taxonomy pages)
+- Reduces code duplication
+- Makes future changes simpler
+
+### Troubleshooting
+
+**Issue: Taxonomy page still shows theme default**
+
+1. Verify file path is exactly `layouts/portfolio_tags/term.html`
+2. Rebuild with `hugo --cleanDestinationDir` to clear cache
+3. Check Hugo version supports taxonomy templates (`hugo version`)
+4. Verify no typos in taxonomy name (`portfolio_tags` not `portfolio-tags`)
+
+**Issue: Projects not appearing on taxonomy page**
+
+1. Verify projects have the tag in front matter: `portfolio_tags: ["Tag Name"]`
+2. Check tag capitalization matches exactly (case-sensitive)
+3. Ensure projects aren't drafts or have `build.list: "never"`
+4. Rebuild to regenerate taxonomy pages
+
+**Issue: Styling looks wrong**
+
+1. Check if portfolio list styles are in your CSS
+2. Verify `_portfolio.scss` is imported in main stylesheet
+3. Use browser dev tools to check which styles are applied
+4. Clear browser cache and rebuild
+
+**Issue: Breadcrumb links 404**
+
+1. Verify `/portfolio/` page exists at `content/portfolio/_index.md`
+2. Check `baseURL` in `config/_default/hugo.toml` is correct
+3. Test with `hugo server` (should work locally)
+
 ## Related Documentation
 
 - [portfolio-quickstart.md](portfolio-quickstart.md) - Fast-start guide with tag examples
