@@ -14,6 +14,8 @@ There are three primary controls for portfolio entry visibility:
 2. **`build.list`** - Controls whether entry appears on `/portfolio/` list page
 3. **`build.render`** - Controls whether full HTML page is generated
 
+**Important:** Portfolio tags (`portfolio_tags`) do **not** control visibility. Tags are for categorization only and have no effect on whether an entry appears. Visibility is controlled exclusively by `draft`, `build.list`, and `build.render` flags.
+
 ## Visibility Matrix
 
 | draft | build.list | build.render | List Visibility | Title Link | Page Built | Use Case |
@@ -173,6 +175,87 @@ draft: false
 - Missing `highlights`: No bullet points shown
 - Missing `tags`: No tags displayed
 - Missing `date`: Sorting falls back to file modification time
+
+## Date Handling and Future-Dated Content
+
+### How Hugo handles dates
+
+Hugo's build behavior with dates:
+- **Production builds** (`hugo`): Exclude content with `date` in the future (relative to build time)
+- **Local development** (`hugo server -DF`): Include future-dated content when `-F` flag is used
+- **Undated content**: Falls back to file modification time for sorting
+
+### Recommended date practices
+
+**Use past or current dates for published work:**
+```yaml
+# Good: Project completed last month
+date: 2024-11-15
+draft: false
+
+# Good: Published today
+date: 2024-12-01
+draft: false
+```
+
+**Avoid future dates unless intentional:**
+```yaml
+# Risky: Will be hidden until Dec 15, 2025
+date: 2025-12-15
+draft: false
+```
+
+If you accidentally use a future date:
+- The entry will be **hidden in production** builds
+- The entry will **appear locally** when using `hugo server -DF`
+- This can cause confusion ("It works locally but not in prod")
+
+### When to use future dates (advanced)
+
+Future dates are useful for **scheduled publishing**:
+```yaml
+# Will appear on production site on Jan 1, 2026
+date: 2026-01-01
+draft: false
+```
+
+**Use cases:**
+- Embargo dates for coordinated releases
+- Scheduled announcements
+- Conference presentations (publish on talk date)
+
+**Important:** GitHub Actions deploys run with `--buildFuture=false`, so future-dated content will not appear on the live site until the date arrives and a new build is triggered (by pushing another commit).
+
+### Troubleshooting date-related visibility
+
+**Issue: Entry appears locally but not in production**
+
+1. Check the `date` field - is it in the future?
+2. Compare to today's date: `date: 2025-12-01` vs. today's actual date
+3. Options to fix:
+   - **Change date to past/present**: `date: 2024-12-01`
+   - **Use draft flag instead**: Keep future date, add `draft: true`
+   - **Wait**: If intentional, wait until the date arrives
+
+**Issue: Entry order seems wrong**
+
+1. Check if all entries have explicit `date` fields
+2. Entries without dates use file modification time
+3. Add explicit dates for consistent sorting:
+   ```yaml
+   date: 2024-11-15  # Project completion date
+   ```
+
+### Summary: Date best practices
+
+1. **Always include a `date` field** for consistent sorting
+2. **Use past or current dates** for immediate publication
+3. **Avoid accidental future dates** - check carefully before committing
+4. **Future dates are for scheduled publishing** - understand they'll be hidden until the date arrives
+5. **Test production builds locally** to catch future-date issues:
+   ```bash
+   hugo --buildFuture=false
+   ```
 
 ## Common Scenarios
 

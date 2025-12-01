@@ -4,6 +4,8 @@
 
 This document defines the canonical `portfolio_tags` vocabulary and selection rules for portfolio projects.
 
+**Important:** Tags are for **categorization only** and do not control visibility. Whether a portfolio entry appears on the list is controlled by `draft`, `build.list`, and `build.render` flags (see [portfolio-visibility.md](portfolio-visibility.md)). Tags have no effect on publication or visibility.
+
 ## Tag Format
 
 - **Case-sensitive**: Use the exact capitalization shown below (e.g., `Machine Learning`, not `machine learning`)

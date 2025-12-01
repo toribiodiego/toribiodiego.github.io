@@ -30,7 +30,7 @@ Before publishing, verify:
 - [ ] **Summary**: 10-20 words, starts with action verb, one sentence
 - [ ] **Highlights**: Exactly 3 bullets, 15-25 words each, mix technical + results
 - [ ] **Tags**: 2-3 tags from existing vocabulary (see below)
-- [ ] **Date**: YYYY-MM-DD format, accurate project completion date
+- [ ] **Date**: YYYY-MM-DD format, **use past or current date** (future dates hide entry in production)
 - [ ] **Draft**: Set to `false` when ready to publish
 
 ## Common Tags
