@@ -1,7 +1,6 @@
 {{/* layouts/portfolio/list.html */}}
 {{ define "main" }}
-<main>
-    {{ .Content }}
+{{ .Content }}
 
     {{ $pages := sort .RegularPages "Weight" "asc" "Date" "desc" "Title" "asc" }}
 
@@ -56,5 +55,4 @@
         {{ end }}
         {{ end }}
     </ul>
-</main>
 {{ end }}
