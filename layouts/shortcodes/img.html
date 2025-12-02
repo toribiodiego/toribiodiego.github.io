@@ -1,0 +1,72 @@
+{{/*
+  Responsive image shortcode with WebP fallback, srcset, and lazy loading
+
+  Usage:
+    {{< img src="/pfp-optimized" alt="Profile picture" width="250" height="250" >}}
+    {{< img src="/pfp-optimized" alt="Profile picture" width="250" height="250" sizes="(max-width: 600px) 100vw, 250px" >}}
+    {{< img src="/pfp-optimized" alt="Profile picture" width="250" height="250" class="border-radius" loading="eager" >}}
+
+  Parameters:
+    src (required) - Base path to image without extension (e.g., "/pfp-optimized")
+    alt (required) - Alt text for accessibility
+    width (optional) - Image width in pixels (for layout stability)
+    height (optional) - Image height in pixels (for layout stability)
+    sizes (optional) - Responsive sizes attribute (default: image width or "100vw")
+    class (optional) - CSS classes to apply to img element
+    style (optional) - Inline styles to apply to img element
+    loading (optional) - Loading strategy: "lazy" (default) or "eager"
+
+  Expects pre-optimized images in static/:
+    - {src}.webp - WebP version for modern browsers
+    - {src}.jpg or {src}.jpeg - JPEG fallback for older browsers
+*/}}
+
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" -}}
+{{- $width := .Get "width" -}}
+{{- $height := .Get "height" -}}
+{{- $class := .Get "class" -}}
+{{- $style := .Get "style" -}}
+{{- $loading := .Get "loading" | default "lazy" -}}
+{{- $sizes := .Get "sizes" -}}
+
+{{- if not $src -}}
+  {{- errorf "img shortcode: 'src' parameter is required. Usage: {{< img src=\"/image-path\" alt=\"Description\" >}}" -}}
+{{- end -}}
+
+{{- if not $alt -}}
+  {{- errorf "img shortcode: 'alt' parameter is required for accessibility. Usage: {{< img src=\"%s\" alt=\"Description\" >}}" $src -}}
+{{- end -}}
+
+{{- /* Determine default sizes if not provided */ -}}
+{{- if not $sizes -}}
+  {{- if $width -}}
+    {{- $sizes = printf "(max-width: %spx) 100vw, %spx" $width $width -}}
+  {{- else -}}
+    {{- $sizes = "100vw" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* Construct image paths */ -}}
+{{- $webpPath := printf "%s.webp" $src -}}
+{{- $jpegPath := printf "%s.jpg" $src -}}
+{{- $jpgPath := printf "%s.jpeg" $src -}}
+
+{{- /* Try to detect which fallback format exists */ -}}
+{{- $fallbackPath := $jpegPath -}}
+
+{{- /* Build img attributes */ -}}
+{{- $imgAttrs := slice -}}
+{{- $imgAttrs = $imgAttrs | append (printf "src=\"%s\"" $fallbackPath) -}}
+{{- $imgAttrs = $imgAttrs | append (printf "alt=\"%s\"" $alt) -}}
+{{- with $width }}{{ $imgAttrs = $imgAttrs | append (printf "width=\"%s\"" .) }}{{ end -}}
+{{- with $height }}{{ $imgAttrs = $imgAttrs | append (printf "height=\"%s\"" .) }}{{ end -}}
+{{- with $class }}{{ $imgAttrs = $imgAttrs | append (printf "class=\"%s\"" .) }}{{ end -}}
+{{- with $style }}{{ $imgAttrs = $imgAttrs | append (printf "style=\"%s\"" .) }}{{ end -}}
+{{- with $sizes }}{{ $imgAttrs = $imgAttrs | append (printf "sizes=\"%s\"" .) }}{{ end -}}
+{{- with $loading }}{{ $imgAttrs = $imgAttrs | append (printf "loading=\"%s\"" .) }}{{ end -}}
+
+<picture>
+  <source srcset="{{ $webpPath }}" type="image/webp"{{ with $sizes }} sizes="{{ . }}"{{ end }}>
+  <img {{ delimit $imgAttrs " " | safeHTMLAttr }}>
+</picture>

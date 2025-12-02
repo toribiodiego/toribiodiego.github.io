@@ -20,6 +20,7 @@ Writing and formatting guides for portfolio projects and posts.
 - [portfolio-style-and-examples.md](portfolio-style-and-examples.md) — writing style, content structure, annotated examples
 - [portfolio-visibility.md](portfolio-visibility.md) — visibility controls (draft, build flags), decision tree, troubleshooting
 - [portfolio-tags.md](portfolio-tags.md) — canonical tag vocabulary, selection rules, when to add new tags
+- [images.md](images.md) — responsive image shortcode, optimization workflow, accessibility guidelines
 
 ## Quick reference
 

@@ -11,6 +11,7 @@ layouts/
 ├── partials/                    # Reusable template components
 │   ├── custom_body.html        # Theme hook: body content injection
 │   ├── custom_head.html        # Theme hook: head content injection (theme toggle, SCSS)
+│   ├── favicon.html            # Theme-aware favicon switcher
 │   ├── footer.html             # Override: custom footer with email copy
 │   ├── google_analytics_with_preview.html  # Custom: GA4 with preview mode support
 │   ├── header.html             # Override: custom header with theme toggle
@@ -20,7 +21,8 @@ layouts/
 ├── portfolio/                   # Portfolio section templates
 │   ├── list.html               # Override: custom portfolio list with highlights
 │   └── single.html             # Override: custom portfolio single page
-├── shortcodes/                  # Custom Hugo shortcodes (currently none)
+├── shortcodes/                  # Custom Hugo shortcodes
+│   └── img.html                # Responsive image with WebP/JPEG fallback
 └── writing/                     # Writing section templates
     ├── list.html               # Override: custom writing list
     └── single.html             # Override: custom writing single page
@@ -315,6 +317,36 @@ Visit `/?preview=true` to verify analytics bypass works.
 2. Add `list.html` (section index page)
 3. Add `single.html` (individual item page)
 4. Test at `/your-section/`
+
+## Shortcodes
+
+### `img.html` - Responsive Image with WebP Fallback
+
+**Purpose:** Generates responsive images with WebP format for modern browsers and JPEG fallback for older browsers.
+
+**Usage:**
+```markdown
+{{ "{{" }}< img src="/pfp-optimized" alt="Profile picture" width="250" height="250" >}}
+{{ "{{" }}< img src="/image" alt="Description" width="800" height="600" sizes="(max-width: 768px) 100vw, 800px" >}}
+```
+
+**Parameters:**
+- `src` (required) - Base path without extension (e.g., `/pfp-optimized`)
+- `alt` (required) - Alt text for accessibility
+- `width`, `height` (optional) - Dimensions for layout stability
+- `sizes` (optional) - Responsive sizes attribute (auto-generated if not provided)
+- `class`, `style` (optional) - CSS customization
+- `loading` (optional) - `lazy` (default) or `eager`
+
+**Output:**
+```html
+<picture>
+  <source srcset="/pfp-optimized.webp" type="image/webp" sizes="...">
+  <img src="/pfp-optimized.jpg" alt="Profile picture" width="250" height="250" loading="lazy">
+</picture>
+```
+
+**See:** `docs/authoring/images.md` for detailed usage guide and optimization workflow.
 
 ### Debug template rendering
 
