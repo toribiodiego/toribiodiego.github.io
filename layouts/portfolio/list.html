@@ -1,10 +1,7 @@
 {{/* layouts/portfolio/list.html */}}
 {{ define "main" }}
-{{ .Content }}
-
-    {{ $pages := sort .RegularPages "Weight" "asc" "Date" "desc" "Title" "asc" }}
-
-    <ul class="portfolio-list">
+{{- $pages := sort .RegularPages "Weight" "asc" "Date" "desc" "Title" "asc" }}
+<ul class="portfolio-list">
         {{ range $pages }}
         {{/* Read build flags safely */}}
         {{ $render := "" }}
