@@ -28,7 +28,9 @@ static/
 ├── CNAME                          # GitHub Pages custom domain
 ├── site.webmanifest               # PWA manifest for installable web app
 ├── Toribio_Diego_Resume.pdf      # Resume file (public download)
-├── pfp.jpg                        # Profile picture (4.4 MB)
+├── pfp.jpg                        # Profile picture original (4.2 MB)
+├── pfp-optimized.webp             # Optimized profile picture WebP (18 KB)
+├── pfp-optimized.jpg              # Optimized profile picture JPEG (31 KB)
 ├── dragon-icon.jpg                # Source dragon icon image
 ├── favicon-light.ico              # Light mode favicon (black dragon)
 ├── favicon-dark.ico               # Dark mode favicon (white dragon)
@@ -140,22 +142,59 @@ diegotoribio.com
 
 ### `pfp.jpg`
 
-**Purpose:** Profile picture for about page or social media.
+**Purpose:** Original high-resolution profile picture (source image).
 
 **Access:** `https://diegotoribio.com/pfp.jpg`
 
-**Size:** ~4.4 MB (large - consider optimization)
+**Size:** ~4.2 MB
 
-**Usage:**
+**Dimensions:** 3648×3648 pixels
+
+**Note:** This is the original source image. For web usage, use the optimized versions below.
+
+### `pfp-optimized.webp` / `pfp-optimized.jpg`
+
+**Purpose:** Optimized profile pictures for web usage with responsive image support.
+
+**Access:**
+- `https://diegotoribio.com/pfp-optimized.webp` (WebP format)
+- `https://diegotoribio.com/pfp-optimized.jpg` (JPEG fallback)
+
+**Size:**
+- WebP: ~18 KB (99.6% reduction from original)
+- JPEG: ~31 KB (99.3% reduction from original)
+
+**Dimensions:** 500×500 pixels
+
+**Usage in content:**
 ```html
-<img src="/pfp.jpg" alt="Profile picture">
+<picture>
+  <source srcset="/pfp-optimized.webp" type="image/webp">
+  <img src="/pfp-optimized.jpg" alt="Profile picture" width="250" height="250" loading="lazy" style="border-radius: 12px;">
+</picture>
 ```
 
-**Optimization tips:**
-- Current size is quite large for web
-- Consider resizing to 800x800 or smaller
-- Use tools like ImageOptim or Squoosh to compress
-- Target size: < 500 KB for web use
+**How it works:**
+1. Modern browsers load WebP format (smallest file size, best quality)
+2. Older browsers fall back to JPEG format
+3. Lazy loading defers load until image is near viewport
+4. Explicit dimensions prevent layout shift
+
+**Regenerating:**
+```bash
+cd static
+# Generate WebP (modern browsers)
+magick pfp.jpg -resize 500x500 -quality 85 -define webp:method=6 pfp-optimized.webp
+
+# Generate JPEG fallback (older browsers)
+magick pfp.jpg -resize 500x500 -quality 85 pfp-optimized.jpg
+```
+
+**Benefits:**
+- 99%+ file size reduction improves page load time
+- WebP format provides better compression than JPEG
+- Responsive images serve optimal format per browser
+- Lazy loading reduces initial page weight
 
 ### Theme-Aware Favicons
 
@@ -507,7 +546,9 @@ Or configure server redirects.
 - `CNAME`: 16 bytes
 - `site.webmanifest`: ~725 bytes
 - `Toribio_Diego_Resume.pdf`: ~97 KB
-- `pfp.jpg`: ~4.4 MB ⚠️ Large
+- `pfp.jpg`: ~4.2 MB (original source image)
+- `pfp-optimized.webp`: ~18 KB (optimized for web)
+- `pfp-optimized.jpg`: ~31 KB (optimized fallback)
 - `dragon-icon.jpg`: ~100 KB
 - `favicon-light.ico`: ~12 KB
 - `favicon-dark.ico`: ~12 KB

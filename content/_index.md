@@ -1,4 +1,7 @@
-<img src="/pfp.jpg" alt="Profile picture" width="250" style="border-radius: 12px;">
+<picture>
+  <source srcset="/pfp-optimized.webp" type="image/webp">
+  <img src="/pfp-optimized.jpg" alt="Profile picture" width="250" height="250" loading="lazy" style="border-radius: 12px;">
+</picture>
 
 I'm pursuing a Master's in Electrical Engineering at The Cooper Union, where I also earned a BEng (Computer Engineering track). My thesis explores how to make reinforcement learning more data-efficient and reliable, with [Sam Keene](https://cooper.edu/academics/people/sam-keene) as my advisor.
 
