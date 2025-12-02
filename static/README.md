@@ -180,7 +180,15 @@ diegotoribio.com
 3. Lazy loading defers load until image is near viewport
 4. Explicit dimensions prevent layout shift
 
-**Regenerating:**
+**Quick optimization (any new image):**
+```bash
+cd static
+# Single command for both formats
+magick input.jpg -resize 800x800 -quality 85 output.jpg
+magick input.jpg -resize 800x800 -quality 85 -define webp:method=6 output.webp
+```
+
+**Regenerating profile picture:**
 ```bash
 cd static
 # Generate WebP (modern browsers)

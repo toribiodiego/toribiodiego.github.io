@@ -35,6 +35,16 @@ Guide for adding responsive, optimized images to portfolio projects and blog pos
 {{< img src="/image-name" alt="Description" width="800" height="600" sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 800px" >}}
 ```
 
+**Quick optimization command:**
+```bash
+# Generate both WebP and JPEG from source image
+magick input.jpg -resize 800x800 -quality 85 output.jpg
+magick input.jpg -resize 800x800 -quality 85 -define webp:method=6 output.webp
+
+# Or for quick JPEG-only optimization
+magick input.jpg -resize 500x500 -quality 85 output-optimized.jpg
+```
+
 ## The `img` shortcode
 
 The `img` shortcode provides:
