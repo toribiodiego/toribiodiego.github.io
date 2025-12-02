@@ -1,12 +1,12 @@
 [[main]]
-  name = "Writing"
-  pageRef = "/writing"
+  name = "About"
+  url  = "/"
   weight = 10
 [[main]]
   name = "Portfolio"
   url  = "/portfolio/"
   weight = 20
 [[main]]
-  name = "About"
-  url  = "/"
+  name = "Writing"
+  pageRef = "/writing"
   weight = 30
