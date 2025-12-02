@@ -43,31 +43,20 @@ hugo server --port 8080
 
 ## Google Analytics Behavior
 
-### Development vs Production
+### Development Mode (Automatic)
 
-Hugo automatically disables Google Analytics when running in development mode:
+Hugo automatically disables Google Analytics when running `hugo server`:
 
-- **Development mode** (default with `hugo server`): Analytics scripts are NOT included
-- **Production mode** (default with `hugo` build): Analytics scripts ARE included
+- **Development mode** (default): Analytics scripts are NOT included
+- **Production mode** (hugo build): Analytics scripts ARE included
 
-### Verifying Analytics is Disabled
+**Verifying analytics is disabled:**
+1. Start: `hugo server`
+2. Open `http://localhost:1313` in browser
+3. Open DevTools (F12) → Network tab
+4. Verify no requests to `googletagmanager.com`
 
-1. Start the local server: `hugo server`
-2. Open `http://localhost:1313` in your browser
-3. Open browser DevTools (F12) and check the Network tab
-4. Verify no requests to `googletagmanager.com` or `google-analytics.com`
-
-Alternatively, view the page source and search for your Analytics ID (`G-SVZT3TC8TJ`). It should not appear in development mode.
-
-### Force Production Mode Locally (Not Recommended)
-
-If you need to test analytics behavior locally:
-
-```bash
-hugo server --environment production
-```
-
-**Warning**: This will send analytics data from localhost. Only use this if you need to verify analytics integration, and be aware it will pollute your metrics.
+**For production analytics testing:** See [../analytics/analytics-and-referrals.md](../analytics/analytics-and-referrals.md) for preview mode (`?preview=true` flag) which lets you browse the production site without triggering analytics.
 
 ## Base URL Considerations
 

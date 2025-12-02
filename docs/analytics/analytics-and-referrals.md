@@ -2,11 +2,17 @@
 
 **Use this when:** You're testing the live site and don't want to pollute analytics, creating UTM-tagged links to share on social media, or debugging why analytics aren't loading.
 
-This guide explains how to filter self-traffic from analytics and how to create trackable referral URLs for sharing the site.
+**This is the canonical guide** for all analytics-related topics including preview mode, self-traffic filtering, and UTM tracking.
+
+This guide explains how to filter self-traffic from analytics in both development and production environments, and how to create trackable referral URLs for sharing the site.
 
 ## Self-Traffic Filtering
 
-### Development Mode (Current)
+Two modes are available depending on your environment:
+
+### Development Mode (Local)
+
+**When to use:** Running the site locally for development.
 
 The site automatically excludes analytics in development mode:
 
@@ -14,9 +20,21 @@ The site automatically excludes analytics in development mode:
 hugo server
 ```
 
-When running locally with `hugo server`, Google Analytics scripts are not loaded, so no data is sent. See [local-preview.md](../ops/local-preview.md) for details.
+**How it works:**
+- Hugo defaults to `development` environment with `hugo server`
+- Google Analytics scripts are not loaded
+- No analytics data is sent
+
+**Verification:**
+- Open `http://localhost:1313`
+- Check DevTools (F12) → Network tab
+- Verify no requests to `googletagmanager.com`
+
+**See also:** [local-preview.md](../ops/local-preview.md) for local development workflow.
 
 ### Preview Mode (Production)
+
+**When to use:** Testing the live production site without polluting analytics.
 
 The site supports a preview mode flag that suppresses analytics tracking on the production site:
 

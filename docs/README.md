@@ -32,7 +32,7 @@ Configuration, testing, and customization of analytics and site appearance.
 
 **Start here:** [analytics/index.md](analytics/index.md)
 
-- [analytics/analytics-and-referrals.md](analytics/analytics-and-referrals.md) — preview mode toggle, self-traffic filtering, UTM patterns
+- [analytics/analytics-and-referrals.md](analytics/analytics-and-referrals.md) — **canonical analytics guide**: preview mode (`?preview=true`), self-traffic filtering (dev/prod), UTM patterns
 - [analytics/theming-and-dark-mode.md](analytics/theming-and-dark-mode.md) — toggle implementation, CSS variables, customization notes
 
 ## Quick Commands
