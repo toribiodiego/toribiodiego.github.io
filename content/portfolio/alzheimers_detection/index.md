@@ -22,13 +22,24 @@ Alzheimer's dementia is a neurodegenerative disease that impairs memory and comm
   <figcaption>The "Cookie Theft" picture from the Boston Diagnostic Aphasia Examination. Participants were asked to describe this scene in their own words, providing spontaneous speech samples used for analysis.</figcaption>
 </figure>
 
+## Data Processing Pipeline
+
+The ETL pipeline was designed to efficiently process and organize the audio dataset using parallelized processing and automatic logging to support large-scale experimentation. Each recording was processed with librosa and cropped to patient-only speech using the provided timestamps.
+
 <figure class="post-figure">
   <img src="resources/01_flowchart.png" alt="Project capture" style="width:100%; height:auto; display:block; margin:auto;">
   <figcaption>Overview of the multimodal pipeline: audio and transcribed speech yield acoustic and linguistic features used for classification.</figcaption>
 </figure>
 
+## Feature Extraction and Embeddings
 
-The ETL pipeline was designed to efficiently process and organize the audio dataset using parallelized processing and automatic logging to support large-scale experimentation. Each recording was processed with librosa and cropped to patient-only speech using the provided timestamps. Audio features were extracted with openSMILE (using the eGeMAPS feature set), and embeddings were generated with a pretrained wav2vec 2.0 model. DistilBERT produced linguistic embeddings from the transcripts, and before training, the audio and text vectors were concatenated into a single multimodal representation. We evaluated each configuration using Random Forest, XGBoost, and a Multi-Layer Perceptron, finding that text-based models consistently outperformed audio and multimodal ones—suggesting that transformer-based embeddings like those from BERT capture richer linguistic information than the speech representations from wav2vec 2.0. This research experience demystified embeddings for me; after experimenting with PCA to reduce noise in the high-dimensional vectors, I learned that while transformer models generate rich representations, they’re difficult to interpret and offer little control once produced.
+Audio features were extracted with openSMILE (using the eGeMAPS feature set), and embeddings were generated with a pretrained wav2vec 2.0 model. DistilBERT produced linguistic embeddings from the transcripts, and before training, the audio and text vectors were concatenated into a single multimodal representation.
+
+## Model Training and Results
+
+We evaluated each configuration using Random Forest, XGBoost, and a Multi-Layer Perceptron, finding that text-based models consistently outperformed audio and multimodal ones—suggesting that transformer-based embeddings like those from BERT capture richer linguistic information than the speech representations from wav2vec 2.0.
+
+This research experience demystified embeddings for me; after experimenting with PCA to reduce noise in the high-dimensional vectors, I learned that while transformer models generate rich representations, they're difficult to interpret and offer little control once produced.
 
 
 
