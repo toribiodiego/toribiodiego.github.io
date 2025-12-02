@@ -16,6 +16,11 @@ Writing and formatting guides for portfolio projects and posts.
 
 **Start here:** [authoring/index.md](authoring/index.md)
 
+**Quick in-repo references:**
+- [content/portfolio/README.md](../content/portfolio/README.md) — portfolio authoring guide (in-repo, draft)
+- [content/writing/README.md](../content/writing/README.md) — writing authoring guide (in-repo, draft)
+
+**Detailed guides:**
 - [authoring/portfolio-formatting.md](authoring/portfolio-formatting.md) — navigation hub directing you to the right guide
 - [authoring/portfolio-quickstart.md](authoring/portfolio-quickstart.md) — fast-start template, checklist, and minimal examples
 - [authoring/portfolio-style-and-examples.md](authoring/portfolio-style-and-examples.md) — writing style, content structure, annotated examples
