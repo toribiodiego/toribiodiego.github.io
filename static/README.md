@@ -24,14 +24,24 @@ static/js/preview-flag.js  →  public/js/preview-flag.js
 
 ```
 static/
-├── README.md                    # This file
-├── CNAME                        # GitHub Pages custom domain
-├── Toribio_Diego_Resume.pdf    # Resume file (public download)
-├── pfp.jpg                      # Profile picture (4.4 MB)
-├── css/                         # (empty) Reserved for future static CSS
-└── js/                          # JavaScript files
-    ├── preview-flag.js          # Preview mode detection and management
-    └── theme-toggle.js          # Dark/light theme toggle functionality
+├── README.md                      # This file
+├── CNAME                          # GitHub Pages custom domain
+├── Toribio_Diego_Resume.pdf      # Resume file (public download)
+├── pfp.jpg                        # Profile picture (4.4 MB)
+├── dragon-icon.jpg                # Source dragon icon image
+├── favicon-light.ico              # Light mode favicon (black dragon)
+├── favicon-dark.ico               # Dark mode favicon (white dragon)
+├── favicon-light.png              # Light mode 32x32 PNG
+├── favicon-dark.png               # Dark mode 32x32 PNG
+├── apple-touch-icon-light.png    # Light mode iOS icon (180x180)
+├── apple-touch-icon-dark.png     # Dark mode iOS icon (180x180)
+├── favicon.ico                    # Default fallback (light mode copy)
+├── favicon.png                    # Default fallback (light mode copy)
+├── apple-touch-icon.png           # Default fallback (light mode copy)
+├── css/                           # (empty) Reserved for future static CSS
+└── js/                            # JavaScript files
+    ├── preview-flag.js            # Preview mode detection and management
+    └── theme-toggle.js            # Dark/light theme toggle functionality
 ```
 
 ## Files
@@ -91,6 +101,124 @@ diegotoribio.com
 - Consider resizing to 800x800 or smaller
 - Use tools like ImageOptim or Squoosh to compress
 - Target size: < 500 KB for web use
+
+### Theme-Aware Favicons
+
+**Overview:** The site uses dynamic favicons that automatically switch between light and dark versions based on the user's theme preference.
+
+**Source:** `dragon-icon.jpg` - Aztec/Mayan-style dragon sticker (1200×915)
+
+**How it works:**
+1. JavaScript in `layouts/partials/favicon.html` detects current theme
+2. When theme changes (via theme-toggle.js), favicons update automatically
+3. Black dragon shown in light mode, white dragon in dark mode
+4. Integrates with existing theme toggle system
+
+### `favicon-light.ico` / `favicon-dark.ico`
+
+**Purpose:** Multi-resolution ICO files for light and dark modes.
+
+**Access:**
+- `https://diegotoribio.com/favicon-light.ico` (black dragon)
+- `https://diegotoribio.com/favicon-dark.ico` (white dragon)
+
+**Size:** ~12 KB each
+
+**Resolutions:** Contains 16×16, 32×32, and 48×48 pixel variants
+
+**Usage:** Dynamically loaded via JavaScript in `layouts/partials/favicon.html`:
+```javascript
+document.getElementById('favicon-ico').href = `/favicon-${theme}.ico`;
+```
+
+**Regenerating:**
+```bash
+# Light mode (black dragon)
+cd static
+magick dragon-icon.jpg -fuzz 10% -transparent white dragon-black.png
+magick dragon-black.png -resize 16x16 temp-16.png
+magick dragon-black.png -resize 32x32 temp-32.png
+magick dragon-black.png -resize 48x48 temp-48.png
+magick temp-*.png favicon-light.ico
+rm temp-*.png
+
+# Dark mode (white dragon)
+magick dragon-black.png -channel RGB -negate dragon-white.png
+magick dragon-white.png -resize 16x16 temp-16.png
+magick dragon-white.png -resize 32x32 temp-32.png
+magick dragon-white.png -resize 48x48 temp-48.png
+magick temp-*.png favicon-dark.ico
+rm temp-*.png dragon-black.png dragon-white.png
+```
+
+### `favicon-light.png` / `favicon-dark.png`
+
+**Purpose:** 32×32 PNG favicons for modern browsers.
+
+**Access:**
+- `https://diegotoribio.com/favicon-light.png` (black dragon)
+- `https://diegotoribio.com/favicon-dark.png` (white dragon)
+
+**Size:** ~2.3 KB each
+
+**Resolution:** 32×32 pixels with transparent background
+
+**Usage:** Dynamically loaded via JavaScript
+```javascript
+document.getElementById('favicon-png').href = `/favicon-${theme}.png`;
+```
+
+**Regenerating:**
+```bash
+magick dragon-icon.jpg -fuzz 10% -transparent white dragon-black.png
+magick dragon-black.png -resize 32x32 favicon-light.png
+magick dragon-black.png -channel RGB -negate -resize 32x32 favicon-dark.png
+rm dragon-black.png
+```
+
+### `apple-touch-icon-light.png` / `apple-touch-icon-dark.png`
+
+**Purpose:** iOS/iPadOS home screen icons for light and dark modes.
+
+**Access:**
+- `https://diegotoribio.com/apple-touch-icon-light.png` (black dragon)
+- `https://diegotoribio.com/apple-touch-icon-dark.png` (white dragon)
+
+**Size:** ~29-30 KB each
+
+**Resolution:** 180×180 pixels (Apple's recommended size)
+
+**Usage:** Dynamically loaded via JavaScript
+```javascript
+document.getElementById('apple-touch-icon').href = `/apple-touch-icon-${theme}.png`;
+```
+
+**How it works:**
+1. User taps "Add to Home Screen" on iOS Safari
+2. iOS requests the currently active apple-touch-icon
+3. Icon appears on home screen matching user's theme
+4. iOS applies rounded corners automatically
+
+**Regenerating:**
+```bash
+magick dragon-icon.jpg -fuzz 10% -transparent white dragon-black.png
+magick dragon-black.png -resize 180x180 apple-touch-icon-light.png
+magick dragon-black.png -channel RGB -negate -resize 180x180 apple-touch-icon-dark.png
+rm dragon-black.png
+```
+
+### `favicon.ico` / `favicon.png` / `apple-touch-icon.png` (Fallback)
+
+**Purpose:** Default fallback favicons for browsers without JavaScript or theme detection.
+
+**Details:** These are copies of the light mode versions, ensuring the site always has a visible favicon even without JavaScript support.
+
+**Regenerating:**
+```bash
+cp favicon-light.ico favicon.ico
+cp favicon-light.png favicon.png
+cp apple-touch-icon-light.png apple-touch-icon.png
+```
 
 ### `css/` (empty directory)
 
@@ -324,6 +452,16 @@ Or configure server redirects.
 - `CNAME`: 16 bytes
 - `Toribio_Diego_Resume.pdf`: ~97 KB
 - `pfp.jpg`: ~4.4 MB ⚠️ Large
+- `dragon-icon.jpg`: ~100 KB
+- `favicon-light.ico`: ~12 KB
+- `favicon-dark.ico`: ~12 KB
+- `favicon-light.png`: ~2.3 KB
+- `favicon-dark.png`: ~2.3 KB
+- `apple-touch-icon-light.png`: ~29 KB
+- `apple-touch-icon-dark.png`: ~30 KB
+- `favicon.ico` (fallback): ~12 KB
+- `favicon.png` (fallback): ~2.3 KB
+- `apple-touch-icon.png` (fallback): ~29 KB
 - `preview-flag.js`: ~2.2 KB
 - `theme-toggle.js`: ~6.4 KB
 

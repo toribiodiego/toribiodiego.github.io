@@ -1,0 +1,28 @@
+{{/* Theme-aware favicon links */}}
+<link rel="icon" id="favicon-ico" type="image/x-icon" href="/favicon-light.ico">
+<link rel="icon" id="favicon-png" type="image/png" sizes="32x32" href="/favicon-light.png">
+<link rel="apple-touch-icon" id="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-light.png">
+
+{{/* Favicon switcher - integrates with theme-toggle.js */}}
+<script>
+(function() {
+  function updateFavicon() {
+    // Check for 'dark-theme' class (set by theme-toggle.js)
+    const theme = document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light';
+    document.getElementById('favicon-ico').href = `/favicon-${theme}.ico`;
+    document.getElementById('favicon-png').href = `/favicon-${theme}.png`;
+    document.getElementById('apple-touch-icon').href = `/apple-touch-icon-${theme}.png`;
+    console.log(`[Favicon] Updated to ${theme} mode`);
+  }
+
+  // Update on load
+  updateFavicon();
+
+  // Update when theme changes (listen for class changes on html element)
+  const observer = new MutationObserver(updateFavicon);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+})();
+</script>
