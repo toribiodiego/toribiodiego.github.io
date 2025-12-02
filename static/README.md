@@ -196,6 +196,14 @@ magick pfp.jpg -resize 500x500 -quality 85 pfp-optimized.jpg
 - Responsive images serve optimal format per browser
 - Lazy loading reduces initial page weight
 
+**Authoring limits:**
+- Maximum width: 1200px
+- Maximum file size: 500KB per image
+- Required formats: WebP + JPEG fallback
+- Recommended quality: 85
+
+See [docs/authoring/images.md](../docs/authoring/images.md) for complete optimization workflow.
+
 ### Theme-Aware Favicons
 
 **Overview:** The site uses dynamic favicons that automatically switch between light and dark versions based on the user's theme preference.

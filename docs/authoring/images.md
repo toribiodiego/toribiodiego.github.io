@@ -2,6 +2,22 @@
 
 Guide for adding responsive, optimized images to portfolio projects and blog posts.
 
+## Authoring Limits
+
+**Hard constraints for image assets:**
+
+| Constraint | Limit | Rationale |
+|------------|-------|-----------|
+| **Maximum width** | 1200px | Sufficient for retina displays at 600px rendered width |
+| **Maximum file size** | 500KB per image | Balance quality and page load performance |
+| **Required formats** | WebP + JPEG fallback | Modern browsers get WebP, older browsers get JPEG |
+| **Recommended quality** | 85 (JPEG/WebP) | Optimal quality-to-size ratio for most content |
+
+**Enforcement:**
+- These limits ensure fast page loads on mobile networks
+- Images exceeding 500KB should be resized or compressed before committing
+- Use the optimization workflow below to meet these constraints
+
 ## Quick reference
 
 **Basic usage:**
@@ -70,10 +86,14 @@ Use ImageMagick to create WebP and JPEG versions:
 cd static
 
 # Generate WebP (modern browsers)
+# Note: Keep width ≤ 1200px to meet authoring limits
 magick source-image.jpg -resize 800x800 -quality 85 -define webp:method=6 my-image.webp
 
 # Generate JPEG fallback (older browsers)
 magick source-image.jpg -resize 800x800 -quality 85 my-image.jpg
+
+# Verify file sizes are under 500KB
+ls -lh my-image.webp my-image.jpg
 ```
 
 **Quality settings:**
@@ -85,7 +105,9 @@ magick source-image.jpg -resize 800x800 -quality 85 my-image.jpg
 - **Profile pictures:** 500×500 or smaller
 - **Portfolio thumbnails:** 400×400 to 600×600
 - **Portfolio hero images:** 800×600 to 1200×900
-- **Full-width images:** 1200×800 to 1600×1200
+- **Full-width images:** Up to 1200px wide (hard limit)
+
+**Note:** All images must be ≤ 1200px wide and ≤ 500KB per the authoring limits above.
 
 ### 3. Use the shortcode
 
@@ -207,16 +229,25 @@ Clear browser cache with hard refresh:
 - macOS: `Cmd+Shift+R`
 - Windows/Linux: `Ctrl+Shift+R`
 
-### Image too large
+### Image exceeds size limit (>500KB)
 
-Reduce dimensions or quality:
+First check dimensions, then adjust compression:
 ```bash
-# Smaller dimensions
-magick input.jpg -resize 600x600 -quality 80 output.jpg
+# Check current size
+identify -format "%f: %wx%h %b\n" input.jpg
 
-# More aggressive compression
-magick input.jpg -quality 75 output.jpg
+# If width > 1200px, resize to meet limit
+magick input.jpg -resize 1200x1200\> -quality 85 output.jpg
+
+# If still >500KB after resize, reduce quality
+magick input.jpg -resize 1200x1200\> -quality 80 output.jpg
+magick input.jpg -resize 1200x1200\> -quality 75 output.jpg
+
+# For WebP (usually smaller)
+magick input.jpg -resize 1200x1200\> -quality 85 -define webp:method=6 output.webp
 ```
+
+**Note:** The `\>` operator only shrinks images larger than the specified dimensions, leaving smaller images unchanged.
 
 ## See also
 
