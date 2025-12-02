@@ -7,6 +7,7 @@ This directory contains Hugo template overrides and custom partials for the site
 ```
 layouts/
 ├── README.md                    # This file
+├── 404.html                     # Custom 404 error page with site navigation
 ├── _default/                    # Default template overrides (currently empty)
 ├── partials/                    # Reusable template components
 │   ├── custom_body.html        # Theme hook: body content injection
@@ -101,6 +102,19 @@ These are entirely our own (not in the theme):
   - Simplified list compared to theme default
 - `single.html` - Individual blog post pages
   - Custom structure with date, tags, content
+
+### 404 Error Page (`layouts/404.html`)
+
+**Why override:** Theme default 404 page lacks helpful navigation and branding.
+
+**Features:**
+- Prominent 404 heading with clear error message
+- Dual call-to-action buttons (Go Home, Go Back)
+- Quick navigation links to key sections (About, Portfolio, Writing)
+- Responsive design with mobile-friendly layout
+- Custom styling integrated with site theme
+
+**Template location:** Root of layouts directory, not in a section subdirectory.
 
 ## Feature Wiring
 
@@ -326,8 +340,8 @@ Visit `/?preview=true` to verify analytics bypass works.
 
 **Usage:**
 ```markdown
-{{ "{{" }}< img src="/pfp-optimized" alt="Profile picture" width="250" height="250" >}}
-{{ "{{" }}< img src="/image" alt="Description" width="800" height="600" sizes="(max-width: 768px) 100vw, 800px" >}}
+{{"{{"}}&lt; img src="/pfp-optimized" alt="Profile picture" width="250" height="250" &gt;}}
+{{"{{"}}&lt; img src="/image" alt="Description" width="800" height="600" sizes="(max-width: 768px) 100vw, 800px" &gt;}}
 ```
 
 **Parameters:**

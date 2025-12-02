@@ -8,17 +8,8 @@
   <p>The page you're looking for doesn't exist or has been moved.</p>
 
   <div class="error-actions">
-    <a href="/" class="button-primary">Go Home</a>
-    <a href="javascript:history.back()" class="button-secondary">Go Back</a>
-  </div>
-
-  <div class="error-nav">
-    <h3>Explore the site:</h3>
-    <ul>
-      <li><a href="/">About</a> — Learn about my background and current work</li>
-      <li><a href="/portfolio/">Portfolio</a> — View my machine learning projects</li>
-      <li><a href="/writing/">Writing</a> — Read my technical notes and articles</li>
-    </ul>
+    <a href="javascript:history.back()" class="button-secondary">Back</a>
+    <a href="/" class="button-primary">Home</a>
   </div>
 </div>
 
@@ -31,14 +22,14 @@
 }
 
 .error-page h1 {
-  font-size: 6rem;
+  font-size: 3rem;
   margin: 0;
   line-height: 1;
   color: var(--text-light);
 }
 
 .error-page h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0.5rem 0 1.5rem;
 }
 
@@ -52,7 +43,6 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
@@ -86,54 +76,13 @@
   color: var(--background);
 }
 
-.error-nav {
-  margin-top: 3rem;
-  text-align: left;
-  border-top: 1px solid var(--border);
-  padding-top: 2rem;
-}
-
-.error-nav h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.error-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-.error-nav li {
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.error-nav li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-}
-
-.error-nav a {
-  font-weight: 600;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.error-nav a:hover {
-  color: var(--accent);
-}
-
 @media (max-width: 600px) {
   .error-page h1 {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 
   .error-page h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .error-actions {
