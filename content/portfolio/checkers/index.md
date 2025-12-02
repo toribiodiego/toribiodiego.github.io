@@ -4,9 +4,9 @@ date: 2024-12-20
 portfolio_tags: ["Reinforcement Learning", "Deep Learning"]
 summary: "Learned tic-tac-toe and checkers entirely through self-play."
 highlights:
-  - "1"
-  - "2"
-  - "3"
+  - "Implemented game agents that learned tic-tac-toe and checkers entirely through self-play without human guidance"
+  - "Applied Proximal Policy Optimization (PPO) inspired by AlphaGo to train reinforcement learning agents"
+  - "Developed agents capable of playing complete games by learning strategies through repeated self-competition"
 
 draft: true
 ---

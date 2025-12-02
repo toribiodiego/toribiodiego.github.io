@@ -106,6 +106,120 @@ Long results paragraph
 - Explain what you LEARNED or discovered
 - Share surprising findings or challenges overcome
 
+## Writing Summaries and Highlights
+
+The summary and highlights appear on the portfolio list page and are the first thing readers see. They need to work together without being redundant.
+
+### Summary Guidelines
+
+**Purpose**: Explain what the project is about in plain, accessible language
+
+**Characteristics**:
+- Simple, conversational tone (not stiff or overly formal)
+- Focuses on WHAT the project is, not specific results or metrics
+- Accessible to readers outside your specific domain
+- Can use technical terms, but overall meaning should be clear from context
+- Typically one sentence, 10-20 words
+
+**Good summaries** (from actual portfolio entries):
+- ✓ "Applied transformer models to detect multiple emotions in Reddit comments." (emotion classification)
+- ✓ "Used spontaneous speech from clinician-patient conversations as a diagnostic signal for automated Alzheimer's detection." (Alzheimer's)
+- ✓ "An interactive audio-video agent designed to mock and provoke attendees." (Agnus)
+
+**Avoid in summaries**:
+- ✗ Specific metrics or results ("achieving 95.7% AUC")
+- ✗ Specific model names ("with RoBERTa-Large")
+- ✗ Technical implementation details ("using PyTorch and HuggingFace")
+- ✗ Overly formal language ("evaluated architectures to ascertain optimal configuration")
+
+### Highlights Guidelines
+
+**Purpose**: Showcase specific achievements, skills, and results
+
+**Requirement**: All portfolio entries must include exactly 3 highlights, even for draft entries
+
+**Structure**: Organize highlights to tell a clear story:
+1. **Scope/Implementation**: What you built and with what technologies
+2. **Methodology**: How you approached the problem or experimented
+3. **Results**: What you achieved or learned
+
+**Characteristics**:
+- Each highlight should add NEW information not in the summary
+- Include specific numbers, metrics, technologies, and achievements
+- Avoid repeating the same type of information across multiple highlights
+- Focus each highlight on a different aspect of the project
+- Start with action verbs: "Built", "Achieved", "Implemented", "Demonstrated", "Integrated"
+
+**Examples from different project types**:
+
+**ML/Research project** (emotion classification):
+```yaml
+highlights:
+  - "Fine-tuned six transformer models on 58K samples from the GoEmotions dataset across 27 emotion labels"  # Scope
+  - "Implemented automated hyperparameter sweeps with Weights & Biases, optimizing learning rates, dropout, and batch sizes across 50+ training experiments"  # Methodology
+  - "Achieved 95.7% AUC with RoBERTa-Large while DistilBERT reached 94.8% AUC using 75% fewer parameters, enabling efficient deployment"  # Results
+```
+
+**Interactive/Creative project** (Agnus):
+```yaml
+highlights:
+  - "Built a real-time audio-video loop connecting a dynamic microphone and webcam for live speech and visual input"  # Implementation
+  - "Integrated the Gemini 2.5 Live API with WebSockets to stream and play spoken responses in continuous conversation"  # Technical integration
+  - "Configured session memory and a simple Gradio interface to let users start, stop and resume interaction seamlessly"  # User experience
+```
+
+**Installation/Exhibition project** (Extraction):
+```yaml
+highlights:
+  - "Built a real-time pipeline combining facial recognition, image generation, and face swapping to transform visitor images"  # Technical scope
+  - "Integrated multiple AI models into a seamless workflow displayed on a large LED wall for public interaction"  # Integration & display
+  - "Submitted to the NeurIPS Creative AI track as a collaborative research project from The Cooper Union"  # Context & impact
+```
+
+### Avoiding Redundancy
+
+**Problem**: Summary and highlights that repeat the same information
+
+**Bad example**:
+```yaml
+summary: "Compared six transformer architectures for emotion detection, achieving 95.7% AUC with RoBERTa-Large"
+highlights:
+  - "Fine-tuned six transformer models achieving 95.7% AUC with RoBERTa-Large"  # Repeats summary
+  - "Tested models on emotion detection"  # Repeats summary
+  - "Achieved 94.8% AUC with DistilBERT"  # Redundant with first highlight
+```
+
+**Good example**:
+```yaml
+summary: "Applied transformer models to detect multiple emotions in Reddit comments."  # High-level what
+highlights:
+  - "Fine-tuned six transformer models on 58K Reddit comments across 27 emotion labels"  # Adds scope details
+  - "Implemented automated hyperparameter sweeps with Weights & Biases"  # Adds methodology
+  - "Achieved 95.7% AUC with RoBERTa-Large while DistilBERT reached 94.8% AUC using 75% fewer parameters"  # Adds results
+```
+
+**Key principle**: Summary = WHAT (high-level), Highlights = HOW + RESULTS (specifics)
+
+### Common Patterns
+
+**For ML/research projects**:
+- Summary: Describes the problem or application
+- Highlight 1: Dataset, model architecture, training approach
+- Highlight 2: Experimentation methodology or technical implementation
+- Highlight 3: Results, comparisons, or key findings
+
+**For engineering projects**:
+- Summary: Describes what the system does
+- Highlight 1: Core technical implementation and technologies
+- Highlight 2: Key features or capabilities
+- Highlight 3: Performance, deployment, or user impact
+
+**For creative/interactive projects**:
+- Summary: Describes the experience or interaction
+- Highlight 1: Technical implementation (APIs, frameworks, hardware)
+- Highlight 2: Integration or real-time capabilities
+- Highlight 3: Exhibition context or user reactions
+
 ## Detailed Example: Multimodal Alzheimer's Detection
 
 This project demonstrates a complete portfolio post structure. Let's break it down section by section.

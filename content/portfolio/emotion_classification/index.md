@@ -1,20 +1,17 @@
 ---
 title: "Multi-Label Emotion Classification"
-date: 2024-12-20
+date: 2024-05-01
+summary: "Applied transformer models to detect multiple emotions in Reddit comments."
+highlights:
+  - "Fine-tuned six transformer models on 58K samples from the GoEmotions dataset across 27 emotion labels"
+  - "Implemented automated hyperparameter sweeps with Weights & Biases, optimizing learning rates, dropout, and batch sizes across 50+ training experiments"
+  - "Achieved 95.7% AUC with RoBERTa-Large while DistilBERT reached 94.8% AUC using 75% fewer parameters, enabling efficient deployment"
 portfolio_tags: ["Natural Language Processing", "Deep Learning", "Text"]
-summary: "Detecting multiple emotions in text using transformer models"
 
-draft: true
+draft: false
+build:
+  list: "local"
+  render: "link"
 ---
 
-
-
-
-
-
-
-
-
-
-<!-- [[Demo]](#) · [[Blog]](#) · -->
-[[Code]](https://github.com/toribiodiego/ECE-467-Natural-Language-Processing/tree/main/Final_Project) · [[Slides]](https://github.com/toribiodiego/ECE-467-Natural-Language-Processing/blob/main/Final_Project/Final_Project_Presentation.pdf) · [[Report]](https://github.com/toribiodiego/ECE-467-Natural-Language-Processing/blob/main/Final_Project/Final_Project_Report.pdf)
+This project compared transformer architectures for emotion classification on the GoEmotions dataset.
