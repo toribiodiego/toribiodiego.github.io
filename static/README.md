@@ -26,6 +26,7 @@ static/js/preview-flag.js  →  public/js/preview-flag.js
 static/
 ├── README.md                      # This file
 ├── CNAME                          # GitHub Pages custom domain
+├── site.webmanifest               # PWA manifest for installable web app
 ├── Toribio_Diego_Resume.pdf      # Resume file (public download)
 ├── pfp.jpg                        # Profile picture (4.4 MB)
 ├── dragon-icon.jpg                # Source dragon icon image
@@ -45,6 +46,60 @@ static/
 ```
 
 ## Files
+
+### `site.webmanifest`
+
+**Purpose:** Progressive Web App (PWA) manifest for installable web app support.
+
+**Access:** `https://diegotoribio.com/site.webmanifest`
+
+**Size:** ~725 bytes
+
+**Format:** JSON
+
+**Contents:**
+- `name`: Full site name ("Diego Toribio")
+- `short_name`: Abbreviated name for home screen ("Diego T")
+- `description`: Site description for app stores
+- `start_url`: URL to load when app launches ("/")
+- `display`: Display mode ("standalone" - fullscreen app-like)
+- `theme_color`: Browser UI color (`#ffffff` - white for light mode)
+- `background_color`: Splash screen background (`#ffffff`)
+- `icons`: Array of app icons (favicon variants)
+
+**Loaded via:** `layouts/partials/custom_head.html`:
+```html
+<link rel="manifest" href="/site.webmanifest">
+```
+
+**How it works:**
+1. Browser detects manifest and offers "Install" or "Add to Home Screen"
+2. When installed, site launches as standalone app
+3. Custom icons appear on home screen/app drawer
+4. Theme color customizes browser UI elements
+
+**Benefits:**
+- **Installable:** Users can install site as app on desktop/mobile
+- **Offline capability:** Foundation for service worker/offline support
+- **Better UX:** Standalone mode hides browser UI for app-like feel
+- **Discoverability:** Better app store and search engine visibility
+
+**Updating:**
+
+Edit `static/site.webmanifest` to change:
+- App name or description
+- Theme colors
+- Available icons
+- Display mode or start URL
+
+**Testing:**
+
+1. Chrome DevTools → Application tab → Manifest section
+2. Check for warnings about icons or configuration
+3. Test "Install" prompt on desktop Chrome
+4. Test "Add to Home Screen" on mobile devices
+
+**Note:** PWA features like offline support require a service worker (not yet implemented). This manifest provides the foundation for future PWA enhancements.
 
 ### `CNAME`
 
@@ -450,6 +505,7 @@ Or configure server redirects.
 
 **Current sizes:**
 - `CNAME`: 16 bytes
+- `site.webmanifest`: ~725 bytes
 - `Toribio_Diego_Resume.pdf`: ~97 KB
 - `pfp.jpg`: ~4.4 MB ⚠️ Large
 - `dragon-icon.jpg`: ~100 KB
