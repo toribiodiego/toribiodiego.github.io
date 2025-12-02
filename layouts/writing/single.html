@@ -1,6 +1,5 @@
 {{ define "main" }}
-<main class="writing">
-    <article class="post">
+<article class="post writing">
         <h1 class="post-title">{{ .Title }}</h1>
 
         {{ if .Params.summary }}
@@ -26,5 +25,4 @@
         </footer>
         {{ end }}
     </article>
-</main>
 {{ end }}
