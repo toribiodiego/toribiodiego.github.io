@@ -15,6 +15,14 @@ draft: false
 Alzheimer's dementia is a neurodegenerative disease that impairs memory and communication. Although there is no cure, early detection is important because identifying the disease early can slow its progression and lessen its effects. This work follows the ADReSSO challenge, exploring whether speech alone can serve as a reliable diagnostic signal. Something that, if successful, could make early screening both affordable and widely accessible. Using the ADReSSo-2021 corpus, this three-semester research project examined whether combining audio and text features could improve detection compared to a single-modality approach.
 
 <figure class="post-figure">
+  <picture>
+    <source srcset="resources/02_stimulus.webp" type="image/webp">
+    <img src="resources/02_stimulus.jpg" alt="Cookie theft picture showing a woman washing dishes while children steal cookies" style="width:100%; height:auto; display:block; margin:auto;">
+  </picture>
+  <figcaption>The "Cookie Theft" picture from the Boston Diagnostic Aphasia Examination. Participants were asked to describe this scene in their own words, providing spontaneous speech samples used for analysis.</figcaption>
+</figure>
+
+<figure class="post-figure">
   <img src="resources/01_flowchart.png" alt="Project capture" style="width:100%; height:auto; display:block; margin:auto;">
   <figcaption>Overview of the multimodal pipeline: audio and transcribed speech yield acoustic and linguistic features used for classification.</figcaption>
 </figure>
