@@ -16,6 +16,12 @@ This page directs you to the focused portfolio guides based on what you're tryin
 - Three complete examples
 - Quick tips for each field
 
+**[portfolio-list-entry-guide.md](portfolio-list-entry-guide.md)** - How to write titles, summaries, and highlights for list cards
+
+- Purpose of each list field
+- Length limits (summary = 1–2 lines)
+- Highlight patterns with do/don’t examples
+
 **Best for:** Creating your first portfolio entry or quickly adding a new project.
 
 ---
