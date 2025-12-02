@@ -35,6 +35,37 @@ A well-structured portfolio post typically includes:
    - Paper, poster, or presentation
    - Blog post or documentation
 
+### Avoiding Walls of Text
+
+**Distribute visuals throughout the post** instead of clustering them together. Alternate between text and visual elements to create rhythm and maintain reader engagement.
+
+**Good pattern (alternating)**:
+```
+Intro paragraph
+├─ Figure 1 (context/stimulus)
+Technical paragraph 1
+├─ Figure 2 (architecture/pipeline)
+Technical paragraph 2
+├─ Table 1 (results)
+Conclusion paragraph
+```
+
+**Avoid (clustering)**:
+```
+Intro paragraph
+├─ Figure 1
+├─ Figure 2
+Long technical paragraph
+Long results paragraph
+├─ Table 1
+```
+
+**Guidelines**:
+- Place figures near the content they illustrate
+- Break long paragraphs (>150 words) into 2-3 shorter ones
+- Use one visual element per major concept when possible
+- Don't put multiple figures back-to-back without text between them
+
 ## Content Length Guidelines
 
 **Full post length**: 300-800 words (not including captions/links)
@@ -229,25 +260,41 @@ Or for physical projects:
 
 **Purpose**: Provide access to code, demos, papers, and additional materials
 
-**Content** (from the actual post):
-```markdown
-[[Poster]](https://github.com/Keene-AI-Lab/multimodal/blob/main/assets/Multimodal_Alzheimers_Detection.jpeg)
-[[Code]](https://github.com/Keene-AI-Lab/multimodal)
+**Content structure**:
+```html
+<div class="post-resources">
+  <a href="https://github.com/user/repo/poster.pdf">Poster</a>
+  <a href="https://github.com/user/repo">Code</a>
+</div>
+```
+
+**With all resource types**:
+```html
+<div class="post-resources">
+  <a href="https://demo-url.com">Demo</a>
+  <a href="https://blog-post-url.com">Blog</a>
+  <a href="https://doi.org/paper">Paper</a>
+  <a href="https://github.com/user/repo/poster.pdf">Poster</a>
+  <a href="https://slides-url.com">Slides</a>
+  <a href="https://github.com/user/repo">Code</a>
+</div>
 ```
 
 **Why this works**:
-- Links are clearly labeled (Poster, Code)
-- Uses bracket notation for consistent styling
-- Places links at the very end
-- Links to permanent resources (GitHub, published papers)
+- Consistent styling across all portfolio posts
+- Visual separation from main content (top border)
+- Links styled as chips (similar to tags)
+- Flexible: works with any number of resources
+- Horizontal layout with automatic wrapping
 
 **Guidelines**:
-- Place at the bottom of the post (after all content)
-- Use format: `[[Label]](URL)` for consistency
-- Common labels: `Code`, `Demo`, `Paper`, `Poster`, `Slides`, `Blog`, `Video`
+- Always wrap in `<div class="post-resources">`
+- Place at the very bottom of the post (after all content)
+- Include only resources that exist (no placeholders)
+- Use clear labels: `Demo`, `Blog`, `Paper`, `Poster`, `Slides`, `Report`, `Code`, `Video`
 - Link to stable URLs (GitHub repos, DOIs, permanent hosting)
-- Omit placeholder links (comment them out: `<!-- [[Demo]](#) -->`)
-- Order: Demo → Blog → Paper/Poster → Code (most interactive to most technical)
+- Recommended order: Demo → Blog → Paper/Poster → Slides → Report → Code
+- One link per line for readability in source
 
 ## Figures and Images
 
@@ -282,6 +329,93 @@ content/portfolio/your-project/
 - Use descriptive `alt` text for accessibility
 - Number files to control display order
 - Always include captions that add information (not just labels)
+
+## Tables
+
+Tables are automatically numbered (Table 1, Table 2, etc.) when using the `post-table` class. Use tables to present structured data like performance metrics, comparisons, or experimental results.
+
+### Basic Table Structure
+
+```markdown
+<figure class="post-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Modality</th>
+        <th>Random Forest</th>
+        <th>XGBoost</th>
+        <th>MLP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Audio only</td>
+        <td>61%</td>
+        <td>71%</td>
+        <td>61%</td>
+      </tr>
+      <tr>
+        <td>Text only</td>
+        <td>77%</td>
+        <td>82%</td>
+        <td>74%</td>
+      </tr>
+      <tr>
+        <td>Audio + Text</td>
+        <td>70%</td>
+        <td>61%</td>
+        <td>67%</td>
+      </tr>
+    </tbody>
+  </table>
+  <figcaption>Classification accuracy by modality and classifier. Text-only models achieved the highest performance across all three classifiers.</figcaption>
+</figure>
+```
+
+**Result**: The caption will automatically display as "Table 1. Classification accuracy by modality and classifier..."
+
+### Table Guidelines
+
+**When to use tables**:
+- Presenting quantitative results (accuracy, precision, F1 scores)
+- Comparing performance across methods or configurations
+- Showing structured experimental parameters
+- Displaying side-by-side comparisons
+
+**Structure requirements**:
+- Always wrap in `<figure class="post-table">` (not `post-figure`)
+- Include `<thead>` for headers and `<tbody>` for data rows
+- Use `<figcaption>` for the table caption (like figures)
+- Do NOT include "Table 1:" in the caption text (added automatically)
+
+**Formatting**:
+- First column: Left-aligned (for row labels)
+- Other columns: Center-aligned automatically (for numeric data)
+- Headers: Bold with bottom border
+- Rows: Light borders between rows
+
+**Caption writing**:
+- Start with what the table shows (e.g., "Classification accuracy...")
+- Include units if relevant (e.g., "% accuracy", "milliseconds")
+- Highlight key findings in the caption (e.g., "Text-only models achieved...")
+- Keep captions concise but informative (1-2 sentences)
+
+### Figures vs Tables
+
+**Use figures for**:
+- Architecture diagrams
+- Flowcharts
+- Screenshots
+- Photos
+- Visualizations and graphs
+
+**Use tables for**:
+- Numeric results
+- Direct comparisons
+- Structured data
+- Performance metrics
+
+**Numbering**: Figures and tables have separate counters. A post with 2 figures and 1 table will show: "Figure 1", "Figure 2", "Table 1".
 
 ## Related Documentation
 

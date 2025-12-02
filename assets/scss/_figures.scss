@@ -2,9 +2,9 @@
    Figures (Images + Captions with auto-numbering)
    ========================================================================== */
 
-/* Reset figure counter at the start of each post */
+/* Reset figure and table counters at the start of each post */
 .post-body {
-    counter-reset: figure;
+    counter-reset: figure table;
 }
 
 .post-figure {
@@ -35,6 +35,88 @@
             content: "Figure " counter(figure) ". ";
             font-weight: 600;
             /* number label still stands out */
+        }
+    }
+}
+
+/* Tables with auto-numbering (mirrors figure styling) */
+.post-table {
+    text-align: center;
+    max-width: 600px;
+    margin: 1.5rem auto;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto;
+
+        th,
+        td {
+            padding: 0.75em 1em;
+            text-align: left;
+            border-bottom: 1px solid var(--code-background-color);
+        }
+
+        thead th {
+            font-weight: bold;
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--heading-color);
+        }
+
+        tbody td {
+            color: var(--text-color);
+        }
+
+        /* Center align numeric columns (all except first) */
+        td:not(:first-child),
+        th:not(:first-child) {
+            text-align: center;
+        }
+    }
+
+    figcaption {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        text-align: left;
+        font-style: normal;
+        color: inherit;
+
+        /* Increment the table counter for each caption */
+        counter-increment: table;
+
+        &::before {
+            content: "Table " counter(table) ". ";
+            font-weight: 600;
+        }
+    }
+}
+
+/* Resource links section */
+.post-resources {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--code-background-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    align-items: center;
+
+    &::before {
+        content: "Resources:";
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-right: 1rem;
+    }
+
+    a {
+        font-size: 0.95rem;
+        font-weight: 500;
+
+        & + a::before {
+            content: "·";
+            margin: 0 0.75rem;
+            color: var(--text-color);
+            opacity: 0.5;
         }
     }
 }
