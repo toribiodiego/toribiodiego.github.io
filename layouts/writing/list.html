@@ -1,7 +1,6 @@
 {{ define "main" }}
-{{ .Content }}
-
-    <ul class="posts-list">
+{{- .Content }}
+<ul class="posts-list">
         {{ range .Pages.ByDate.Reverse }}
         <li class="post-item">
             <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
