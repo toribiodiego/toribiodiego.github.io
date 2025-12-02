@@ -306,7 +306,7 @@ echo "Build complete. Output in public/"
 ### `scripts/build-dev.sh`
 
 ```bash
-#!/bin bash
+#!/bin/bash
 echo "Performing clean development build..."
 rm -rf public
 hugo --buildDrafts --buildFuture
