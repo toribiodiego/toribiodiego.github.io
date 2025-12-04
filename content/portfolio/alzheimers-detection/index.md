@@ -16,8 +16,8 @@ Alzheimer's dementia is a neurodegenerative disease that impairs memory and comm
 
 <figure class="post-figure">
   <picture>
-    <source srcset="resources/01_stimulus.webp" type="image/webp">
-    <img src="resources/01_stimulus.jpg" alt="Cookie theft picture showing a woman washing dishes while children steal cookies" style="width:100%; height:auto; display:block; margin:auto;">
+    <source srcset="resources/01-stimulus.webp" type="image/webp">
+    <img src="resources/01-stimulus.jpg" alt="Cookie theft picture showing a woman washing dishes while children steal cookies" style="width:100%; height:auto; display:block; margin:auto;">
   </picture>
   <figcaption>The "Cookie Theft" picture from the Boston Diagnostic Aphasia Examination. Participants were asked to describe this scene in their own words, providing spontaneous speech samples used for analysis.</figcaption>
 </figure>
@@ -25,7 +25,7 @@ Alzheimer's dementia is a neurodegenerative disease that impairs memory and comm
 The ETL pipeline was designed to efficiently process and organize the audio dataset using parallelized processing and automatic logging to support large-scale experimentation. Each recording was processed with librosa and cropped to patient-only speech using the provided timestamps. Audio features were extracted with openSMILE (using the eGeMAPS feature set), and embeddings were generated with a pretrained wav2vec 2.0 model.
 
 <figure class="post-figure">
-  <img src="resources/02_flowchart.png" alt="Project capture" style="width:100%; height:auto; display:block; margin:auto;">
+  <img src="resources/02-flowchart.png" alt="Project capture" style="width:100%; height:auto; display:block; margin:auto;">
   <figcaption>Overview of the multimodal pipeline: audio and transcribed speech yield acoustic and linguistic features used for classification.</figcaption>
 </figure>
 

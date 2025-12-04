@@ -418,16 +418,16 @@ Or for physical projects:
 content/portfolio/your-project/
 ├── index.md
 └── resources/
-    ├── 01_architecture.png
-    ├── 02_results.png
-    └── 03_demo.jpg
+    ├── 01-architecture.png
+    ├── 02-results.png
+    └── 03-demo.jpg
 ```
 
 ### Markdown Syntax
 
 ```markdown
 <figure class="post-figure">
-  <img src="resources/01_architecture.png"
+  <img src="resources/01-architecture.png"
        alt="System architecture diagram"
        style="width:100%; height:auto; display:block; margin:auto;">
   <figcaption>Pipeline architecture showing data flow from audio input
@@ -437,11 +437,25 @@ content/portfolio/your-project/
 
 ### Image Guidelines
 
+**File formats:**
 - **PNG** for diagrams, charts, screenshots
 - **JPEG** for photos
 - Optimize images (keep under 500KB when possible)
+
+**Naming convention:**
+- Use hyphens (not underscores) between words: `01-architecture.png`
+- Start with two-digit number prefix: `01-`, `02-`, `03-` (controls display order)
+- Use lowercase for all filenames
+- Use descriptive names: `01-reward-curves.png` not `01-fig.png`
+- Pattern: `NN-descriptive-name.ext`
+
+**Examples:**
+- `01-class-distribution.png`
+- `02-auc-roberta-vs-bert.png`
+- `03-exhibition.jpeg`
+
+**Accessibility and captions:**
 - Use descriptive `alt` text for accessibility
-- Number files to control display order
 - Always include captions that add information (not just labels)
 
 ## Tables

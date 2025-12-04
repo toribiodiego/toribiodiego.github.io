@@ -16,7 +16,7 @@ build:
 
 
 <figure class="post-figure">
-  <img src="resources/exhibition.jpeg" alt="Agnus displayed on the LED wall at the exhibition" style="width:100%; height:auto; display:block; margin:auto;">
+  <img src="resources/04-exhibition.jpeg" alt="Agnus displayed on the LED wall at the exhibition" style="width:100%; height:auto; display:block; margin:auto;">
   <figcaption>Agnus displayed at the Generative Machine Learning Exhibition.</figcaption>
 </figure>
 
@@ -62,7 +62,7 @@ What worked or stood out (e.g., sub-second response, personality control, audien
 
 
 <figure class="post-figure">
-  <img src="resources/02_flowchart.png" alt="Project capture">
+  <img src="resources/02-flowchart.png" alt="Project capture">
   <figcaption>Flowchart of working Agnus.</figcaption>
 </figure>
 
