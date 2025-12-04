@@ -488,6 +488,28 @@ Tables are automatically numbered (Table 1, Table 2, etc.) when using the `post-
 
 **Result**: The caption will automatically display as "Table 1. Classification accuracy by modality and classifier..."
 
+### Table Examples from Portfolio Entries
+
+**Example 1: Model comparison** (Multimodal Alzheimer's Detection)
+- Compares accuracy across different modalities (audio, text, multimodal)
+- Shows results for multiple classifiers (Random Forest, XGBoost, MLP)
+- Caption highlights the key finding (text-only models performed best)
+
+**Example 2: Hyperparameter results** (Multi-Label Emotion Classification)
+- Shows best configurations for each transformer model
+- Includes hyperparameters (LR, batch size, dropout) and metrics (AUC, train/val loss)
+- Caption identifies the top performer (RoBERTa-large at 0.957 AUC)
+
+**Example 3: Training progression** (Board Game Agents)
+- Tracks agent performance across training checkpoints
+- Compares win rates and game length at different stages
+- Caption emphasizes strategic development (extended gameplay, decision-making)
+
+**Common patterns**:
+- Use tables when you have 3+ rows/columns of numeric data
+- Include a mix of categorical labels (first column) and numeric values
+- Captions should interpret the data, not just describe the structure
+
 ### Table Guidelines
 
 **When to use tables**:
