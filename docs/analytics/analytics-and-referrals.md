@@ -184,7 +184,7 @@ In Google Analytics 4:
 
 **URL to share:**
 ```
-https://diegotoribio.com/portfolio/alzheimers_detection/?utm_source=linkedin&utm_medium=social&utm_campaign=alzheimers-launch
+https://diegotoribio.com/portfolio/alzheimers-detection/?utm_source=linkedin&utm_medium=social&utm_campaign=alzheimers-launch
 ```
 
 ### Scenario 2: Adding Website to GitHub Profile

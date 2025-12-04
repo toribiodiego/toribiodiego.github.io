@@ -69,9 +69,9 @@ To publish a previously hidden item:
 ### Currently Hidden Portfolio Items
 
 The following items are currently set as drafts:
-- Board Game Agents (`content/portfolio/checkers/`)
+- Board Game Agents (`content/portfolio/board-game-agents/`)
 - Extraction (`content/portfolio/extraction/`)
-- Multi-Label Emotion Classification (`content/portfolio/emotion_classification/`)
+- Multi-Label Emotion Classification (`content/portfolio/emotion-classification/`)
 
 ## Clean Builds
 
@@ -146,13 +146,13 @@ ls public/portfolio/
 ```
 
 Should **NOT** include:
-- `checkers/`
+- `board-game-agents/`
 - `extraction/`
-- `emotion_classification/`
+- `emotion-classification/`
 
 Should **ONLY** include published items:
-- `agnus/`
-- `alzheimers_detection/`
+- `agnus-troll/`
+- `alzheimers-detection/`
 
 ### Check Portfolio Page Content
 

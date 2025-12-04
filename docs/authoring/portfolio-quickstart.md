@@ -22,6 +22,35 @@ draft: false
 ---
 ```
 
+## Directory and URL Naming
+
+Portfolio entries live in `content/portfolio/[url-slug]/index.md`. The directory name becomes the URL path.
+
+**Naming rules:**
+1. **Use hyphens** (not underscores) to separate words
+2. **Keep it short**: 1-3 words from the title
+3. **Use lowercase** only
+4. **Remove articles**: Drop "the", "a", "an" unless critical
+5. **Be descriptive**: URL should hint at project content
+
+**Examples:**
+
+| Title | Directory/URL | Reasoning |
+|-------|---------------|-----------|
+| Agnus The Troll | `agnus-troll/` | Both distinctive words, drop "the" |
+| Board Game Agents | `board-game-agents/` | Full title (3 words) |
+| Multi-Label Emotion Classification | `emotion-classification/` | Core concept, drop "multi-label" |
+| Multimodal Alzheimer's Detection | `alzheimers-detection/` | Core concept, drop "multimodal" |
+
+**Pattern:**
+- **3 words or fewer**: Use full title with hyphens
+- **Longer titles**: Pick 2-3 most descriptive words
+
+**URL becomes:**
+```
+https://diegotoribio.com/portfolio/[url-slug]/
+```
+
 ## Authoring Checklist
 
 Before publishing, verify:
