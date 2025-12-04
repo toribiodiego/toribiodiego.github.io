@@ -10,14 +10,14 @@ highlights:
 
 draft: false
 build:
-  list: "local"     # include in section lists
-  render: "link"    # do not render HTML to disk
+  list: "local"     # show on list both locally and in production
+  render: "never"   # don't render full page at all
 ---
 
 
 <figure class="post-figure">
-  <img src="resources/01_agnus.png" alt="Project capture" style="width:50%; max-width:700px; display:block; margin:auto;">
-  <figcaption>Agnus The Internet Troll</figcaption>
+  <img src="resources/exhibition.jpeg" alt="Agnus displayed on the LED wall at the exhibition" style="width:100%; height:auto; display:block; margin:auto;">
+  <figcaption>Agnus displayed at the Generative Machine Learning Exhibition.</figcaption>
 </figure>
 
 
@@ -82,12 +82,6 @@ This *type* of generative project would not have been possible a year ago.
 
 
 
-<figure class="post-figure">
-  <img src="resources/03.jpeg" alt="Project capture">
-  <figcaption>Agnus displayed at the Generative Machine Learning Exhibition.</figcaption>
-</figure>
-
-
 What was the main takeaway or learning (about latency, personality tuning, or multimodal interaction)?
 
 
@@ -98,4 +92,3 @@ What was the main takeaway or learning (about latency, personality tuning, or mu
 
 <!-- [[Demo]](#) · [[Blog]](#) · -->
 [[Code]](https://github.com/toribiodiego/ECE-471-Generative-Machine-Learning/tree/main/Final_Project)
-
