@@ -1,8 +1,3 @@
----
-title: "Writing Authoring Guide"
-draft: true
----
-
 # Writing Content Authoring Guide
 
 **Location:** This file is in `content/writing/` and serves as a quick reference for creating writing posts.

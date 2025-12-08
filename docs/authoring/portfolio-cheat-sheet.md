@@ -1,8 +1,3 @@
----
-title: "Portfolio Authoring Guide"
-draft: true
----
-
 # Portfolio Entry Cheat Sheet
 
 **Use this when:** You are adding a new `content/portfolio/<slug>/index.md` and need the essentials in one place.
