@@ -2,7 +2,7 @@
 
 **Use this when:** You need to control whether a portfolio entry appears on the list, whether it's clickable, or how it behaves in development vs. production builds.
 
-This guide explains how `draft`, `build.list`, and `build.render` flags control portfolio entry visibility and when to use each configuration.
+This guide explains how `draft` and `_build` flags control portfolio entry visibility and when to use each configuration.
 
 For basic portfolio authoring, see [portfolio-quickstart.md](portfolio-quickstart.md). For comprehensive formatting rules, see [portfolio-formatting.md](portfolio-formatting.md).
 
@@ -10,20 +10,39 @@ For basic portfolio authoring, see [portfolio-quickstart.md](portfolio-quickstar
 
 There are three primary controls for portfolio entry visibility:
 
-1. **`draft`** - Boolean flag that completely hides entries from the list
-2. **`build.list`** - Controls whether entry appears on `/portfolio/` list page
-3. **`build.render`** - Controls whether full HTML page is generated
+1. **`draft`** - Boolean flag that hides entries in production (but shows in `hugo server -DF`)
+2. **`_build.list`** - Controls whether entry appears on `/portfolio/` list page
+3. **`_build.render`** - Controls whether full HTML page is generated
 
-**Important:** Portfolio tags (`portfolio_tags`) do **not** control visibility. Tags are for categorization only and have no effect on whether an entry appears. Visibility is controlled exclusively by `draft`, `build.list`, and `build.render` flags.
+**Important:**
+- Portfolio tags (`portfolio_tags`) do **not** control visibility. Tags are for categorization only.
+- Use `_build` (Hugo native) not `build` (custom parameter)
+- Development mode (`hugo server -DF`) overrides these restrictions
 
-## Visibility Matrix
+## Development vs Production Behavior
 
-| draft | build.list | build.render | List Visibility | Title Link | Page Built | Use Case |
-|-------|-----------|--------------|----------------|------------|------------|----------|
+**In Development (`hugo server -DF`):**
+- All entries show in list (including `draft: true`)
+- All entries are clickable (including `_build.render: never`)
+- Allows you to preview and work on incomplete posts
+
+**In Production (`hugo` or `hugo --environment production`):**
+- `draft: true` entries completely hidden
+- `_build.list: never` entries hidden from list
+- `_build.render: never` entries show in list but not clickable (no page generated)
+
+**Important:** Portfolio tags (`portfolio_tags`) do **not** control visibility. Tags are for categorization only and have no effect on whether an entry appears. Visibility is controlled exclusively by `draft` and `_build` flags.
+
+## Visibility Matrix (Production Builds)
+
+| draft | _build.list | _build.render | List Visibility | Title Link | Page Built | Use Case |
+|-------|-------------|---------------|----------------|------------|------------|----------|
 | `false` | (default) | (default) | ✓ Shown | ✓ Clickable | ✓ Yes | **Standard published project** |
-| `false` | `"local"` | `"link"` | ✓ Shown | ✗ Not clickable | ✗ No | **Preview/coming soon** |
-| `false` | `"never"` | - | ✗ Hidden | - | - | **Unlisted but not draft** |
+| `false` | - | `never` | ✓ Shown | ✗ Not clickable | ✗ No | **Preview/coming soon** |
+| `false` | `never` | - | ✗ Hidden | - | - | **Unlisted but not draft** |
 | `true` | - | - | ✗ Hidden | - | ✗ No | **Work in progress** |
+
+**Note:** In development mode (`hugo server -DF`), all entries show and are clickable regardless of these settings.
 
 ## Decision Tree
 
@@ -78,25 +97,31 @@ draft: false
 **Front matter:**
 ```yaml
 draft: false
-build:
-  list: "local"
-  render: "link"
+_build:
+  render: never    # Don't build single page
+  list: local      # Show in lists
 ```
 
-**Behavior:**
+**Behavior (Production):**
 - ✓ Appears on portfolio list
 - ✗ Title is NOT clickable (shows as plain text)
 - ✗ No full page is built
 - Summary, highlights, and tags shown on list
 - Title may show "Write-up coming soon" on hover
 
+**Behavior (Development with `hugo server -DF`):**
+- ✓ Appears on portfolio list
+- ✓ Title IS clickable (development mode override)
+- ✗ No full page is built (Hugo doesn't generate it)
+- Click leads to 404 but allows testing the list appearance
+
 **When to use:**
-- Want to showcase project on portfolio list
+- Want to showcase project on portfolio list in production
 - Full write-up not complete yet
 - Give visitors a preview of your work without committing to full documentation
 - Planning to add full write-up later
 
-**Example:** Agnus The Troll (as of current state)
+**Note:** For development, prefer `draft: true` instead if you want to click through to the page, as it allows Hugo to build the page with `-D` flag.
 
 **Visual indicator:** The template shows non-clickable titles with `aria-disabled="true"` and `title="Write-up coming soon"`
 
@@ -105,41 +130,51 @@ build:
 **Front matter:**
 ```yaml
 draft: false
-build:
-  list: "never"
+_build:
+  list: never
 ```
 
-**Behavior:**
+**Behavior (Production):**
 - ✗ Does NOT appear on portfolio list
-- Page may or may not be built (depends on `build.render`)
+- Page may or may not be built (depends on `_build.render`)
 - Can still be accessed via direct URL if page is built
+
+**Behavior (Development):**
+- ✓ Shows in list (development mode override)
+- ✓ Clickable if page is built
 
 **When to use:**
 - Unlisted project that you want to share via direct link only
 - Removed from portfolio list but keeping the page live
 - Rarely used; usually `draft: true` is better for hiding projects
 
-### Configuration 4: Draft (Hidden Entirely)
+### Configuration 4: Draft (Work in Progress)
 
 **Front matter:**
 ```yaml
 draft: true
 ```
 
-**Behavior:**
+**Behavior (Production):**
 - ✗ Completely hidden from portfolio list
-- ✗ Page not built in production (only with `hugo server -D`)
+- ✗ Page not built in production
 - Not visible to visitors at all
+
+**Behavior (Development with `hugo server -DF`):**
+- ✓ Shows in portfolio list (template override)
+- ✓ Title is clickable (template override)
+- ✓ Page is built (because of `-D` flag)
+- Allows you to preview and work on incomplete posts
 
 **When to use:**
 - Project is work-in-progress
 - Content not ready for public viewing
 - Placeholder entry for future project
-- Testing/development only
+- **Recommended for development:** Easier than `_build.render: never` because the page actually builds with `-D` flag
 
-**Example:** Board Game Agents (current state)
+**Example:** Board Game Agents, Emotion Classification, Extraction (in development)
 
-**Important:** Draft items are excluded from production builds (`--buildDrafts=false`), so they never appear on the deployed site.
+**Important:** This is the preferred method for work-in-progress posts because it allows full testing in development while keeping posts completely hidden in production.
 
 ## Required Front Matter for Visibility
 
@@ -275,25 +310,23 @@ draft: true
 4. Preview with `hugo server -D` (includes drafts)
 5. When ready, change to `draft: false`
 
-### Scenario 2: Quick Portfolio Update (Show Project, Write-up Later)
+### Scenario 2: Quick Portfolio Update (Show Project, Write-up Later) - DEPRECATED
 
-**Goal:** Add project to portfolio list immediately, complete full write-up later
+**Note:** This scenario is deprecated. Use Scenario 1 with `draft: true` instead.
 
-**Configuration:**
+**Old approach (not recommended):**
 ```yaml
 draft: false
-build:
-  list: "local"
-  render: "link"
+_build:
+  render: never
+  list: local
 ```
 
-**Workflow:**
-1. Write strong summary and highlights
-2. Set `draft: false` + build flags
-3. Project appears on list but title not clickable
-4. Later: Add full write-up content
-5. Remove build flags (or change to defaults)
-6. Now full page is accessible
+**Better approach:**
+1. Use `draft: true` while working
+2. Preview with `hugo server -DF` (fully functional)
+3. When ready, change to `draft: false`
+4. Publish immediately with full page
 
 ### Scenario 3: Removing a Project from Portfolio
 
@@ -302,9 +335,9 @@ build:
 **Option A: Hide from list but keep page:**
 ```yaml
 draft: false
-build:
-  list: "never"
-  render: "always"
+_build:
+  list: never
+  render: always
 ```
 
 **Option B: Complete removal:**
@@ -315,13 +348,17 @@ Or delete the file entirely.
 
 ## Template Behavior Details
 
-The portfolio list template (`layouts/portfolio/list.html`) implements these rules:
+The portfolio list template (`layouts/portfolio/list.html`) implements environment-aware visibility:
 
 ```go
-{{/* Skip entirely if list == "never" or if draft */}}
-{{ if and (ne $list "never") (not .Draft) }}
-  {{/* Only link when a page will be written: render "" or "always" */}}
-  {{ $linkable := or (eq $render "") (eq $render "always") }}
+{{/* In development, show everything and make everything clickable */}}
+{{ $isDev := hugo.IsDevelopment }}
+
+{{/* Skip entirely if list == "never" (unless dev mode) or if draft (unless dev mode) */}}
+{{ $shouldShow := or $isDev (and (ne $list "never") (not .Draft)) }}
+{{ if $shouldShow }}
+  {{/* In dev mode, always linkable. Otherwise only if render "" or "always" */}}
+  {{ $linkable := or $isDev (or (eq $render "") (eq $render "always")) }}
 
   {{ if $linkable }}
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
@@ -332,34 +369,72 @@ The portfolio list template (`layouts/portfolio/list.html`) implements these rul
 ```
 
 **Key logic:**
-- Entry is skipped if `draft: true` OR `build.list: "never"`
-- Title is clickable only if `build.render` is empty (default) or `"always"`
-- Title is plain text if `build.render: "link"` or `"never"`
+- **Development mode** (`hugo.IsDevelopment` = true with `hugo server`):
+  - All entries show in list (drafts, `_build.list: never`, everything)
+  - All entries have clickable links (including `_build.render: never`)
+- **Production mode** (`hugo` builds):
+  - Entry is skipped if `draft: true` OR `_build.list: never`
+  - Title is clickable only if `_build.render` is empty (default) or `always`
+  - Title is plain text if `_build.render: never`
 
 ## Troubleshooting Visibility Issues
 
-### Problem: Entry doesn't appear on list
+### Problem: Entry doesn't appear on list (Production)
 
 Check:
-1. Is `draft: true`? → Change to `draft: false`
-2. Is `build.list: "never"`? → Remove or change to `"always"`
+1. Is `draft: true`? → Change to `draft: false` to publish
+2. Is `_build.list: never`? → Remove or change to `always`
 3. Does front matter have syntax errors? → Validate YAML
-4. Is the file in `content/portfolio/`? → Check directory
-5. Did you run production build? → Drafts require `hugo server -D`
+4. Is the file in `content/portfolio/`? → Check directory structure
+5. Is date in the future? → Future-dated posts are hidden in production
 
-### Problem: Title is not clickable
+### Problem: Entry doesn't appear with `hugo server -DF` (Development)
+
+This should NOT happen with current template. If it does:
+1. Verify you're using `-D` and `-F` flags: `hugo server -DF`
+2. Check for template errors in `layouts/portfolio/list.html`
+3. Ensure `hugo.IsDevelopment` logic is present in template
+4. Restart Hugo server
+
+### Problem: Title is not clickable (Production)
 
 Check:
-1. Is `build.render: "link"`? → This is intentional (remove flag to make clickable)
-2. Is `build.render: "never"`? → Change to `"always"` or remove
-3. Is there content below front matter? → Add write-up content
+1. Is `_build.render: never`? → This is intentional (page not built)
+2. Want it clickable? → Remove `_build.render` or change to `always`, or use `draft: true` instead
+
+### Problem: Title is not clickable with `hugo server -DF` (Development)
+
+**Common cause:** Using `_build.render: never`
+- Template makes link clickable in dev, BUT Hugo doesn't actually build the page file
+- Clicking leads to 404 even though link appears
+
+**Solution:** For work-in-progress posts, use `draft: true` instead of `_build.render: never`
+- With `-D` flag, Hugo builds the page file
+- Link is clickable AND works correctly
+- Hidden in production automatically
 
 ### Problem: Page shows 404 when clicking title
 
-Check:
-1. Did you run `hugo` build recently? → Rebuild the site
-2. Is `build.render: "link"` or `"never"`? → Page isn't built
-3. Is content below front matter empty? → Hugo may skip empty pages
+**In Production:**
+1. Is `_build.render: never`? → Page isn't built (expected)
+2. Did you build recently? → Run `hugo` to rebuild
+
+**In Development with `hugo server -DF`:**
+1. Is `_build.render: never`? → Hugo doesn't build page even with `-D` flag
+   - Solution: Use `draft: true` instead for work-in-progress posts
+2. Did you restart server after changes? → Restart `hugo server -DF`
+
+### Problem: README.md or authoring guides showing in list
+
+**Cause:** Documentation files in `content/` directories are treated as content pages
+
+**Solution:** Move to `docs/authoring/` directory
+```bash
+git mv content/portfolio/README.md docs/authoring/portfolio-cheat-sheet.md
+git mv content/writing/README.md docs/authoring/writing-guide.md
+```
+
+Remove Hugo frontmatter from moved files (no longer needed in `docs/`)
 
 ## Complete Examples
 
@@ -384,31 +459,36 @@ draft: false
 
 **Result**: Shows on list with clickable title leading to full page
 
-### Example 2: List-Only Entry (No Full Page)
+### Example 2: List-Only Entry (No Full Page) - DEPRECATED
+
+**Note:** This pattern is deprecated. Use `draft: true` for work-in-progress instead.
 
 ```yaml
 ---
-title: "Agnus The Troll"
+title: "Project Name"
 date: 2025-04-26
-summary: "An interactive audio-video agent designed to mock and provoke attendees."
-portfolio_tags: ["Generative AI", "Audio", "Video"]
+summary: "Project summary"
+portfolio_tags: ["Tag1", "Tag2"]
 highlights:
-  - "Built a real-time audio-video loop connecting a dynamic microphone and webcam for live speech and visual input."
-  - "Integrated the Gemini 2.5 Live API with WebSockets to stream and play spoken responses in continuous conversation."
-  - "Configured session memory and a simple Gradio interface to let users start, stop and resume interaction seamlessly."
+  - "Highlight 1"
+  - "Highlight 2"
+  - "Highlight 3"
 
 draft: false
-build:
-  list: "local"
-  render: "link"
+_build:
+  render: never    # Don't build single page
+  list: local      # Show in lists
 ---
 
 [Content exists but page isn't rendered to disk]
 ```
 
-**Result**: Shows on list but title is not clickable (no full page built)
+**Result (Production)**: Shows on list but title is not clickable (no full page built)
+**Result (Development)**: Shows on list, title IS clickable but leads to 404 (page file not generated)
 
-### Example 3: Draft Project
+**Better approach:** Use `draft: true` instead for work-in-progress posts
+
+### Example 3: Draft Project (Recommended for Work-in-Progress)
 
 ```yaml
 ---
@@ -417,9 +497,9 @@ date: 2024-12-20
 portfolio_tags: ["Reinforcement Learning", "Deep Learning"]
 summary: "Learned tic-tac-toe and checkers entirely through self-play."
 highlights:
-  - "Placeholder 1"
-  - "Placeholder 2"
-  - "Placeholder 3"
+  - "Implemented enhanced PPO with orthogonal initialization"
+  - "Tracked policy loss, value loss, entropy using W&B"
+  - "Achieved 56.5% win rate on Checkers against random baseline"
 
 draft: true
 ---
@@ -427,7 +507,19 @@ draft: true
 [Work in progress content...]
 ```
 
-**Result**: Hidden from portfolio list entirely
+**Result (Production)**: Completely hidden from portfolio list
+
+**Result (Development with `hugo server -DF`):**
+- ✓ Shows in portfolio list
+- ✓ Title is clickable
+- ✓ Page is built and accessible
+- Allows full preview and testing
+
+**Why this is the recommended approach:**
+- Clean separation: hidden in production, visible in development
+- Fully functional in development (can click and view page)
+- Easy to publish: just change `draft: false` when ready
+- No confusing 404 errors in development
 
 ## Related Documentation
 
