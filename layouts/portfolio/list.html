@@ -6,15 +6,19 @@
         {{/* Read build flags safely */}}
         {{ $render := "" }}
         {{ $list := "" }}
-        {{ with .Params.build }}
+        {{ with .Params._build }}
         {{ $render = (index . "render" | default "") }}
         {{ $list = (index . "list" | default "") }}
         {{ end }}
 
-        {{/* Skip entirely if list == "never" or if draft */}}
-        {{ if and (ne $list "never") (not .Draft) }}
-        {{/* Only link when a page will be written: render "" or "always" */}}
-        {{ $linkable := or (eq $render "") (eq $render "always") }}
+        {{/* In development, show everything and make everything clickable */}}
+        {{ $isDev := hugo.IsDevelopment }}
+
+        {{/* Skip entirely if list == "never" (unless dev mode) or if draft (unless dev mode) */}}
+        {{ $shouldShow := or $isDev (and (ne $list "never") (not .Draft)) }}
+        {{ if $shouldShow }}
+        {{/* In dev mode, always linkable. Otherwise only if render "" or "always" */}}
+        {{ $linkable := or $isDev (or (eq $render "") (eq $render "always")) }}
 
         <li class="portfolio-item">
             <!-- Title -->
