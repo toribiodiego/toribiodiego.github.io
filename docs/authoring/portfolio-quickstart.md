@@ -18,6 +18,7 @@ highlights:
   - "Second accomplishment showing implementation or integration work"
   - "Third result, finding, or learning outcome with context"
 portfolio_tags: ["Machine Learning", "Audio", "Text"]
+weight: 10
 draft: false
 ---
 ```
@@ -60,6 +61,7 @@ Before publishing, verify:
 - [ ] **Highlights**: Exactly 3 bullets, 15-25 words each, mix technical + results
 - [ ] **Tags**: 2-3 tags from existing vocabulary (see below)
 - [ ] **Date**: YYYY-MM-DD format, **use past or current date** (future dates hide entry in production)
+- [ ] **Weight**: Optional number to control display order (lower appears first; if omitted, entries sort by date)
 - [ ] **Draft**: Set to `false` when ready to publish
 
 ## Common Tags
@@ -148,6 +150,13 @@ draft: false
 - Choose 2-3 most relevant tags
 - Order from most to least relevant
 - Stick to existing tags when possible
+
+### Weight (Optional)
+- Controls display order on portfolio list
+- Lower numbers appear first (Hugo convention)
+- If omitted, entries sort by date (newest first)
+- Use when you want specific ordering independent of date
+- Common pattern: `weight: 10`, `weight: 20`, `weight: 30` (leaves room to insert entries)
 
 ## Publishing Controls
 

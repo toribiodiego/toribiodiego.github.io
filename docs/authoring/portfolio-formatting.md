@@ -84,6 +84,7 @@ highlights:
   - "Second accomplishment or implementation work"
   - "Third result or learning outcome"
 portfolio_tags: ["Machine Learning", "Audio", "Text"]
+weight: 10  # Optional: controls list order (lower = first)
 draft: false
 ---
 ```
@@ -105,6 +106,8 @@ For the complete canonical list and selection rules, see **[portfolio-tags.md](p
 **Tags**: 2-3 tags from existing vocabulary, most to least relevant
 
 **Date**: YYYY-MM-DD format
+
+**Weight** (optional): Number controlling display order; lower numbers appear first (Hugo convention)
 
 ### Most Common Visibility Settings
 

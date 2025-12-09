@@ -47,6 +47,7 @@ highlights:
   - "Integrated <APIs/models/hardware> for <interaction/performance detail>"
   - "Achieved <metric/outcome/learning> showing <impact>"
 portfolio_tags: ["Tag1", "Tag2"]
+weight: 10  # Optional: lower numbers appear first on list
 draft: false
 ---
 ```
