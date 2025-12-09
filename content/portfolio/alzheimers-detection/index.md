@@ -5,7 +5,7 @@ highlights:
   - "Designed a scalable ETL pipeline for recordings, handling audio processing, transcription, and feature extraction across multiple models to produce audio and text embeddings"
   - "Developed a training pipeline to evaluate multiple classifiers on audio, text, and combined embeddings."
   - "Found that text emeddings performed best (82% / 0.83 F1), while combining audio and text improved results over the audio-only baseline (70% / 0.74 F1)"
-
+weight: 50
 date: 2025-05-03
 portfolio_tags: ["Machine Learning", "Audio", "Text"]
 draft: false

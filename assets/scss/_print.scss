@@ -1,0 +1,50 @@
+/* Print stylesheet - hide navigation chrome for clean printed pages */
+
+@media print {
+  /* Hide navigation, theme toggle, and footer */
+  .site-header,
+  .theme-toggle,
+  footer {
+    display: none !important;
+  }
+
+  /* Remove body flex layout for print - let content flow naturally */
+  body {
+    display: block;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Ensure main content uses full width */
+  main {
+    max-width: 100%;
+  }
+
+  /* Ensure links are readable (show URLs or keep color) */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  /* Prevent page breaks inside important elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  pre, blockquote, figure {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure code blocks have visible text */
+  pre, code {
+    background: transparent;
+    color: #000;
+    border: 1px solid #ccc;
+  }
+
+  /* Remove box shadows and decorative effects */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}

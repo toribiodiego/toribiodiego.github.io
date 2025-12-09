@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on Diego Toribio</title>
+    <link>http://localhost:1313/writing_tags/other/</link>
+    <description>Recent content in Other on Diego Toribio</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 08 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/writing_tags/other/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hi</title>
+      <link>http://localhost:1313/writing/hi/</link>
+      <pubDate>Tue, 19 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/writing/hi/</guid>
+      <description>an introduction to the site and writing posts</description>
+    </item>
+  </channel>
+</rss>

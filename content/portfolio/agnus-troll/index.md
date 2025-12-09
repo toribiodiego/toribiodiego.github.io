@@ -7,7 +7,7 @@ highlights:
   - "Built a real-time audio-video loop connecting a dynamic microphone and webcam for live speech and visual input."
   - "Integrated the Gemini 2.5 Live API with WebSockets to stream and play spoken responses in continuous conversation."
   - "Configured session memory and a simple Gradio interface to let users start, stop and resume interaction seamlessly."
-
+weight: 20
 draft: false
 build:
   render: always   # Build and render single page

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Video on Diego Toribio</title>
+    <link>http://localhost:1313/portfolio_tags/video/</link>
+    <description>Recent content in Video on Diego Toribio</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 26 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio_tags/video/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agnus The Troll</title>
+      <link>http://localhost:1313/portfolio/agnus-troll/</link>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/agnus-troll/</guid>
+      <description>An interactive audio-video agent designed to mock and provoke attendees.</description>
+    </item>
+  </channel>
+</rss>
