@@ -12,17 +12,18 @@
             <time class="post-date" datetime="{{ .Date.Format " 2006-01-02" }}">
                 {{ with .Params.date_display }}{{ . }}{{ else }}{{ .Date.Format "Jan 02, 2006" }}{{ end }}
             </time>
-            {{ if .Lastmod }}
-            {{ $daysDiff := div (sub .Lastmod.Unix .Date.Unix) 86400 }}
-            {{ if gt $daysDiff 0 }}
-            <span class="post-lastmod"> • Last updated: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "Jan 02, 2006" }}</time></span>
-            {{ end }}
-            {{ end }}
         </p>
 
         <div class="post-body">
             {{ .Content }}
         </div>
+
+        {{ if .Lastmod }}
+        {{ $daysDiff := div (sub .Lastmod.Unix .Date.Unix) 86400 }}
+        {{ if gt $daysDiff 0 }}
+        <p class="post-lastmod">Last updated: <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "Jan 02, 2006" }}</time></p>
+        {{ end }}
+        {{ end }}
 
         {{ if .Params.writing_tags }}
         <footer class="post-tags">

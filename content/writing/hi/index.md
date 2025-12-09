@@ -1,6 +1,7 @@
 ---
 title: hi
 date: 2025-08-19
+lastmod: 2025-12-08
 writing_tags: ["other"]
 summary: an introduction to the site and writing posts
 
