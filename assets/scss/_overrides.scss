@@ -52,3 +52,14 @@ h6+ul,
 h6+ol {
     margin-top: 0.25rem;
 }
+
+/* Normalize paragraph styling in Education section */
+#education + p {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+#education + p + p {
+    font-size: inherit;
+    line-height: inherit;
+}
