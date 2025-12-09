@@ -73,6 +73,6 @@ These results suggest that transformer-based embeddings like those from BERT cap
 
 
 <div class="post-resources">
-  <a href="https://github.com/Keene-AI-Lab/multimodal">Code</a>
+  <a href="https://github.com/Keene-AI-Lab/multimodal">Repository</a>
   <a href="https://github.com/Keene-AI-Lab/multimodal/blob/main/assets/Multimodal_Alzheimers_Detection.jpeg">Poster</a>
 </div>

@@ -33,5 +33,5 @@ The exhibition revealed how quickly multimodal AI has evolved. While most attend
 
 
 <div class="post-resources">
-  <a href="https://github.com/toribiodiego/ECE-471-Generative-Machine-Learning/tree/main/Final_Project">Code</a>
+  <a href="https://github.com/toribiodiego/ECE-471-Generative-Machine-Learning/tree/main/Final_Project">Repository</a>
 </div>
