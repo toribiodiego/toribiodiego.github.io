@@ -1,5 +1,6 @@
 {{/* layouts/portfolio/list.html */}}
 {{ define "main" }}
+{{/* Sort by weight (ascending, lower first), then date (newest first), then title */}}
 {{- $pages := sort .RegularPages "Weight" "asc" "Date" "desc" "Title" "asc" }}
 <ul class="portfolio-list">
         {{ range $pages }}
