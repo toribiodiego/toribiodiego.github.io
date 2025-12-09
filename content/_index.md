@@ -2,6 +2,7 @@
   <source srcset="/pfp-optimized.webp" type="image/webp">
   <img src="/pfp-optimized.jpg" alt="Profile picture" width="250" height="250" loading="lazy" style="border-radius: 12px;">
 </picture>
+<div style="margin-top: 2rem;"></div>
 
 Diego Toribio is completing his Master's in Electrical Engineering at The Cooper Union, where his thesis focuses on deep reinforcement learning, advised by [Sam Keene](https://cooper.edu/academics/people/sam-keene). His applied work includes building production ML systems for document understanding and research projects ranging from emotion detection to interactive AI agents.
 
@@ -17,14 +18,17 @@ Diego Toribio is completing his Master's in Electrical Engineering at The Cooper
 
 **Education**
 
-<img src="/cooper-union-logo.png" alt="The Cooper Union" style="height: 3em; vertical-align: middle; margin-right: 0.5em;"> The Cooper Union
+The Cooper Union for the Advancement of Science and Art   
+*Major:* Electrical Engineering
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Master of Engineering**, Electrical Engineering
+&nbsp;&nbsp;&nbsp;&nbsp;Master of Engineering   
+&nbsp;&nbsp;&nbsp;&nbsp;*Thesis:* Deep Reinforcement Learning
 
-&nbsp;&nbsp;&nbsp;&nbsp;**Bachelor of Engineering**, Electrical Engineering (2024)
+&nbsp;&nbsp;&nbsp;&nbsp;Bachelor of Engineering (2025)  
+&nbsp;&nbsp;&nbsp;&nbsp;*Track:* Computer Engineering
 
 <div style="margin-top: 2rem;"></div>
 
-**Connect**
+**Resources**
 
-[Resume (PDF)](#) • [GitHub](https://github.com/) • [LinkedIn](https://linkedin.com/) • [Email](mailto:)
+&nbsp;&nbsp;&nbsp;&nbsp;[LinkedIn](https://linkedin.com/) • [Email](mailto:) • [GitHub](https://github.com/) • &nbsp; [Resume](#)
