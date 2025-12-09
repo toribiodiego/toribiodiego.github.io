@@ -9,7 +9,7 @@ highlights:
   - "Configured session memory and a simple Gradio interface to let users start, stop and resume interaction seamlessly."
 
 draft: false
-_build:
+build:
   render: always   # Build and render single page
   list: always     # Show in lists
 ---
