@@ -37,6 +37,9 @@ summary: Brief description of what this post covers
 
 draft: false
 
+# Optional: Show "last updated" date if content was revised
+# lastmod: 2025-02-10
+
 # Optional: For citations
 bibliography: content/writing/your-post/your-post.bib
 csl: assets/csl/ieee.csl
@@ -136,6 +139,28 @@ draft: true  # Hide until ready to publish
 ---
 
 ## Optional Front Matter Fields
+
+### `lastmod` (optional)
+**Format:** Date (`YYYY-MM-DD`)
+**Purpose:** Show "last updated" date when content has been revised
+
+**Rules:**
+- Only shown if different from publication date
+- Useful for living documents, guides, and tutorials that get updated
+- Displayed inline after publication date with bullet separator
+- Omit for posts that don't require updates
+
+**Example:**
+```yaml
+date: 2025-01-15
+lastmod: 2025-02-10  # Shows "Last updated: Feb 10, 2025"
+```
+
+**When to use:**
+- ✓ Tutorials that you update for new tool versions
+- ✓ Guides that accumulate improvements over time
+- ✓ Notes that you expand or correct
+- ✗ One-time posts or project write-ups (use publication date only)
 
 ### Bibliography Fields (for citations)
 
