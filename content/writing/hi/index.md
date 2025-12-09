@@ -18,15 +18,31 @@ The site has two sections: [Portfolio](#) and [Writing](#). Portfolio highlights
 
 Writing goes more into detail on projects and material I'm exploring. Posts are grouped into the following categories:
 
-<br>
-
-| Tag          | Description                                                   |
-|--------------|---------------------------------------------------------------|
-| `write-ups`   | Detailed explanations of projects                          |
-| `notes`       | Concise explanations of concepts (ML, algorithms, math)   |
-| `guides`      | Practical, step-by-step tutorials on tools and frameworks |
-| `reading-list`| Collections of papers, articles, or chapters I’ve been reading |
-
-<br>
+<table>
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>write-ups</code></td>
+      <td>Detailed explanations of projects</td>
+    </tr>
+    <tr>
+      <td><code>notes</code></td>
+      <td>Concise explanations of concepts (ML, algorithms, math)</td>
+    </tr>
+    <tr>
+      <td><code>guides</code></td>
+      <td>Practical, step-by-step tutorials on tools and frameworks</td>
+    </tr>
+    <tr>
+      <td><code>reading-list</code></td>
+      <td>Collections of papers, articles, or chapters I've been reading</td>
+    </tr>
+  </tbody>
+</table>
 
 Through writing, I hope to better understand my work and share resources with others who may be working on similar problems.
