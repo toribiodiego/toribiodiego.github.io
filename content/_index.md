@@ -5,11 +5,9 @@
 
 Diego Toribio is completing his Master's in Electrical Engineering at The Cooper Union, where his thesis focuses on data-efficient reinforcement learning. His applied work includes building production ML systems for document understanding and research projects ranging from emotion detection to interactive AI agents.
 
-This site is where I share notes and showcase projects I've worked on, centered around understanding machine learning and its applications.
+#### Currently
 
-#### Currently Working On
-
-- writing a thesis on data- and sample-efficient deep reinforcement learning with [Sam Keene](https://cooper.edu/academics/people/sam-keene)
+- writing a thesis on data- and sample-efficient deep reinforcement learning
 - building ML that turns unstructured docs into structured data @ [Konsilix](https://www.konsilix.com)
 - reviewing ML theory and algorithms
 
