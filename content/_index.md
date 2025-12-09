@@ -13,9 +13,9 @@ Diego Toribio is completing his Master's in Electrical Engineering at The Cooper
 
 #### Education
 
-**Master of Engineering, Electrical Engineering** (in progress)
 The Cooper Union
+
+**Master of Engineering, Electrical Engineering** (in progress)
 Thesis: Data- and Sample-Efficient Deep Reinforcement Learning
 
 **Bachelor of Engineering, Computer Engineering** (2024)
-The Cooper Union
