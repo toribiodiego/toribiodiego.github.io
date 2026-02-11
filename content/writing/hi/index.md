@@ -14,7 +14,7 @@ link-citations: true
 
 Recently, I've felt dissatisifed with my explanations of my work. Conversations about my work felt incomplete without anything to *show*. This site lets me share both the process and results in one place.
 
-The site has two sections: [Portfolio](#) and [Writing](#). Portfolio highlights complete projects with short summaries, images, tables, and demos.
+The site has two sections: [Portfolio](/portfolio/) and [Writing](/writing/). Portfolio highlights complete projects with short summaries, images, tables, and demos.
 
 Writing goes more into detail on projects and material I'm exploring. Posts are grouped into the following categories:
 
