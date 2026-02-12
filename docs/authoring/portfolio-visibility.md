@@ -424,18 +424,6 @@ Check:
    - Solution: Use `draft: true` instead for work-in-progress posts
 2. Did you restart server after changes? → Restart `hugo server -DF`
 
-### Problem: README.md or authoring guides showing in list
-
-**Cause:** Documentation files in `content/` directories are treated as content pages
-
-**Solution:** Move to `docs/authoring/` directory
-```bash
-git mv content/portfolio/README.md docs/authoring/portfolio-cheat-sheet.md
-git mv content/writing/README.md docs/authoring/writing-guide.md
-```
-
-Remove Hugo frontmatter from moved files (no longer needed in `docs/`)
-
 ## Complete Examples
 
 ### Example 1: Published Project with Full Page
