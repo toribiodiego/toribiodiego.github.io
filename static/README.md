@@ -30,16 +30,12 @@ static/
 ├── Toribio_Diego_Resume.pdf      # Resume file (public download)
 ├── pfp-optimized.webp             # Optimized profile picture WebP (18 KB)
 ├── pfp-optimized.jpg              # Optimized profile picture JPEG (31 KB)
-├── dragon-icon.jpg                # Source dragon icon image
 ├── favicon-light.ico              # Light mode favicon (black dragon)
 ├── favicon-dark.ico               # Dark mode favicon (white dragon)
 ├── favicon-light.png              # Light mode 32x32 PNG
 ├── favicon-dark.png               # Dark mode 32x32 PNG
 ├── apple-touch-icon-light.png    # Light mode iOS icon (180x180)
 ├── apple-touch-icon-dark.png     # Dark mode iOS icon (180x180)
-├── favicon.ico                    # Default fallback (light mode copy)
-├── favicon.png                    # Default fallback (light mode copy)
-├── apple-touch-icon.png           # Default fallback (light mode copy)
 ├── css/                           # (empty) Reserved for future static CSS
 └── js/                            # JavaScript files
     ├── preview-flag.js            # Preview mode detection and management
@@ -193,8 +189,6 @@ See [docs/authoring/images.md](../docs/authoring/images.md) for complete optimiz
 
 **Overview:** The site uses dynamic favicons that automatically switch between light and dark versions based on the user's theme preference.
 
-**Source:** `dragon-icon.jpg` - Aztec/Mayan-style dragon sticker (1200×915)
-
 **How it works:**
 1. JavaScript in `layouts/partials/favicon.html` detects current theme
 2. When theme changes (via theme-toggle.js), favicons update automatically
@@ -292,19 +286,6 @@ magick dragon-icon.jpg -fuzz 10% -transparent white dragon-black.png
 magick dragon-black.png -resize 180x180 apple-touch-icon-light.png
 magick dragon-black.png -channel RGB -negate -resize 180x180 apple-touch-icon-dark.png
 rm dragon-black.png
-```
-
-### `favicon.ico` / `favicon.png` / `apple-touch-icon.png` (Fallback)
-
-**Purpose:** Default fallback favicons for browsers without JavaScript or theme detection.
-
-**Details:** These are copies of the light mode versions, ensuring the site always has a visible favicon even without JavaScript support.
-
-**Regenerating:**
-```bash
-cp favicon-light.ico favicon.ico
-cp favicon-light.png favicon.png
-cp apple-touch-icon-light.png apple-touch-icon.png
 ```
 
 ### `css/` (empty directory)
@@ -541,16 +522,12 @@ Or configure server redirects.
 - `Toribio_Diego_Resume.pdf`: ~97 KB
 - `pfp-optimized.webp`: ~18 KB (optimized for web)
 - `pfp-optimized.jpg`: ~31 KB (optimized fallback)
-- `dragon-icon.jpg`: ~100 KB
 - `favicon-light.ico`: ~12 KB
 - `favicon-dark.ico`: ~12 KB
 - `favicon-light.png`: ~2.3 KB
 - `favicon-dark.png`: ~2.3 KB
 - `apple-touch-icon-light.png`: ~29 KB
 - `apple-touch-icon-dark.png`: ~30 KB
-- `favicon.ico` (fallback): ~12 KB
-- `favicon.png` (fallback): ~2.3 KB
-- `apple-touch-icon.png` (fallback): ~29 KB
 - `preview-flag.js`: ~2.2 KB
 - `theme-toggle.js`: ~6.4 KB
 
