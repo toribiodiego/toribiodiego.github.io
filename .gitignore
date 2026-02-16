@@ -1,5 +1,6 @@
 # Hugo build output
 /public/
+/F/
 /resources/
 
 # OS/editor cruft
