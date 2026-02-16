@@ -28,19 +28,14 @@ static/
 ├── CNAME                          # GitHub Pages custom domain
 ├── site.webmanifest               # PWA manifest for installable web app
 ├── Toribio_Diego_Resume.pdf      # Resume file (public download)
-├── pfp.jpg                        # Profile picture original (4.2 MB)
 ├── pfp-optimized.webp             # Optimized profile picture WebP (18 KB)
 ├── pfp-optimized.jpg              # Optimized profile picture JPEG (31 KB)
-├── dragon-icon.jpg                # Source dragon icon image
 ├── favicon-light.ico              # Light mode favicon (black dragon)
 ├── favicon-dark.ico               # Dark mode favicon (white dragon)
 ├── favicon-light.png              # Light mode 32x32 PNG
 ├── favicon-dark.png               # Dark mode 32x32 PNG
 ├── apple-touch-icon-light.png    # Light mode iOS icon (180x180)
 ├── apple-touch-icon-dark.png     # Dark mode iOS icon (180x180)
-├── favicon.ico                    # Default fallback (light mode copy)
-├── favicon.png                    # Default fallback (light mode copy)
-├── apple-touch-icon.png           # Default fallback (light mode copy)
 ├── css/                           # (empty) Reserved for future static CSS
 └── js/                            # JavaScript files
     ├── preview-flag.js            # Preview mode detection and management
@@ -140,18 +135,6 @@ diegotoribio.com
 3. Keep filename consistent (or update links)
 4. Commit and deploy
 
-### `pfp.jpg`
-
-**Purpose:** Original high-resolution profile picture (source image).
-
-**Access:** `https://diegotoribio.com/pfp.jpg`
-
-**Size:** ~4.2 MB
-
-**Dimensions:** 3648×3648 pixels
-
-**Note:** This is the original source image. For web usage, use the optimized versions below.
-
 ### `pfp-optimized.webp` / `pfp-optimized.jpg`
 
 **Purpose:** Optimized profile pictures for web usage with responsive image support.
@@ -188,16 +171,6 @@ magick input.jpg -resize 800x800 -quality 85 output.jpg
 magick input.jpg -resize 800x800 -quality 85 -define webp:method=6 output.webp
 ```
 
-**Regenerating profile picture:**
-```bash
-cd static
-# Generate WebP (modern browsers)
-magick pfp.jpg -resize 500x500 -quality 85 -define webp:method=6 pfp-optimized.webp
-
-# Generate JPEG fallback (older browsers)
-magick pfp.jpg -resize 500x500 -quality 85 pfp-optimized.jpg
-```
-
 **Benefits:**
 - 99%+ file size reduction improves page load time
 - WebP format provides better compression than JPEG
@@ -215,8 +188,6 @@ See [docs/authoring/images.md](../docs/authoring/images.md) for complete optimiz
 ### Theme-Aware Favicons
 
 **Overview:** The site uses dynamic favicons that automatically switch between light and dark versions based on the user's theme preference.
-
-**Source:** `dragon-icon.jpg` - Aztec/Mayan-style dragon sticker (1200×915)
 
 **How it works:**
 1. JavaScript in `layouts/partials/favicon.html` detects current theme
@@ -315,19 +286,6 @@ magick dragon-icon.jpg -fuzz 10% -transparent white dragon-black.png
 magick dragon-black.png -resize 180x180 apple-touch-icon-light.png
 magick dragon-black.png -channel RGB -negate -resize 180x180 apple-touch-icon-dark.png
 rm dragon-black.png
-```
-
-### `favicon.ico` / `favicon.png` / `apple-touch-icon.png` (Fallback)
-
-**Purpose:** Default fallback favicons for browsers without JavaScript or theme detection.
-
-**Details:** These are copies of the light mode versions, ensuring the site always has a visible favicon even without JavaScript support.
-
-**Regenerating:**
-```bash
-cp favicon-light.ico favicon.ico
-cp favicon-light.png favicon.png
-cp apple-touch-icon-light.png apple-touch-icon.png
 ```
 
 ### `css/` (empty directory)
@@ -562,19 +520,14 @@ Or configure server redirects.
 - `CNAME`: 16 bytes
 - `site.webmanifest`: ~725 bytes
 - `Toribio_Diego_Resume.pdf`: ~97 KB
-- `pfp.jpg`: ~4.2 MB (original source image)
 - `pfp-optimized.webp`: ~18 KB (optimized for web)
 - `pfp-optimized.jpg`: ~31 KB (optimized fallback)
-- `dragon-icon.jpg`: ~100 KB
 - `favicon-light.ico`: ~12 KB
 - `favicon-dark.ico`: ~12 KB
 - `favicon-light.png`: ~2.3 KB
 - `favicon-dark.png`: ~2.3 KB
 - `apple-touch-icon-light.png`: ~29 KB
 - `apple-touch-icon-dark.png`: ~30 KB
-- `favicon.ico` (fallback): ~12 KB
-- `favicon.png` (fallback): ~2.3 KB
-- `apple-touch-icon.png` (fallback): ~29 KB
 - `preview-flag.js`: ~2.2 KB
 - `theme-toggle.js`: ~6.4 KB
 
