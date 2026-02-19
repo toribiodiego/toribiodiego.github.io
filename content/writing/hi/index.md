@@ -4,6 +4,7 @@ date: 2025-08-19
 lastmod: 2025-12-08
 writing_tags: ["other"]
 summary: an introduction to the site and writing posts
+description: "An introduction to the site, its portfolio and writing sections, and what to expect from future posts."
 
 draft: false
 

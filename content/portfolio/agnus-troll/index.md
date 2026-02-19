@@ -2,6 +2,7 @@
 title: "Agnus The Troll"
 date: 2025-04-26
 summary: "An interactive audio-video agent designed to mock and provoke attendees."
+description: "An interactive audio-video installation that uses the Gemini Live API to see, hear, and roast exhibition attendees in real time."
 portfolio_tags: ["Generative AI", "Audio", "Video"]
 highlights:
   - "Built a real-time audio-video loop connecting a dynamic microphone and webcam for live speech and visual input."
