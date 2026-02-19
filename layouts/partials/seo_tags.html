@@ -1,3 +1,4 @@
+<link rel="canonical" href="{{ .Permalink }}">
 {{- $desc := .Description | default .Summary | default .Site.Params.description -}}
 {{- with $desc }}
 <meta name="description" content="{{ . }}">
