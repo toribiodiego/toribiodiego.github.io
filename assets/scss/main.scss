@@ -1,5 +1,5 @@
 /* Define cascade layer order once */
-@layer base, components, utilities, overrides;
+@layer theme, base, components, utilities, overrides;
 
 /* Critical body layout rules (unlayered for maximum priority) */
 html,
