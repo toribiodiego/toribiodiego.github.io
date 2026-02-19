@@ -32,3 +32,6 @@
 {{- with .Site.Params.images }}
 <meta name="twitter:image" content="{{ index . 0 | absURL }}">
 {{- end }}
+
+{{/* JSON-LD structured data */}}
+{{- partial "jsonld.html" . -}}

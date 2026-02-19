@@ -1,0 +1,62 @@
+{{- if .IsHome -}}
+  {{- /* Person schema for homepage */ -}}
+  {{- $person := dict "@type" "Person" "name" .Site.Params.author -}}
+  {{- with .Site.Params.description -}}
+    {{- $person = merge $person (dict "description" .) -}}
+  {{- end -}}
+  {{- with .Site.Params.images -}}
+    {{- $person = merge $person (dict "image" (index . 0 | absURL)) -}}
+  {{- end -}}
+  {{- $sameAs := slice -}}
+  {{- with .Site.Params.social.github -}}
+    {{- $sameAs = $sameAs | append . -}}
+  {{- end -}}
+  {{- with .Site.Params.social.linkedin -}}
+    {{- $sameAs = $sameAs | append . -}}
+  {{- end -}}
+  {{- with $sameAs -}}
+    {{- $person = merge $person (dict "sameAs" .) -}}
+  {{- end -}}
+  {{- $person = merge $person (dict "url" .Permalink) -}}
+  {{- $ld := dict "@context" "https://schema.org" | merge $person -}}
+  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+
+  {{- /* WebSite schema for homepage */ -}}
+  {{- $site := dict "@context" "https://schema.org" "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL -}}
+  <script type="application/ld+json">{{ $site | jsonify | safeJS }}</script>
+
+{{- else if and .IsPage (eq .Section "writing") -}}
+  {{- /* BlogPosting schema for writing posts */ -}}
+  {{- $post := dict "@context" "https://schema.org" "@type" "BlogPosting" -}}
+  {{- $post = merge $post (dict "headline" .Title) -}}
+  {{- $post = merge $post (dict "author" (dict "@type" "Person" "name" .Site.Params.author)) -}}
+  {{- $post = merge $post (dict "datePublished" (.Date.Format "2006-01-02")) -}}
+  {{- $post = merge $post (dict "dateModified" (.Lastmod.Format "2006-01-02")) -}}
+  {{- with .Description | default .Summary -}}
+    {{- $post = merge $post (dict "description" .) -}}
+  {{- end -}}
+  {{- with .WordCount -}}
+    {{- $post = merge $post (dict "wordCount" .) -}}
+  {{- end -}}
+  {{- with .Params.writing_tags -}}
+    {{- $post = merge $post (dict "keywords" .) -}}
+  {{- end -}}
+  {{- $post = merge $post (dict "url" .Permalink) -}}
+  <script type="application/ld+json">{{ $post | jsonify | safeJS }}</script>
+
+{{- else if and .IsPage (eq .Type "portfolio") -}}
+  {{- /* CreativeWork schema for portfolio entries */ -}}
+  {{- $work := dict "@context" "https://schema.org" "@type" "CreativeWork" -}}
+  {{- $work = merge $work (dict "name" .Title) -}}
+  {{- $work = merge $work (dict "author" (dict "@type" "Person" "name" .Site.Params.author)) -}}
+  {{- $work = merge $work (dict "datePublished" (.Date.Format "2006-01-02")) -}}
+  {{- with .Description | default .Summary -}}
+    {{- $work = merge $work (dict "description" .) -}}
+  {{- end -}}
+  {{- with .Params.portfolio_tags -}}
+    {{- $work = merge $work (dict "keywords" .) -}}
+  {{- end -}}
+  {{- $work = merge $work (dict "url" .Permalink) -}}
+  <script type="application/ld+json">{{ $work | jsonify | safeJS }}</script>
+
+{{- end -}}
