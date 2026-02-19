@@ -6,10 +6,6 @@
     color: var(--muted-text);
 }
 
-.nowrap {
-    white-space: nowrap;
-}
-
 /* Site Header */
 .site-header {
     margin-top: 1rem;
@@ -23,41 +19,32 @@
 }
 
 .site-title a {
-    text-decoration: none !important;
-    color: inherit !important;
+    text-decoration: none;
+    color: inherit;
 }
 
 .site-title a:hover {
-    text-decoration: none !important;
-    color: inherit !important;
-}
-
-/* Back Link */
-.back-link {
-    display: inline-block;
-    margin-top: 0.25rem;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--muted-text);
-    text-decoration: none !important;
-    transition: color 0.2s ease;
-}
-
-.back-link:hover {
-    text-decoration: none !important;
-    color: #000;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Main Navigation */
 .site-header nav a {
-    text-decoration: none !important;
-    color: var(--secondary-text-color) !important;
+    text-decoration: none;
+    color: var(--secondary-text-color);
     font-weight: 400;
     transition: color 0.2s ease;
     margin-right: 1rem;
 }
 
 .site-header nav a:hover {
-    text-decoration: none !important;
-    color: var(--heading-color) !important;
+    text-decoration: none;
+    color: var(--heading-color);
+}
+
+/* Date styling (color handled in inline styles via CSS variables) */
+main.writing article.post time.post-date,
+main.portfolio article.post time.post-date {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
 }
