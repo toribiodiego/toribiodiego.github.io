@@ -30,9 +30,3 @@ The Cooper Union for the Advancement of Science and Art
 
 &nbsp;&nbsp;&nbsp;&nbsp;Merit Scholarship: Full-tuition
 &nbsp;&nbsp;&nbsp;&nbsp;[4+ Accelerated Program](https://cooper.edu/engineering/curriculum/master/4-degree-faq)
-
-<div style="margin-top: 2rem;"></div>
-
-**Resources**
-
-&nbsp;&nbsp;&nbsp;&nbsp;[LinkedIn](https://www.linkedin.com/in/diego-toribio-096155210/) • [Email](mailto:toribio.diego23@gmail.com) • [GitHub](https://github.com/toribiodiego) • &nbsp; [Resume](#)
