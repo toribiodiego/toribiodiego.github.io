@@ -5,10 +5,24 @@
     <a href="https://www.linkedin.com/in/diego-toribio-096155210/" aria-label="LinkedIn">
         {{ (resources.Get "icons/linkedin.svg").Content | safeHTML }}
     </a>
-    <a href="mailto:toribio.diego23@gmail.com" aria-label="Email"
-        onclick="if (navigator.clipboard) { navigator.clipboard.writeText('toribio.diego23@gmail.com'); this.title='Copied!'; return false; }"
+    <a id="email-link" href="#" aria-label="Email"
+        data-u="dG9yaWJpby5kaWVnbzIz" data-d="Z21haWwuY29t"
         title="Copy email or click to open mail client">
         {{ (resources.Get "icons/email.svg").Content | safeHTML }}
     </a>
+    <script>
+    (function() {
+        var el = document.getElementById('email-link');
+        var addr = atob(el.dataset.u) + '@' + atob(el.dataset.d);
+        el.href = 'mailto:' + addr;
+        el.addEventListener('click', function(e) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(addr);
+                el.title = 'Copied!';
+                e.preventDefault();
+            }
+        });
+    })();
+    </script>
 </p>
 <p>© {{ now.Format "2006" }} Diego Toribio</p>
