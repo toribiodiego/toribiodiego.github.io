@@ -10,9 +10,8 @@ Diego Toribio is completing his Master's in Electrical Engineering at The Cooper
 
 #### Currently
 
-- writing thesis on data- and sample-efficient reinforcement learning
-- developing ML that turns unstructured docs into structured data @ [Konsilix](https://www.konsilix.com)
-- reviewing ML system design, fundamentals, and algorithms
+- finishing Master's thesis on learning Atari from limited data
+- building document processing systems and ML platform infrastructure @ [Konsilix](https://www.konsilix.com)
 
 <div style="margin-top: 2rem;"></div>
 
