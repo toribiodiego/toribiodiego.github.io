@@ -47,4 +47,4 @@ Writing goes more into detail on projects and material I'm exploring. Posts are 
   </table>
 </figure>
 
-Through writing, I hope to better understand my work and share resources with others who may be working on similar problems.
+Through writing, I hope to better understand my work and share resources with others who may be working on similar problems. New posts are also available via [RSS](/index.xml).
