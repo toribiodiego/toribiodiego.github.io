@@ -31,4 +31,14 @@ The Cooper Union for the Advancement of Science and Art
 
 **Resources**
 
-&nbsp;&nbsp;&nbsp;&nbsp;[LinkedIn](https://www.linkedin.com/in/diego-toribio-096155210/) • [Email](mailto:toribio.diego23@gmail.com) • [GitHub](https://github.com/toribiodiego) • &nbsp; [Resume](#)
+&nbsp;&nbsp;&nbsp;&nbsp;[LinkedIn](https://www.linkedin.com/in/diego-toribio-096155210/) • <a id="homepage-email" data-u="dG9yaWJpby5kaWVnbzIz" data-d="Z21haWwuY29t" href="#">Email</a> • [GitHub](https://github.com/toribiodiego) • &nbsp; [Resume](#)
+
+<script>
+(function() {
+    var el = document.getElementById('homepage-email');
+    if (el) {
+        var addr = atob(el.dataset.u) + '@' + atob(el.dataset.d);
+        el.href = 'mailto:' + addr;
+    }
+})();
+</script>
