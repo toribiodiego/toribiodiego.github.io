@@ -23,13 +23,13 @@
 }
 
 .site-title a {
-    text-decoration: none !important;
-    color: inherit !important;
+    text-decoration: none;
+    color: inherit;
 }
 
 .site-title a:hover {
-    text-decoration: none !important;
-    color: inherit !important;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Back Link */
@@ -39,25 +39,25 @@
     font-size: 0.9rem;
     font-weight: 400;
     color: var(--muted-text);
-    text-decoration: none !important;
+    text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .back-link:hover {
-    text-decoration: none !important;
+    text-decoration: none;
     color: #000;
 }
 
 /* Main Navigation */
 .site-header nav a {
-    text-decoration: none !important;
-    color: var(--secondary-text-color) !important;
+    text-decoration: none;
+    color: var(--secondary-text-color);
     font-weight: 400;
     transition: color 0.2s ease;
     margin-right: 1rem;
 }
 
 .site-header nav a:hover {
-    text-decoration: none !important;
-    color: var(--heading-color) !important;
+    text-decoration: none;
+    color: var(--heading-color);
 }
