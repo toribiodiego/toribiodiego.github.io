@@ -91,7 +91,7 @@ cd themes/hugo-bearblog
 git log --oneline -1
 
 # Update to latest
-cd /Users/Work/Desktop/website
+cd ../..  # back to repo root
 git submodule update --remote themes/hugo-bearblog
 
 # Or update to specific commit
