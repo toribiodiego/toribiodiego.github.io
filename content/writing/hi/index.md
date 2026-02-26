@@ -4,6 +4,7 @@ date: 2025-08-19
 lastmod: 2025-12-08
 writing_tags: ["other"]
 summary: an introduction to the site and writing posts
+description: "An introduction to the site, its portfolio and writing sections, and what to expect from future posts."
 
 draft: false
 
@@ -47,4 +48,4 @@ Writing goes more into detail on projects and material I'm exploring. Posts are 
   </table>
 </figure>
 
-Through writing, I hope to better understand my work and share resources with others who may be working on similar problems.
+Through writing, I hope to better understand my work and share resources with others who may be working on similar problems. New posts are also available via [RSS](/index.xml).

@@ -7,3 +7,8 @@ dateFormat = "2006-01-02"
 
 # Social preview images for Open Graph and Twitter Cards
 images = ["/pfp-optimized.jpg"]
+
+# Social profile URLs (used in JSON-LD structured data and footer)
+[social]
+github = "https://github.com/toribiodiego"
+linkedin = "https://www.linkedin.com/in/diego-toribio-096155210/"

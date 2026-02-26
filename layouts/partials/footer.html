@@ -10,6 +10,9 @@
         title="Copy email or click to open mail client">
         {{ (resources.Get "icons/email.svg").Content | safeHTML }}
     </a>
+    <a href="/index.xml" aria-label="RSS Feed">
+        {{ (resources.Get "icons/rss.svg").Content | safeHTML }}
+    </a>
     <script>
     (function() {
         var el = document.getElementById('email-link');
@@ -25,4 +28,4 @@
     })();
     </script>
 </p>
-<p>© {{ now.Format "2006" }} Diego Toribio</p>
+<p>© {{ now.Format "2006" }} Diego Toribio · <a href="/sitemap.xml">Sitemap</a></p>

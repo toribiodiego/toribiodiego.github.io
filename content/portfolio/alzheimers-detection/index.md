@@ -1,6 +1,7 @@
 ---
 title: "Multimodal Alzheimer's Detection"
 summary: "Used spontaneous speech from clinician-patient conversations as a diagnostic signal for automated Alzheimer's detection."
+description: "A multimodal ML pipeline combining audio and text embeddings from clinician-patient speech to detect Alzheimer's dementia."
 highlights:
   - "Designed a scalable ETL pipeline for recordings, handling audio processing, transcription, and feature extraction across multiple models to produce audio and text embeddings"
   - "Developed a training pipeline to evaluate multiple classifiers on audio, text, and combined embeddings."

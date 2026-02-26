@@ -1,3 +1,6 @@
+---
+description: "Diego Toribio -- ML engineer and Master's student at The Cooper Union, focused on reinforcement learning and production ML systems."
+---
 <picture>
   <source srcset="/pfp-optimized.webp" type="image/webp">
   <img src="/pfp-optimized.jpg" alt="Profile picture" width="250" height="250" loading="lazy" style="border-radius: 12px;">

@@ -1,2 +1,37 @@
-{{ template "_internal/opengraph.html" . }}
-{{ template "_internal/twitter_cards.html" . }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{- $desc := .Description | default .Summary | default .Site.Params.description -}}
+{{- with $desc }}
+<meta name="description" content="{{ . }}">
+{{- end }}
+
+{{/* Open Graph */}}
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ .Title }}">
+{{- with $desc }}
+<meta property="og:description" content="{{ . }}">
+{{- end }}
+<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+{{- if and .IsPage (eq .Section "writing") }}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- else }}
+<meta property="og:type" content="website">
+{{- end }}
+{{- with .Site.Params.images }}
+<meta property="og:image" content="{{ index . 0 | absURL }}">
+{{- end }}
+
+{{/* Twitter Cards */}}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Title }}">
+{{- with $desc }}
+<meta name="twitter:description" content="{{ . }}">
+{{- end }}
+{{- with .Site.Params.images }}
+<meta name="twitter:image" content="{{ index . 0 | absURL }}">
+{{- end }}
+
+{{/* JSON-LD structured data */}}
+{{- partial "jsonld.html" . -}}
