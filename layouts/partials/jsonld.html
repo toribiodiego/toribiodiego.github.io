@@ -19,11 +19,11 @@
   {{- end -}}
   {{- $person = merge $person (dict "url" .Permalink) -}}
   {{- $ld := dict "@context" "https://schema.org" | merge $person -}}
-  <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+  <script type="application/ld+json">{{ $ld | jsonify | safeHTML }}</script>
 
   {{- /* WebSite schema for homepage */ -}}
   {{- $site := dict "@context" "https://schema.org" "@type" "WebSite" "name" .Site.Title "url" .Site.BaseURL -}}
-  <script type="application/ld+json">{{ $site | jsonify | safeJS }}</script>
+  <script type="application/ld+json">{{ $site | jsonify | safeHTML }}</script>
 
 {{- else if and .IsPage (eq .Section "writing") -}}
   {{- /* BlogPosting schema for writing posts */ -}}
@@ -42,7 +42,7 @@
     {{- $post = merge $post (dict "keywords" .) -}}
   {{- end -}}
   {{- $post = merge $post (dict "url" .Permalink) -}}
-  <script type="application/ld+json">{{ $post | jsonify | safeJS }}</script>
+  <script type="application/ld+json">{{ $post | jsonify | safeHTML }}</script>
 
 {{- else if and .IsPage (eq .Type "portfolio") -}}
   {{- /* CreativeWork schema for portfolio entries */ -}}
@@ -57,6 +57,6 @@
     {{- $work = merge $work (dict "keywords" .) -}}
   {{- end -}}
   {{- $work = merge $work (dict "url" .Permalink) -}}
-  <script type="application/ld+json">{{ $work | jsonify | safeJS }}</script>
+  <script type="application/ld+json">{{ $work | jsonify | safeHTML }}</script>
 
 {{- end -}}
