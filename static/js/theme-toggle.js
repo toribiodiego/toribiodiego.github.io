@@ -57,6 +57,19 @@
     }
 
     /**
+     * Update favicon links to match current theme
+     */
+    function updateFavicon() {
+        const theme = getEffectiveTheme();
+        const ico = document.getElementById('favicon-ico');
+        const png = document.getElementById('favicon-png');
+        const apple = document.getElementById('apple-touch-icon');
+        if (ico) ico.href = '/favicon-' + theme + '.ico';
+        if (png) png.href = '/favicon-' + theme + '.png';
+        if (apple) apple.href = '/apple-touch-icon-' + theme + '.png';
+    }
+
+    /**
      * Apply theme to document
      */
     function applyTheme() {
@@ -70,7 +83,8 @@
             document.documentElement.classList.remove('dark-theme');
         }
 
-        // Update toggle button state if it exists
+        // Update favicon and toggle button state
+        updateFavicon();
         updateToggleButton();
     }
 
