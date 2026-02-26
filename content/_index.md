@@ -4,15 +4,14 @@
 </picture>
 <div style="margin-top: 2rem;"></div>
 
-Diego Toribio is completing his Master's in Electrical Engineering at The Cooper Union, where his thesis focuses on deep reinforcement learning, advised by [Sam Keene](https://cooper.edu/academics/people/sam-keene). His applied work includes building production ML systems for document understanding and research projects ranging from emotion detection to interactive AI agents.
+Diego Toribio is completing his Master's in Electrical Engineering at The Cooper Union, where his thesis focuses on data- and sample-efficient reinforcement learning, advised by [Sam Keene](https://cooper.edu/academics/people/sam-keene). His work includes building production ML infrastructure for document understanding, interactive installations, and reinforcement learning agents trained through self-play.
 
 <div style="margin-top: 2rem;"></div>
 
 #### Currently
 
-- writing thesis on data- and sample-efficient reinforcement learning
-- developing ML that turns unstructured docs into structured data @ [Konsilix](https://www.konsilix.com)
-- reviewing ML system design, fundamentals, and algorithms
+- finishing Master's thesis on learning Atari from limited data
+- building document processing systems and ML platform infrastructure @ [Konsilix](https://www.konsilix.com)
 
 <div style="margin-top: 2rem;"></div>
 
@@ -21,24 +20,13 @@ Diego Toribio is completing his Master's in Electrical Engineering at The Cooper
 The Cooper Union for the Advancement of Science and Art   
 *Major:* Electrical Engineering
 
-&nbsp;&nbsp;&nbsp;&nbsp;Master of Engineering   
-&nbsp;&nbsp;&nbsp;&nbsp;*Thesis:* Deep Reinforcement Learning
+&nbsp;&nbsp;&nbsp;&nbsp;Master of Engineering (Expected 2026)  
+&nbsp;&nbsp;&nbsp;&nbsp;*Thesis:* Data- and Sample-Efficient Reinforcement Learning  
+&nbsp;&nbsp;&nbsp;&nbsp;*Coursework:* Deep Learning, Reinforcement Learning, Natural Language Processing, Generative Machine Learning, Cloud Computing
 
 &nbsp;&nbsp;&nbsp;&nbsp;Bachelor of Engineering (2025)  
-&nbsp;&nbsp;&nbsp;&nbsp;*Track:* Computer Engineering
+&nbsp;&nbsp;&nbsp;&nbsp;*Track:* Computer Engineering  
+&nbsp;&nbsp;&nbsp;&nbsp;*Coursework:* Operating Systems, Databases
 
-<div style="margin-top: 2rem;"></div>
-
-**Resources**
-
-&nbsp;&nbsp;&nbsp;&nbsp;[LinkedIn](https://www.linkedin.com/in/diego-toribio-096155210/) • <a id="homepage-email" data-u="dG9yaWJpby5kaWVnbzIz" data-d="Z21haWwuY29t" href="#">Email</a> • [GitHub](https://github.com/toribiodiego) • &nbsp; [Resume](#)
-
-<script>
-(function() {
-    var el = document.getElementById('homepage-email');
-    if (el) {
-        var addr = atob(el.dataset.u) + '@' + atob(el.dataset.d);
-        el.href = 'mailto:' + addr;
-    }
-})();
-</script>
+&nbsp;&nbsp;&nbsp;&nbsp;Merit Scholarship: Full-tuition  
+&nbsp;&nbsp;&nbsp;&nbsp;[4+ Accelerated Program](https://cooper.edu/engineering/curriculum/master/4-degree-faq)
