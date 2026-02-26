@@ -28,10 +28,10 @@ body > footer {
 /* Base */
 @import "variables";
 @import "helpers";
-@import "tags";
 
 /* Components */
 @layer components {
+    @import "tags";
     @import "lists";
     @import "posts";
     @import "writing";
