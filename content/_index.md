@@ -21,7 +21,7 @@ The Cooper Union for the Advancement of Science and Art
 *Major:* Electrical Engineering
 
 &nbsp;&nbsp;&nbsp;&nbsp;Master of Engineering (Expected 2026)
-&nbsp;&nbsp;&nbsp;&nbsp;*Thesis:* Deep Reinforcement Learning
+&nbsp;&nbsp;&nbsp;&nbsp;*Thesis:* Data- and Sample-Efficient Reinforcement Learning
 &nbsp;&nbsp;&nbsp;&nbsp;*Coursework:* Deep Learning, Reinforcement Learning, Natural Language Processing, Generative Machine Learning, Cloud Computing
 
 &nbsp;&nbsp;&nbsp;&nbsp;Bachelor of Engineering (2025)
