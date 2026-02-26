@@ -48,9 +48,11 @@ jobs:
         run: hugo --gc --enableGitInfo --panicOnWarning --cleanDestinationDir --minify --buildDrafts=false --buildFuture=false --buildExpired=false
 
       - name: Check links
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@v2.8.0
         with:
-          args: "--offline --no-progress --root-dir public/ public/"
+          args: "--offline --no-progress --root-dir ${{ github.workspace }}/public/ public/"
+          fail: true
+          failIfEmpty: false
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
