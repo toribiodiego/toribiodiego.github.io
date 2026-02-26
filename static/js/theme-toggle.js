@@ -94,10 +94,8 @@
     function setTheme(theme) {
         if (theme === null) {
             localStorage.removeItem(THEME_KEY);
-            console.log('[Theme] Reset to auto (following system)');
         } else {
             localStorage.setItem(THEME_KEY, theme);
-            console.log(`[Theme] Set to ${theme}`);
         }
         applyTheme();
     }
@@ -178,7 +176,6 @@
             if (mediaQuery.addEventListener) {
                 mediaQuery.addEventListener('change', function(e) {
                     if (isAuto()) {
-                        console.log(`[Theme] System changed to ${e.matches ? 'dark' : 'light'}, updating (auto mode)`);
                         applyTheme();
                     }
                 });
@@ -187,7 +184,6 @@
             else if (mediaQuery.addListener) {
                 mediaQuery.addListener(function(e) {
                     if (isAuto()) {
-                        console.log(`[Theme] System changed to ${e.matches ? 'dark' : 'light'}, updating (auto mode)`);
                         applyTheme();
                     }
                 });
