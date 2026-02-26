@@ -41,7 +41,7 @@ a[href*="/tags/"] {
 .tags a:hover,
 a[href*="/tags/"]:hover {
     border-color: var(--chip-border-hover);
-    color: #000;
+    color: var(--heading-color);
     /* darken on hover */
 }
 
