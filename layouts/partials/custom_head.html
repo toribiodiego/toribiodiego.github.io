@@ -27,9 +27,9 @@
 {{- end -}}
 {{- end -}}
 
-{{/* --- Preview flag detection (prod-only, deferred) --- */}}
+{{/* --- Preview flag detection (prod-only, must load before analytics) --- */}}
 {{- if hugo.IsProduction -}}
-<script defer src="/js/preview-flag.js"></script>
+<script src="/js/preview-flag.js"></script>
 {{- end -}}
 
 {{/* --- Google Analytics 4 with preview mode support, prod-only --- */}}
