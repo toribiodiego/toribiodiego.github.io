@@ -1,4 +1,5 @@
 <style>
+@layer theme {
   :root {
     --width: 720px;
     --font-main: Verdana, sans-serif;
@@ -129,19 +130,6 @@
     color: var(--heading-color);
   }
 
-  /* Tag hover in dark mode */
-  @media (prefers-color-scheme: dark) {
-    html:not(.light-theme) .tags a:hover,
-    html:not(.light-theme) a[href*="/tags/"]:hover {
-      color: #fff !important;
-    }
-  }
-
-  html.dark-theme .tags a:hover,
-  html.dark-theme a[href*="/tags/"]:hover {
-    color: #fff !important;
-  }
-
   /* Breadcrumb colors - white/black like titles */
   .breadcrumb {
     color: var(--heading-color);
@@ -172,7 +160,7 @@
   .post .post-meta .post-date,
   .post .post-meta time,
   time.post-date {
-    color: var(--secondary-text-color) !important;
+    color: var(--secondary-text-color);
   }
 
   .post .post-lastmod {
@@ -265,7 +253,7 @@
   }
 
   .inline {
-    width: auto !important;
+    width: auto !important; /* must override Hugo's inline width attr */
   }
 
   .highlight,
@@ -296,5 +284,5 @@
   ul.blog-posts li a:visited {
     color: var(--visited-color);
   }
-
+}
 </style>

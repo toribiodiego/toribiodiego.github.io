@@ -16,10 +16,10 @@
 .breadcrumb a,
 .breadcrumb a:link,
 .breadcrumb a:visited {
-    display: inline !important;
+    display: inline;
     /* neutralize inline-block nav link styles */
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
     /* Color handled in inline styles (style.html) */
 }
@@ -31,8 +31,8 @@
 /* Title (post name) – no extra spacing */
 .breadcrumb span,
 .breadcrumb .crumb-title {
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
 }
 
 /* Tight '>' before the title (zero space) */
@@ -51,5 +51,5 @@
    Some themes add nav-specific spacing/separators. Scope extra fixes here.
    -------------------------------------------------------------------------- */
 .site-header nav .breadcrumb a::after {
-    content: none !important;
+    content: none;
 }

@@ -1,5 +1,5 @@
 /* Define cascade layer order once */
-@layer base, components, utilities, overrides;
+@layer theme, base, components, utilities, overrides;
 
 /* Critical body layout rules (unlayered for maximum priority) */
 html,
@@ -28,10 +28,10 @@ body > footer {
 /* Base */
 @import "variables";
 @import "helpers";
-@import "tags";
 
 /* Components */
 @layer components {
+    @import "tags";
     @import "lists";
     @import "posts";
     @import "writing";
