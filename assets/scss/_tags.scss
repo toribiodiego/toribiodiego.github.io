@@ -17,11 +17,11 @@
 .terms .tags a,
 .list .tags a,
 a[href*="/tags/"] {
-    font-size: 0.75rem !important;
+    font-size: 0.75rem;
     /* lock exact size */
-    line-height: 1.2 !important;
+    line-height: 1.2;
     /* normalize vertical alignment */
-    padding: 3px 8px !important;
+    padding: 3px 8px;
     /* consistent chip sizing */
     display: inline-block;
     margin-right: .25rem;
@@ -29,9 +29,9 @@ a[href*="/tags/"] {
     border: 1px solid var(--chip-border);
     border-radius: var(--chip-radius);
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace !important;
-    text-decoration: none !important;
-    color: var(--muted-text) !important;
+        "Liberation Mono", "Courier New", monospace;
+    text-decoration: none;
+    color: var(--muted-text);
     /* match nav default color */
     background: transparent;
     transition: border-color 0.2s ease, color 0.2s ease;
@@ -41,14 +41,14 @@ a[href*="/tags/"] {
 .tags a:hover,
 a[href*="/tags/"]:hover {
     border-color: var(--chip-border-hover);
-    color: #000 !important;
+    color: var(--heading-color);
     /* darken on hover */
 }
 
 /* Visited links behave like normal (no purple) */
 .tags a:visited,
 a[href*="/tags/"]:visited {
-    color: var(--muted-text) !important;
+    color: var(--muted-text);
 }
 
 /* Context-specific layout adjustments */
@@ -70,7 +70,7 @@ article .tags {
 .taxonomy .tags,
 .terms .tags,
 .list .tags {
-    margin-left: 0 !important;
+    margin-left: 0;
 }
 
 /* Ensure tags footer in writing posts is left-aligned */

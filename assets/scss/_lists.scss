@@ -19,9 +19,9 @@
 
 /* Portfolio title: medium weight, always block */
 .portfolio-title {
-    text-decoration: none !important;
-    color: inherit !important;
-    font-weight: 600 !important;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
     /* less bold than before */
     display: block;
     /* ensure title sits on its own line */
@@ -35,32 +35,32 @@
     /* reuse base tag container styles */
     display: block;
     /* force its own line */
-    margin-left: 0 !important;
+    margin-left: 0;
     /* remove indent */
-    padding-left: 0 !important;
+    padding-left: 0;
     margin-bottom: 0.5rem;
     /* space before summary */
 }
 
 /* Portfolio summary follows title, flush left */
 .portfolio-summary {
-    margin-top: 0.25rem !important;
+    margin-top: 0.25rem;
     /* closer to title */
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 0.25rem;
     /* small gap before tags */
-    text-indent: 0 !important;
+    text-indent: 0;
     /* remove tab/paragraph indent */
-    margin-left: 0 !important;
+    margin-left: 0;
     /* flush left */
-    padding-left: 0 !important;
+    padding-left: 0;
 }
 
 /* ---- Writing list aesthetics (for writing/list.html) ---- */
 .posts-list {
     margin-top: 0;
-    list-style: none !important;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .post-item {
@@ -75,15 +75,15 @@
 
 /* Writing list: post titles styled like nav menu links */
 .posts-list .post-title {
-    text-decoration: none !important;
-    color: var(--muted-text) !important;
+    text-decoration: none;
+    color: var(--muted-text);
     /* muted gray by default */
     font-weight: 400;
     transition: color 0.2s ease;
 }
 
 .posts-list .post-title:hover {
-    text-decoration: none !important;
-    color: #000 !important;
+    text-decoration: none;
+    color: var(--heading-color);
     /* darker on hover */
 }
