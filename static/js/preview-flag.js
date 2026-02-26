@@ -21,10 +21,8 @@
 
         if (previewParam === 'true') {
             localStorage.setItem(PREVIEW_KEY, 'true');
-            console.log('[Preview Mode] Enabled - Analytics disabled');
         } else if (previewParam === 'false') {
             localStorage.removeItem(PREVIEW_KEY);
-            console.log('[Preview Mode] Disabled - Analytics enabled');
         }
     }
 

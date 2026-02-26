@@ -14,10 +14,6 @@
     script.async = true;
     script.src = 'https://www.googletagmanager.com/gtag/js?id={{ . }}';
     document.head.appendChild(script);
-
-    console.log('[Analytics] Google Analytics loaded');
-  } else {
-    console.log('[Analytics] Skipped - Preview mode active');
   }
 </script>
 {{- end -}}
